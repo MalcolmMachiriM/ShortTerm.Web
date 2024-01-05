@@ -1,0 +1,94 @@
+﻿@model ShortTerm.Web.Data.IndividualProduct
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>IndividualProduct</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductGroupId" class="control-label"></label>
+                <select asp-for="ProductGroupId" class ="form-control" asp-items="ViewBag.ProductGroupId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProcessTime" class="control-label"></label>
+                <input asp-for="ProcessTime" class="form-control" />
+                <span asp-validation-for="ProcessTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Retention" class="control-label"></label>
+                <input asp-for="Retention" class="form-control" />
+                <span asp-validation-for="Retention" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SumAssuredBasis" class="control-label"></label>
+                <input asp-for="SumAssuredBasis" class="form-control" />
+                <span asp-validation-for="SumAssuredBasis" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CanBeCeded" /> @Html.DisplayNameFor(model => model.CanBeCeded)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="EffectiveDate" class="control-label"></label>
+                <input asp-for="EffectiveDate" class="form-control" />
+                <span asp-validation-for="EffectiveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxPremiumTerm" class="control-label"></label>
+                <input asp-for="MaxPremiumTerm" class="form-control" />
+                <span asp-validation-for="MaxPremiumTerm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinPremiumTerm" class="control-label"></label>
+                <input asp-for="MinPremiumTerm" class="form-control" />
+                <span asp-validation-for="MinPremiumTerm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MinSumAssured" class="control-label"></label>
+                <input asp-for="MinSumAssured" class="form-control" />
+                <span asp-validation-for="MinSumAssured" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaxSumAssured" class="control-label"></label>
+                <input asp-for="MaxSumAssured" class="form-control" />
+                <span asp-validation-for="MaxSumAssured" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
