@@ -56,13 +56,13 @@
             @Html.DisplayNameFor(model => model.Gender)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender.Sex)
+            @Html.DisplayFor(model => model.Gender.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.MaritalStatus)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaritalStatus.Status)
+            @Html.DisplayFor(model => model.MaritalStatus.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CountryOfBirth)
@@ -119,10 +119,16 @@
             @Html.DisplayFor(model => model.ModifiedBy)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ContactPersonId)
+            @Html.DisplayNameFor(model => model.ContactPersonName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ContactPersonId)
+            @Html.DisplayFor(model => model.ContactPersonName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactPersonNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContactPersonNumber)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.NationalId)

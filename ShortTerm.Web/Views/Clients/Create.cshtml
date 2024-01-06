@@ -1,14 +1,15 @@
 ﻿@model ShortTerm.Web.Data.Client
 
 @{
-    ViewData["Title"] = "Client Creation";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Create Client</h1>
+<h1>Create</h1>
 
+<h4>Client</h4>
 <hr />
 <div class="row">
-    <div class="col-md-6 text-align-center">
+    <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -66,11 +67,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Language" class="control-label"></label>
-                <select asp-for="Language" class ="form-control" asp-items="ViewBag.LanguageId"></select>
+                <input asp-for="Language" class="form-control" />
+                <span asp-validation-for="Language" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Religion" class="control-label"></label>
-                <select asp-for="Religion" class ="form-control" asp-items="ViewBag.ReligionId"></select>
+                <input asp-for="Religion" class="form-control" />
+                <span asp-validation-for="Religion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IncomeGroupId" class="control-label"></label>
@@ -82,20 +85,69 @@
                 <input asp-for="HghestQualificationId" class="form-control" />
                 <span asp-validation-for="HghestQualificationId" class="text-danger"></span>
             </div>
-           
-          
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="AddedBy" class="control-label"></label>
+                <input asp-for="AddedBy" class="form-control" />
+                <span asp-validation-for="AddedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModifiedBy" class="control-label"></label>
+                <input asp-for="ModifiedBy" class="form-control" />
+                <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactPersonName" class="control-label"></label>
+                <input asp-for="ContactPersonName" class="form-control" />
+                <span asp-validation-for="ContactPersonName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactPersonNumber" class="control-label"></label>
+                <input asp-for="ContactPersonNumber" class="form-control" />
+                <span asp-validation-for="ContactPersonNumber" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="NationalId" class="control-label"></label>
                 <input asp-for="NationalId" class="form-control" />
                 <span asp-validation-for="NationalId" class="text-danger"></span>
             </div>
-          <br />
             <div class="form-group">
-                <a asp-action="Index" class="btn btn-dark">Back to List</a>
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusValue" class="control-label"></label>
+                <input asp-for="StatusValue" class="form-control" />
+                <span asp-validation-for="StatusValue" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsAuthorized" /> @Html.DisplayNameFor(model => model.IsAuthorized)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 

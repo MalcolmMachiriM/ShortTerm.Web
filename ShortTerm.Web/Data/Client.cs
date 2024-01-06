@@ -33,7 +33,8 @@ namespace ShortTerm.Web.Data
         public bool Active { get; set; }
         public int AddedBy { get; set; }
         public int ModifiedBy { get; set; }
-        public int ContactPersonId { get; set; }
+        public string ContactPersonName { get; set; }
+        public string ContactPersonNumber { get; set; }
         public string? NationalId { get; set; }
         public int Status { get; set; }
         public int StatusValue { get; set; }
