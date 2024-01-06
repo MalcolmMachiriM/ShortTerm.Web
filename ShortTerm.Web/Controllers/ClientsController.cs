@@ -71,9 +71,9 @@ namespace ShortTerm.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", client.GenderId);
-            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", client.LanguageId);
+            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", client.Language);
             ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Id", client.MaritalStatusId);
-            ViewData["ReligionId"] = new SelectList(_context.Religions, "Id", "Id", client.ReligionId);
+            ViewData["ReligionId"] = new SelectList(_context.Religions, "Id", "Id", client.Religion);
             return View(client);
         }
 
@@ -91,9 +91,9 @@ namespace ShortTerm.Web.Controllers
                 return NotFound();
             }
             ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", client.GenderId);
-            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", client.LanguageId);
+            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", client.Language);
             ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Id", client.MaritalStatusId);
-            ViewData["ReligionId"] = new SelectList(_context.Religions, "Id", "Id", client.ReligionId);
+            ViewData["ReligionId"] = new SelectList(_context.Religions, "Id", "Id", client.Religion);
             return View(client);
         }
 
@@ -130,9 +130,9 @@ namespace ShortTerm.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", client.GenderId);
-            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", client.LanguageId);
+            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", client.Language);
             ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Id", client.MaritalStatusId);
-            ViewData["ReligionId"] = new SelectList(_context.Religions, "Id", "Id", client.ReligionId);
+            ViewData["ReligionId"] = new SelectList(_context.Religions, "Id", "Id", client.Religion);
             return View(client);
         }
 

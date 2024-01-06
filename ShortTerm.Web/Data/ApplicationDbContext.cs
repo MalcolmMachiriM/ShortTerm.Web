@@ -29,5 +29,8 @@ namespace ShortTerm.Web.Data
         public DbSet<Reassurer> Reassurers { get; set; }
         public DbSet<Religion> Religions { get; set; }
         public DbSet<Scheme> Schemes { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<HighestQualification> HighestQualifications { get; set; }
+        public DbSet<ClientType> ClientTypes { get; set; }
     }
 }

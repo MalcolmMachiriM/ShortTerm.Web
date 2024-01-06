@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShortTerm.Web.Models
 {
-    public class ClaimsListVM
+    public class ClaimsCreateVM
     {
         [ForeignKey(name: "ClientId")]
         public Client Client { get; set; }

@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using ShortTerm.Web.Data;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ShortTerm.Web.Data
+namespace ShortTerm.Web.Models
 {
-    public class Client : BaseEntity
+    public class ClientCreateVM
     {
         public string? RegNo { get; set; }
         public int ClientTypeId { get; set; }
