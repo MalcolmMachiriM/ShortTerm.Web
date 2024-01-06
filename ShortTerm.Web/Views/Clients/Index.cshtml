@@ -13,22 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RegNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClientTypeId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TitleId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MiddleName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
@@ -40,52 +28,19 @@
                 @Html.DisplayNameFor(model => model.MaritalStatus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CountryOfBirthId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CountryOfResidenceId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Language)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Religion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IncomeGroupId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HghestQualificationId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactPersonId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NationalId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StatusValue)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsAuthorized)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateModified)
             </th>
             <th></th>
         </tr>
@@ -94,61 +49,28 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RegNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClientTypeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TitleId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Surname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MiddleName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.DateOfBirth)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Gender.Id)
+                @Html.DisplayFor(modelItem => item.Gender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MaritalStatus.Id)
+                @Html.DisplayFor(modelItem => item.MaritalStatus)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CountryOfBirthId)
+                @Html.DisplayFor(modelItem => item.Language)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CountryOfResidenceId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Religion.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IncomeGroupId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HghestQualificationId)
+                @Html.DisplayFor(modelItem => item.Religion)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactPersonId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NationalId)
@@ -157,21 +79,9 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StatusValue)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsAuthorized)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" class="btn btn-secondary" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" class="btn btn-warning" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

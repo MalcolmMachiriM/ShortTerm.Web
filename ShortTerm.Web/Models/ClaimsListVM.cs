@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using ShortTerm.Web.Data;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ShortTerm.Web.Data
+namespace ShortTerm.Web.Models
 {
-    public class Claim : BaseEntity
+    public class ClaimsListVM
     {
-        [ForeignKey(name:"ClientId")]
+        [ForeignKey(name: "ClientId")]
         public Client Client { get; set; }
         public int ClientId { get; set; }
         public int Product { get; set; }

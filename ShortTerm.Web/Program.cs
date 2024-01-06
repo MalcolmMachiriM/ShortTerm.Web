@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ShortTerm.Web.Configurations;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+builder.Services.AddAutoMapper(typeof(MapperConfig));
 
 builder.Services.AddControllersWithViews();
 
