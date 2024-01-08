@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShortTerm.Web.Data.ProductGroup>
+﻿@model IEnumerable<ProductGroupVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -23,12 +23,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Scheme)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateModified)
             </th>
             <th></th>
         </tr>
@@ -46,13 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Scheme.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
+                @Html.DisplayFor(modelItem => item.Scheme)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

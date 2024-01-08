@@ -2,27 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Models;
 
 namespace ShortTerm.Web.Controllers
 {
     public class PoliciesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper mapper;
+        private readonly IPolicyRepository policyRepository;
 
-        public PoliciesController(ApplicationDbContext context)
+        public PoliciesController(ApplicationDbContext context, IMapper mapper, IPolicyRepository policyRepository)
         {
             _context = context;
+            this.mapper = mapper;
+            this.policyRepository = policyRepository;
         }
 
         // GET: Policies
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Policies.Include(p => p.ProductGroup);
-            return View(await applicationDbContext.ToListAsync());
+            var applicationDbContext = mapper.Map<List<PolicyListVM>>(await _context.Policies.Include(p => p.ProductGroup).ToListAsync());
+            return View( applicationDbContext);
         }
 
         // GET: Policies/Details/5
@@ -47,7 +54,8 @@ namespace ShortTerm.Web.Controllers
         // GET: Policies/Create
         public IActionResult Create()
         {
-            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Id");
+            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Name");
+            ViewData["ProductsId"] = new SelectList(_context.IndividualProducts, "Id", "Name");
             return View();
         }
 
@@ -56,16 +64,16 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ApplicationDate,ProductGroupId,Product,ClientId,FirstName,Surname,NationalID,DateOfBirth,Age,AnnualSalary,PremiumTerm,SumAssured,Premium,PremiumPaymentMethod,PremiumPaymentFrequency,Id,DateCreated,DateModified")] Policy policy)
+        public async Task<IActionResult> Create(PolicyCreateVM model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(policy);
-                await _context.SaveChangesAsync();
+                var policy = mapper.Map<Policy>(model);
+                await policyRepository.AddAsync(policy);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Id", policy.ProductGroupId);
-            return View(policy);
+            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Id", model.ProductGroupId);
+            return View(model);
         }
 
         // GET: Policies/Edit/5

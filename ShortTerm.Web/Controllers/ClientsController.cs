@@ -1,24 +1,36 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Models;
+using System.Xml.Linq;
 
 namespace ShortTerm.Web.Controllers
 {
     public class ClientsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper mapper;
+        private readonly IClientRepository clientRepository;
 
-        public ClientsController(ApplicationDbContext context)
+        public ClientsController(ApplicationDbContext context, IMapper mapper, IClientRepository clientRepository)
         {
             _context = context;
+            this.mapper = mapper;
+            this.clientRepository = clientRepository;
         }
 
         // GET: Clients
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Clients.Include(c => c.Gender).Include(c => c.MaritalStatus);
-            return View(await applicationDbContext.ToListAsync());
+            var clients = await clientRepository.GetAllAsync();
+            var model = mapper.Map<List<ClientListVM>>(clients);
+            //return View(await applicationDbContext.ToListAsync());
+            return await clientRepository.GetAllAsync() != null ?
+                View(model) : Problem("No Clients Found");
         }
 
         // GET: Clients/Details/5
@@ -44,9 +56,15 @@ namespace ShortTerm.Web.Controllers
         // GET: Clients/Create
         public IActionResult Create()
         {
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id");
-            ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Id");
-            return View();
+            var model = new ClientCreateVM
+            {
+                GenderId =new SelectList(_context.Genders, "Id", "Sex"),
+                ClientTypeId = new SelectList(_context.ClientTypes, "Id", "Type"),
+                HighestQualificationId = new SelectList(_context.HighestQualifications, "Id", "Qualification"),
+                MaritalStatusId = new SelectList(_context.MaritalStatuses, "Id", "Status"),
+                TitleId = new SelectList(_context.Titles, "Id", "Name")
+            };
+            return View(model);
         }
 
         // POST: Clients/Create
@@ -54,17 +72,23 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegNo,ClientTypeId,Title,FirstName,Surname,MiddleName,DateOfBirth,GenderId,MaritalStatusId,CountryOfBirth,CountryOfResidence,Language,Religion,IncomeGroupId,HghestQualificationId,Active,AddedBy,ModifiedBy,ContactPersonName,ContactPersonNumber,NationalId,Status,StatusValue,IsAuthorized,Id,DateCreated,DateModified")] Client client)
+        public async Task<IActionResult> Create( ClientCreateVM clientVM)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(client);
-                await _context.SaveChangesAsync();
+                var client = mapper.Map<Client>(clientVM);
+                await clientRepository.AddAsync(client);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", client.GenderId);
-            ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Id", client.MaritalStatusId);
-            return View(client);
+
+
+            clientVM.GenderId = new SelectList(_context.Genders, "Id", "Sex",clientVM.GenderId);
+            clientVM.MaritalStatusId = new SelectList(_context.MaritalStatuses, "Id", "Status", clientVM.MaritalStatusId);
+            clientVM.ClientTypeId = new SelectList(_context.ClientTypes, "Id", "Type", clientVM.ClientTypeId);
+            clientVM.HighestQualificationId = new SelectList(_context.HighestQualifications, "Id", "Qualification", clientVM.HighestQualificationId);
+            clientVM.TitleId = new SelectList(_context.Titles, "Id", "Name", clientVM.TitleId);
+
+            return View(clientVM);
         }
 
         // GET: Clients/Edit/5
@@ -80,8 +104,10 @@ namespace ShortTerm.Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", client.GenderId);
-            ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Id", client.MaritalStatusId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Sex", client.GenderId);
+            ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Status", client.MaritalStatusId);
+            ViewData["ClientType"] = new SelectList(_context.ClientTypes, "Id", "Type", client.ClientTypeId);
+            ViewData["HighestQualification"] = new SelectList(_context.HighestQualifications, "Id", "Qualification", client.HighestQualificationId);
             return View(client);
         }
 
@@ -119,6 +145,8 @@ namespace ShortTerm.Web.Controllers
             }
             ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", client.GenderId);
             ViewData["MaritalStatusId"] = new SelectList(_context.MaritalStatuses, "Id", "Id", client.MaritalStatusId);
+            ViewData["ClientType"] = new SelectList(_context.ClientTypes, "Id", "Type", client.ClientTypeId);
+            ViewData["HighestQualification"] = new SelectList(_context.HighestQualifications, "Id", "Qualification", client.HighestQualificationId);
             return View(client);
         }
 

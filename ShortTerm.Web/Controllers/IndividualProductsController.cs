@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Models;
 
 namespace ShortTerm.Web.Controllers
 {
     public class IndividualProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper mapper;
+        private readonly IIndividualProductsRepository individualProductsRepository;
 
-        public IndividualProductsController(ApplicationDbContext context)
+        public IndividualProductsController(ApplicationDbContext context,IMapper mapper, IIndividualProductsRepository individualProductsRepository)
         {
             _context = context;
+            this.mapper = mapper;
+            this.individualProductsRepository = individualProductsRepository;
         }
 
         // GET: IndividualProducts
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.IndividualProducts.Include(i => i.ProductGroup);
-            return View(await applicationDbContext.ToListAsync());
+            var products = await individualProductsRepository.GetAllAsync();
+            var model = mapper.Map<List<IndividualProductVM>>(products);
+            return products !=null ? View(model) : Problem("No Products Found");
         }
 
         // GET: IndividualProducts/Details/5
@@ -56,16 +64,16 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductGroupId,Name,ProcessTime,Retention,SumAssuredBasis,CanBeCeded,EffectiveDate,Description,MaxPremiumTerm,MinPremiumTerm,MinSumAssured,MaxSumAssured,Id,DateCreated,DateModified")] IndividualProduct individualProduct)
+        public async Task<IActionResult> Create( IndividualProductCreateVM model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(individualProduct);
-                await _context.SaveChangesAsync();
+                var products = mapper.Map<IndividualProduct>(model);
+                await individualProductsRepository.AddAsync(products);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Id", individualProduct.ProductGroupId);
-            return View(individualProduct);
+            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Name", model.ProductGroupId);
+            return View(model);
         }
 
         // GET: IndividualProducts/Edit/5

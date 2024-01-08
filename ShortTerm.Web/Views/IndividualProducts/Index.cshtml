@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShortTerm.Web.Data.IndividualProduct>
+﻿@model IEnumerable<IndividualProductVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,14 +7,11 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductGroup)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -24,17 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Retention)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SumAssuredBasis)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.CanBeCeded)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EffectiveDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaxPremiumTerm)
@@ -47,12 +36,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MaxSumAssured)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateModified)
             </th>
             <th></th>
         </tr>
@@ -95,12 +78,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxSumAssured)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

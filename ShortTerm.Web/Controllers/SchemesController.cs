@@ -2,28 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Models;
+using ShortTerm.Web.Repositories;
 
 namespace ShortTerm.Web.Controllers
 {
     public class SchemesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper mapper;
+        private readonly ISchemeRepository schemeRepository;
 
-        public SchemesController(ApplicationDbContext context)
+        public SchemesController(ApplicationDbContext context,IMapper mapper, ISchemeRepository schemeRepository)
         {
             _context = context;
+            this.mapper = mapper;
+            this.schemeRepository = schemeRepository;
         }
 
         // GET: Schemes
         public async Task<IActionResult> Index()
         {
-              return _context.Schemes != null ? 
-                          View(await _context.Schemes.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Schemes'  is null.");
+            var clients = await schemeRepository.GetAllAsync();
+            var model = mapper.Map<List<SchemeVM>>(clients);
+            return await schemeRepository.GetAllAsync() != null ?
+                View(model) : Problem("No Schemea Found");
         }
 
         // GET: Schemes/Details/5
@@ -55,15 +64,15 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegNo,RegName,Taxno,ReassuranceNo,CommencementDate,ConversionDate,RulesAmmendment,RetentionLimit,InstitutionalClientsName,Id,DateCreated,DateModified")] Scheme scheme)
+        public async Task<IActionResult> Create( SchemeVM model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(scheme);
-                await _context.SaveChangesAsync();
+                var scheme = mapper.Map<Scheme>(model);
+                await schemeRepository.AddAsync(scheme);
                 return RedirectToAction(nameof(Index));
             }
-            return View(scheme);
+            return View(model);
         }
 
         // GET: Schemes/Edit/5

@@ -29,7 +29,7 @@ namespace ShortTerm.Web.Data
 
         [ForeignKey(name: "HighestQualificationId")]
         public HighestQualification? HighestQualification { get; set; }
-        public int HghestQualificationId { get; set; }
+        public int HighestQualificationId { get; set; }
         public bool Active { get; set; }
         public int AddedBy { get; set; }
         public int ModifiedBy { get; set; }

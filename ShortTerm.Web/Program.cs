@@ -13,13 +13,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IClientRepository , ClientRepository>();
+builder.Services.AddScoped<ISchemeRepository , SchemeRepository>();
+builder.Services.AddScoped<IProductGroupRepository , ProductGroupRepository>();
+builder.Services.AddScoped<IIndividualProductsRepository, IndividualProductsRepository>();
+builder.Services.AddScoped<IPolicyRepository, PolicyRepository>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 

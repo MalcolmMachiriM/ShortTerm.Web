@@ -9,14 +9,13 @@ namespace ShortTerm.Web.Models
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+        public string Surname { get; set; }
 
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-        public string Gender { get; set; }
+        public Gender? Gender { get; set; }
         public int Status { get; set; }
     }
 }
