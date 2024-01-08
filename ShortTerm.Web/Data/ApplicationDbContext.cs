@@ -46,5 +46,9 @@ namespace ShortTerm.Web.Data
         public DbSet<Title> Titles { get; set; }
         public DbSet<HighestQualification> HighestQualifications { get; set; }
         public DbSet<ClientType> ClientTypes { get; set; }
+        public DbSet<ProductLapsePeriod> ProductLapsePeriods { get; set; }
+        public DbSet<Requirement> Requirements { get; set; }
+        public DbSet<RequirementType> RequirementTypes { get; set; }
+        public DbSet<ProductPolicyRequirement> ProductPolicyRequirements { get; set; }
     }
 }
