@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<IndividualProductVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Individual Products";
 }
 
-<h1>Index</h1>
+<h1>Individual Products</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-outline-success">Create New</a>
@@ -19,13 +19,6 @@
                 @Html.DisplayNameFor(model => model.ProcessTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Retention)
-            </th>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.CanBeCeded)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.MaxPremiumTerm)
             </th>
             <th>
@@ -37,35 +30,20 @@
             <th>
                 @Html.DisplayNameFor(model => model.MaxSumAssured)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.EffectiveDate)
+            </th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ProductGroup.Id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProcessTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Retention)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SumAssuredBasis)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CanBeCeded)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EffectiveDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxPremiumTerm)
@@ -78,6 +56,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxSumAssured)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EffectiveDate)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

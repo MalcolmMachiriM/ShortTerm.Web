@@ -19,7 +19,7 @@ namespace ShortTerm.Web.Controllers
         private readonly IMapper mapper;
         private readonly ISchemeRepository schemeRepository;
 
-        public SchemesController(ApplicationDbContext context,IMapper mapper, ISchemeRepository schemeRepository)
+        public SchemesController(ApplicationDbContext context, IMapper mapper, ISchemeRepository schemeRepository)
         {
             _context = context;
             this.mapper = mapper;
@@ -29,8 +29,7 @@ namespace ShortTerm.Web.Controllers
         // GET: Schemes
         public async Task<IActionResult> Index()
         {
-            var clients = await schemeRepository.GetAllAsync();
-            var model = mapper.Map<List<SchemeVM>>(clients);
+            var model = mapper.Map<List<SchemeVM>>(await schemeRepository.GetAllAsync());
             return await schemeRepository.GetAllAsync() != null ?
                 View(model) : Problem("No Schemea Found");
         }
@@ -38,19 +37,21 @@ namespace ShortTerm.Web.Controllers
         // GET: Schemes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Schemes == null)
+            var schemes = await schemeRepository.GetAllAsync();
+            if (id == null || schemes == null)
             {
                 return NotFound();
             }
 
-            var scheme = await _context.Schemes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var scheme = await schemeRepository
+                .GetAsync(id);
             if (scheme == null)
             {
                 return NotFound();
             }
 
-            return View(scheme);
+            var model = mapper.Map<SchemeVM>(scheme);
+            return View(model);
         }
 
         // GET: Schemes/Create
@@ -64,7 +65,7 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( SchemeVM model)
+        public async Task<IActionResult> Create(SchemeVM model)
         {
             if (ModelState.IsValid)
             {
@@ -78,17 +79,19 @@ namespace ShortTerm.Web.Controllers
         // GET: Schemes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Schemes == null)
+
+            if (id == null || schemeRepository.GetAllAsync() == null)
             {
                 return NotFound();
             }
 
-            var scheme = await _context.Schemes.FindAsync(id);
+            var scheme = await schemeRepository.GetAsync(id);
             if (scheme == null)
             {
                 return NotFound();
             }
-            return View(scheme);
+            var model = mapper.Map<SchemeVM>(scheme);
+            return View(model);
         }
 
         // POST: Schemes/Edit/5
@@ -96,9 +99,9 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RegNo,RegName,Taxno,ReassuranceNo,CommencementDate,ConversionDate,RulesAmmendment,RetentionLimit,InstitutionalClientsName,Id,DateCreated,DateModified")] Scheme scheme)
+        public async Task<IActionResult> Edit(int id, SchemeVM schemeVM)
         {
-            if (id != scheme.Id)
+            if (id != schemeVM.Id)
             {
                 return NotFound();
             }
@@ -107,12 +110,12 @@ namespace ShortTerm.Web.Controllers
             {
                 try
                 {
-                    _context.Update(scheme);
-                    await _context.SaveChangesAsync();
+                    var scheme = mapper.Map<Scheme>(schemeVM);
+                    await schemeRepository.UpdateAsync(scheme);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SchemeExists(scheme.Id))
+                    if (!await schemeRepository.Exists(schemeVM.Id))
                     {
                         return NotFound();
                     }
@@ -123,49 +126,43 @@ namespace ShortTerm.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(scheme);
+            return View(schemeVM);
         }
 
         // GET: Schemes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Schemes == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null || schemeRepository.GetAllAsync() == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var scheme = await _context.Schemes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (scheme == null)
-            {
-                return NotFound();
-            }
+        //    var scheme = await schemeRepository.GetAsync( id);
+        //    if (scheme == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(scheme);
-        }
+        //    return View(scheme);
+        //}
 
         // POST: Schemes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int Id)
         {
-            if (_context.Schemes == null)
+            if (schemeRepository.GetAllAsync() == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Schemes'  is null.");
             }
-            var scheme = await _context.Schemes.FindAsync(id);
+            var scheme = await schemeRepository.GetAsync(Id);
             if (scheme != null)
             {
-                _context.Schemes.Remove(scheme);
+                await schemeRepository.DeleteAsync(Id);
             }
-            
-            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SchemeExists(int id)
-        {
-          return (_context.Schemes?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
     }
 }

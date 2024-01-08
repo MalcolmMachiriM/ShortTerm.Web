@@ -52,11 +52,9 @@ namespace ShortTerm.Web.Controllers
         // GET: ProductGroups/Create
         public IActionResult Create()
         {
-            ViewData["SchemeId"] = new SelectList(_context.Schemes, "Id", "Id");
-
             var model = new ProductGroupCreateVM
             {
-                SchemeId = new SelectList(_context.Schemes, "Id", "RegName")
+                Schemes = new SelectList(_context.Schemes, "Id", "RegName")
             };
 
             return View(model);
@@ -75,7 +73,7 @@ namespace ShortTerm.Web.Controllers
                 await productGroupRepository.AddAsync(productGroup);
                 return RedirectToAction(nameof(Index));
             }
-            model.SchemeId = new SelectList(_context.Schemes, "Id", "RegName", model.SchemeId);
+            model.Schemes = new SelectList(_context.Schemes, "Id", "RegName", model.SchemeId);
             return View(model);
         }
 

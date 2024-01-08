@@ -6,7 +6,7 @@ namespace ShortTerm.Web.Data
     {
         public string Name { get; set; }
         public string Code { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [ForeignKey("SchemeId")]
         public Scheme Scheme { get; set; }

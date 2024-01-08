@@ -1,12 +1,11 @@
 ﻿@model ProductGroupCreateVM
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Product Group";
 }
 
-<h1>Create</h1>
+<h1>Create Product Group</h1>
 
-<h4>ProductGroup</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,19 +16,25 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Code" class="control-label"></label>
                 <input asp-for="Code" class="form-control" />
                 <span asp-validation-for="Code" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
+                <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <label asp-for="SchemeId" class="control-label"></label>
-                <select asp-for="SchemeId" class ="form-control" asp-items="ViewBag.SchemeId"></select>
+                <select asp-for="SchemeId" class="form-select" asp-items="Model?.Schemes" asp-dropdown>
+                    <option>Select Scheme</option>
+                </select>
+                <span asp-validation-for="SchemeId" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">

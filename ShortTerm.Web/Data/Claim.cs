@@ -10,7 +10,7 @@ namespace ShortTerm.Web.Data
         public int Product { get; set; }
         public DateTime DateSubmitted { get; set; }
         public bool? Approved { get; set; }
-        public string ApprovedBy { get; set; }
-        public DateTime DateApproved { get; set; }
+        public string? ApprovedBy { get; set; }
+        public DateTime? DateApproved { get; set; }
     }
 }
