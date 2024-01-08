@@ -16,6 +16,7 @@ namespace ShortTerm.Web.Configurations
             CreateMap<IndividualProduct, IndividualProductVM>().ReverseMap();
             CreateMap<Policy, PolicyListVM>().ReverseMap();
             CreateMap<Policy, PolicyCreateVM>().ReverseMap();
+            CreateMap<IndividualProduct, IndividualProductCreateVM>().ReverseMap();
             
         }
     }

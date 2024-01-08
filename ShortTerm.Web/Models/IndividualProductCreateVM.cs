@@ -9,7 +9,8 @@ namespace ShortTerm.Web.Models
         public int Id { get; set; }
 
         [Display(Name = "Product Group")]
-        public SelectList ProductGroupId { get; set; }
+        public int ProductGroupId { get; set; }
+        public SelectList? ProductGroup { get; set; }
         public string Name { get; set; }
 
         [Display(Name = "Process Time")]

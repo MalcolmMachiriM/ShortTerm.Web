@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShortTerm.Web.Models
 {
-    public class ProductGroupCreateVM
+    public class ProductGroupCreateVM 
+        //: IValidatableObject
     {
 
         [Display(Name = "Product Group Name")]
@@ -20,5 +21,15 @@ namespace ShortTerm.Web.Models
         public int SchemeId { get; set; }
 
         public SelectList? Schemes { get; set; }
+
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    //if (Nam)
+        //    //{
+
+        //    //}
+        //    //yield return new ValidationResult("Name ")
+        //}
     }
+
 }

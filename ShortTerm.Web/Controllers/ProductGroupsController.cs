@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using ShortTerm.Web.Models;
 
 namespace ShortTerm.Web.Controllers
 {
+    [Authorize]
     public class ProductGroupsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -26,8 +28,8 @@ namespace ShortTerm.Web.Controllers
         {
             var clients = await productGroupRepository.GetAllAsync();
             var model = mapper.Map<List<ProductGroupVM>>(clients);
-            return await productGroupRepository.GetAllAsync() != null ?
-                View(model) : Problem("No Product Groups Found");
+            return clients != null ?
+                View(model) : NotFound("No Product Groups Found");
         }
 
         // GET: ProductGroups/Details/5
@@ -75,10 +77,10 @@ namespace ShortTerm.Web.Controllers
                     return RedirectToAction(nameof(Index));
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                ModelState.AddModelError("", $"Error occured: {ex.Message}");
+                
             }
             
             model.Schemes = new SelectList(_context.Schemes, "Id", "RegName", model.SchemeId);

@@ -1,12 +1,11 @@
 ﻿@model IndividualProductCreateVM
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Individual Product";
 }
 
-<h1>Create</h1>
+<h1>Create Individual Product</h1>
 
-<h4>IndividualProduct</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,7 +13,10 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProductGroupId" class="control-label"></label>
-                <select asp-for="ProductGroupId" class ="form-control" asp-items="ViewBag.ProductGroupId"></select>
+                <select asp-for="ProductGroupId" class="form-select" asp-items="Model.ProductGroup">
+                    <option>Select Product Group</option>
+                </select>
+                <span asp-validation-for="ProductGroupId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>

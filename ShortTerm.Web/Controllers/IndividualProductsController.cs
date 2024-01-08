@@ -30,7 +30,7 @@ namespace ShortTerm.Web.Controllers
         {
             var products = await individualProductsRepository.GetAllAsync();
             var model = mapper.Map<List<IndividualProductVM>>(products);
-            return products !=null ? View(model) : Problem("No Products Found");
+            return products !=null ? View(model) : NotFound("No Products Found");
         }
 
         // GET: IndividualProducts/Details/5
@@ -55,8 +55,11 @@ namespace ShortTerm.Web.Controllers
         // GET: IndividualProducts/Create
         public IActionResult Create()
         {
-            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Id");
-            return View();
+            var model = new IndividualProductCreateVM
+            {
+                ProductGroup = new SelectList(_context.ProductGroups, "Id", "Name")
+        };
+            return View(model);
         }
 
         // POST: IndividualProducts/Create
@@ -72,7 +75,7 @@ namespace ShortTerm.Web.Controllers
                 await individualProductsRepository.AddAsync(products);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductGroupId"] = new SelectList(_context.ProductGroups, "Id", "Name", model.ProductGroupId);
+            model.ProductGroup = new SelectList(_context.ProductGroups, "Id", "Name", model.ProductGroupId);
             return View(model);
         }
 
