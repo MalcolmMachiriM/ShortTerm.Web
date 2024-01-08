@@ -67,12 +67,20 @@ namespace ShortTerm.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create( ProductGroupCreateVM model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var productGroup = mapper.Map<ProductGroup>(model);
-                await productGroupRepository.AddAsync(productGroup);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    await productGroupRepository.CreateGroup(model);
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
             model.Schemes = new SelectList(_context.Schemes, "Id", "RegName", model.SchemeId);
             return View(model);
         }
