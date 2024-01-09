@@ -58,11 +58,11 @@ namespace ShortTerm.Web.Controllers
         {
             var model = new ClientCreateVM
             {
-                GenderId =new SelectList(_context.Genders, "Id", "Sex"),
-                ClientTypeId = new SelectList(_context.ClientTypes, "Id", "Type"),
-                HighestQualificationId = new SelectList(_context.HighestQualifications, "Id", "Qualification"),
-                MaritalStatusId = new SelectList(_context.MaritalStatuses, "Id", "Status"),
-                TitleId = new SelectList(_context.Titles, "Id", "Name")
+                Genders =new SelectList(_context.Genders, "Id", "Sex"),
+                ClientType = new SelectList(_context.ClientTypes, "Id", "Type"),
+                HighestQualification = new SelectList(_context.HighestQualifications, "Id", "Qualification"),
+                MaritalStatus = new SelectList(_context.MaritalStatuses, "Id", "Status"),
+                Titles = new SelectList(_context.Titles, "Id", "Name")
             };
             return View(model);
         }
@@ -82,11 +82,11 @@ namespace ShortTerm.Web.Controllers
             }
 
 
-            clientVM.GenderId = new SelectList(_context.Genders, "Id", "Sex",clientVM.GenderId);
-            clientVM.MaritalStatusId = new SelectList(_context.MaritalStatuses, "Id", "Status", clientVM.MaritalStatusId);
-            clientVM.ClientTypeId = new SelectList(_context.ClientTypes, "Id", "Type", clientVM.ClientTypeId);
-            clientVM.HighestQualificationId = new SelectList(_context.HighestQualifications, "Id", "Qualification", clientVM.HighestQualificationId);
-            clientVM.TitleId = new SelectList(_context.Titles, "Id", "Name", clientVM.TitleId);
+            clientVM.Genders = new SelectList(_context.Genders, "Id", "Sex",clientVM.GenderId);
+            clientVM.MaritalStatus = new SelectList(_context.MaritalStatuses, "Id", "Status", clientVM.MaritalStatusId);
+            clientVM.ClientType = new SelectList(_context.ClientTypes, "Id", "Type", clientVM.ClientTypeId);
+            clientVM.HighestQualification = new SelectList(_context.HighestQualifications, "Id", "Qualification", clientVM.HighestQualificationId);
+            clientVM.Titles = new SelectList(_context.Titles, "Id", "Name", clientVM.TitleId);
 
             return View(clientVM);
         }

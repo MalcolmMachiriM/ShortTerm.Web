@@ -18,16 +18,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="ClientTypeId" class="control-label"></label>
-                <select asp-for="ClientTypeId" class="form-select" asp-items="Model?.ClientTypeId">
-                    <option>Select Leave Type</option>
-                    <span asp-validation-for="ClientTypeId" class="text-danger"></span>
+                <select asp-for="ClientTypeId" class="form-select" asp-items="Model?.ClientType" asp-dropdown>
+                    <option>Select Client Type</option>
                 </select>
+                <span asp-validation-for="ClientTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TitleId" class="control-label"></label>
-                <select asp-for="TitleId" class="form-select" asp-items="Model?.TitleId">
+                <select asp-for="TitleId" class="form-select" asp-items="Model?.Titles">
                     <option>Select Title </option>
-                    <span asp-validation-for="TitleId" class="text-danger"></span>
                 </select>
                 <span asp-validation-for="TitleId" class="text-danger"></span>
             </div>
@@ -53,17 +52,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="GenderId" class="control-label"></label>
-                <select asp-for="GenderId" class="form-select" asp-items="Model?.GenderId">
+                <select asp-for="GenderId" class="form-select" asp-items="Model?.Genders">
                     <option>Select Gender </option>
-                    <span asp-validation-for="GenderId" class="text-danger"></span>
                 </select>
+                <span asp-validation-for="GenderId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="MaritalStatusId" class="control-label"></label>
-                <select asp-for="MaritalStatusId" class="form-select" asp-items="Model?.MaritalStatusId">
+                <select asp-for="MaritalStatusId" class="form-select" asp-items="Model?.MaritalStatus">
                     <option>Select Marital Status </option>
-                    <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
                 </select>
+                <span asp-validation-for="MaritalStatusId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CountryOfBirth" class="control-label"></label>
@@ -92,9 +91,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="HighestQualificationId" class="control-label"></label>
-                <select asp-for="HighestQualificationId" class="form-select" asp-items="Model?.HighestQualificationId">
+                <select asp-for="HighestQualificationId" class="form-select" asp-items="Model?.HighestQualification">
                     <option>Select Highest Qualification </option>
-                    <span asp-validation-for="HighestQualificationId" class="text-danger"></span>
                 </select>
                 <span asp-validation-for="HighestQualificationId" class="text-danger"></span>
             </div>

@@ -9,8 +9,14 @@ namespace ShortTerm.Web.Models
     public class ClientCreateVM
     {
         public string? RegNo { get; set; }
-        public SelectList? ClientTypeId { get; set; }
-        public SelectList? TitleId { get; set; }
+        public SelectList? ClientType { get; set; }
+
+        [Display(Name = "Client Type")]
+        public int? ClientTypeId { get; set; }
+
+        [Display(Name = "Title")]
+        public int? TitleId { get; set; }
+        public SelectList? Titles { get; set; }
         public string FirstName { get; set; }
         public string? MiddleName { get; set; }
         public string Surname { get; set; }
@@ -19,10 +25,14 @@ namespace ShortTerm.Web.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-        public SelectList? GenderId { get; set; }
+
+        [Display(Name = "Gender")]
+        public int? GenderId { get; set; }
+        public SelectList? Genders { get; set; }
 
         [Display(Name = "Marital Status")]
-        public SelectList? MaritalStatusId { get; set; }
+        public int? MaritalStatusId { get; set; }
+        public SelectList? MaritalStatus { get; set; }
 
         [Display(Name = "Country of Birth")]
         public string? CountryOfBirth { get; set; }
@@ -38,7 +48,8 @@ namespace ShortTerm.Web.Models
         public int? IncomeGroupId { get; set; }
 
         [Display(Name = "Highest Qualification")]
-        public SelectList? HighestQualificationId { get; set; }
+        public int? HighestQualificationId { get; set; }
+        public SelectList? HighestQualification { get; set; }
 
         [Display(Name = "Contact Person Name")]
         public string? ContactPersonName { get; set; }
