@@ -13,7 +13,7 @@ namespace ShortTerm.Web.Data
         [ForeignKey("RequirementID")]
         public Requirement? Requirement { get; set; }
         public int? RequirementID { get; set; }
-        public bool? IsMandatory { get; set; }
+        public bool IsMandatory { get; set; }
         public string? Description { get; set; }
         public string? AddedBy { get; set; }
         public string? ModifiedBy { get; set; }

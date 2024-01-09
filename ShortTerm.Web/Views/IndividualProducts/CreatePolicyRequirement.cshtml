@@ -1,0 +1,137 @@
+﻿@model ProductPolicyRequirement
+
+
+
+@{
+
+    // string regNo = (string)Session["RegNo"];
+
+    // ViewBag.Title = Model.ID > 0 ? "Update Policy Requirement" : "Create New Policy Requirement";
+
+
+}
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @ViewBag.Title
+    </div>
+
+    <div class="panel-body">
+
+
+
+
+        @* @using (
+
+                     Ajax.BeginForm(new AjaxOptions
+                     {
+
+                         AllowCache = false,
+                         HttpMethod = "POST",
+                         UpdateTargetId = "divProductPolicyRequirements",
+                         OnSuccess = "HidePopUp()"
+
+                     })
+
+                ) *@
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @* @Html.HiddenFor(model => model.ID) *@
+                @Html.HiddenFor(model => model.IndividualProductID )
+                @Html.HiddenFor(model => model.RegNo)
+                @Html.HiddenFor(model => model.AddedBy)
+                @Html.HiddenFor(model => model.ModifiedBy )
+                @Html.HiddenFor(model => model.DateModified )
+
+
+
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.DependentTypeID , htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.DependentTypeID, DropDowns.DependantTypes(regNo,Model.ProductID) as SelectList , new { @class = "form-control" } )
+                        @Html.ValidationMessageFor(model => model.DependentTypeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RequirementID , htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @* @Html.DropDownListFor(model => model.RequirementID, DropDowns.policyRequirements(regNo,Model.IndividualProductID) as SelectList, new { @class = "form-control" }) *@
+                        @Html.ValidationMessageFor(model => model.RequirementID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description , htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsMandatory , htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.CheckBoxFor(model => model.IsMandatory)
+                        @Html.ValidationMessageFor(model => model.IsMandatory, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-8">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                        <button type="button" class="btn btn-warning btnCancel" onclick="HidePopUp()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+    </div>
+
+
+</div>
+
+<form id="yourFormId">
+
+    <!-- your form fields here -->
+
+</form>
+
+<script>
+    function submitForm() {
+        var form = document.getElementById('yourFormId');
+
+        fetch('/YourController/YourAction', {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Cache-Control': 'no-cache'
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('divProductPolicyRequirements').innerHTML = data;
+                HidePopUp(); // Assuming HidePopUp is a JavaScript function
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>

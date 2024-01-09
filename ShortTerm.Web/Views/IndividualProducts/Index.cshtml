@@ -64,7 +64,7 @@
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp;
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger "><i class="fa fa-trash"></i></a>&nbsp;
-                <a asp-action="PolicyRules" asp-route-id="@item.Id" class="btn btn-outline-primary mt-1 ">Policy Requirements</a>
+                <a asp-controller="ProductPolicyRequirements" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary mt-1 ">Policy Requirements</a>
             </td>
         </tr>
 }

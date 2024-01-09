@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
+using ShortTerm.Web.Repositories;
 
 namespace ShortTerm.Web.Controllers
 {
@@ -192,5 +194,76 @@ namespace ShortTerm.Web.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+        public ActionResult CreatePolicyRequirement(int productID, int id = 0)
+        {
+            try
+            {
+
+                ProductPolicyRequirement model = new ProductPolicyRequirement { Id=0, Description = "", IndividualProductID = productID,  DateModified = DateTime.Now, IsMandatory = false, DependentTypeID = 0 };
+
+
+
+                if (id > 0)
+                {
+                    //its an edit
+
+                    model = _context.ProductPolicyRequirements.Find(id);
+ ;
+
+                }
+
+                return PartialView(model);
+
+
+
+            }
+            catch (Exception ex )
+            {
+
+                ModelState.AddModelError("", ex.Message);
+
+            }
+
+
+            return  View();
+        }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public  Task<IActionResult> CreatePolicyRequirement(ProductPolicyRequirement model)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            if (model.Id < 1)
+        //            {
+        //                productPolicyRequirementRepository.AddAsync(model);
+                        
+        //                    return RedirectToAction("ProductPolicyRequirements", new { productID = model.IndividualProductID });
+                        
+        //            }
+        //            else
+        //            {
+        //                productPolicyRequirementRepository.UpdateAsync(model);
+                        
+        //                 return RedirectToAction("ProductPolicyRequirements", new { productID = model.IndividualProductID });
+                        
+        //            }
+        //        }
+
+        //    }
+        //    catch (Exception ex )
+        //    {
+
+        //        ModelState.AddModelError("", ex.Message);
+
+        //    }
+
+
+        //    return RedirectToAction(nameof(PolicyRules));
+        //}
     }
+    
 }

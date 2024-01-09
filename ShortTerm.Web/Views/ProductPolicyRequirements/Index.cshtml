@@ -1,14 +1,13 @@
-﻿@model IEnumerable<ShortTerm.Web.Models.ProductPolicyRequirementVM>
+﻿@model IEnumerable<ShortTerm.Web.Data.ProductPolicyRequirement>
 
 @{
-    ViewData["Title"] = "Policy Rules";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Policy Rules</h1>
+<h1>Index</h1>
 
 <p>
-   @*  <a asp-action="Create" class="">Create New</a> *@
-    <a href="javascript:void(0);" onclick="createOrUpdateClick()" class="btn btn-outline-success">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -31,6 +30,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AddedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -41,19 +52,31 @@
                 @Html.DisplayFor(modelItem => item.RegNo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IndividualProduct.Name)
+                @Html.DisplayFor(modelItem => item.IndividualProduct.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DependentTypeID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Requirement.RequirementType)
+                @Html.DisplayFor(modelItem => item.Requirement.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsMandatory)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -64,28 +87,3 @@
 }
     </tbody>
 </table>
-
-<script>
-    function createOrUpdateClick() {
-      var productID = 4 /* provide the actual value for productID */;
-
-        fetch(`/IndividualProductsController/CreatePolicyRequirement?productID=${productID}`, {
-        method: 'GET',
-        headers: {
-          'Cache-Control': 'no-cache',
-        },
-      })
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('div-pop-up').innerHTML = data;
-        ShowPopUp();
-      })
-      .catch(error => console.error('Error:', error));
-    }
-
-    function ShowPopUp(modalTitle) {
-        $("#ModalPopUp").text(modalTitle);
-        $("#div-pop-up-modal").modal({ show: true });
-        $("#tabs").tabs();
-    }
-</script>
