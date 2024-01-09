@@ -24,12 +24,19 @@ namespace ShortTerm.Web.Controllers
         }
 
         // GET: ProductGroups
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int Id=0)
         {
-            var clients = await productGroupRepository.GetAllAsync();
-            var model = mapper.Map<List<ProductGroupVM>>(clients);
-            return clients != null ?
-                View(model) : NotFound("No Product Groups Found");
+            if (Id==0)
+            {
+                var clients = await productGroupRepository.GetAllAsync();
+                var model = mapper.Map<List<ProductGroupVM>>(clients);
+                return clients != null ?
+                    View(model) : NotFound("No Product Groups Found");
+            }
+            var products = productGroupRepository.GetAllGroups(Id);
+            var model2 = new List<ProductGroupVM>((IEnumerable<ProductGroupVM>)products);
+            return products!= null? View(model2) : NotFound("No Product Groups Found");
+            
         }
 
         // GET: ProductGroups/Details/5

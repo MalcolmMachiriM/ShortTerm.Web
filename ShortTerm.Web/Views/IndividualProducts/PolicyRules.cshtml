@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShortTerm.Web.Models.ProductPolicyRequirementVM>
+﻿@model IEnumerable<ShortTerm.Web.Models.ProductPolicyRequirementCreateVM>
 
 @{
     ViewData["Title"] = "Policy Rules";
@@ -20,11 +20,6 @@
                 @Html.DisplayNameFor(model => model.IndividualProduct)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DependentTypeID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Requirement)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsMandatory)
             </th>
@@ -40,15 +35,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.RegNo)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IndividualProduct.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DependentTypeID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Requirement.RequirementType)
-            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.IndividualProduct.Id)
+            </td> *@
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.Requirement.Id)
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.IsMandatory)
             </td>

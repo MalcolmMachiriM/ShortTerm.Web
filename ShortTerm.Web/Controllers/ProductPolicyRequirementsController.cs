@@ -19,9 +19,9 @@ namespace ShortTerm.Web.Controllers
         }
 
         // GET: ProductPolicyRequirements
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int Id)
         {
-            var applicationDbContext = _context.ProductPolicyRequirements.Include(p => p.IndividualProduct).Include(p => p.Requirement);
+            var applicationDbContext = _context.ProductPolicyRequirements.Include(p => p.IndividualProduct).Include(p => p.Requirement).Where(x=> x.IndividualProductID ==Id);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -48,8 +48,8 @@ namespace ShortTerm.Web.Controllers
         // GET: ProductPolicyRequirements/Create
         public IActionResult Create()
         {
-            ViewData["IndividualProductID"] = new SelectList(_context.IndividualProducts, "Id", "Id");
-            ViewData["RequirementID"] = new SelectList(_context.Requirements, "Id", "Id");
+            ViewData["IndividualProductID"] = new SelectList(_context.IndividualProducts, "Id", "Name");
+            ViewData["RequirementID"] = new SelectList(_context.Requirements.Include(q => q.RequirementType), "Id", /*"Requirement.RequirementType"*/ "Id");
             return View();
         }
 

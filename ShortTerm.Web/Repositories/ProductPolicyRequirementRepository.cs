@@ -18,11 +18,11 @@ namespace ShortTerm.Web.Repositories
             this.configurationProvider = configurationProvider;
         }
 
-        public async Task<List<ProductPolicyRequirementVM>> GetAllPolicyRules(int productId)
+        public async Task<List<ProductPolicyRequirementCreateVM>> GetAllPolicyRules(int productId)
         {
             var policyRequirements = await context.ProductPolicyRequirements
             .Where(q => q.IndividualProductID == productId)
-              .ProjectTo<ProductPolicyRequirementVM>(configurationProvider)
+              .ProjectTo<ProductPolicyRequirementCreateVM>(configurationProvider)
               .ToListAsync();
 
             return policyRequirements;

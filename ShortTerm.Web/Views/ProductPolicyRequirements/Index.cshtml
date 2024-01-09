@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ShortTerm.Web.Data.ProductPolicyRequirement>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Policy Rules";
 }
 
-<h1>Index</h1>
+<h1>Policy Rules</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -19,9 +19,6 @@
                 @Html.DisplayNameFor(model => model.IndividualProduct)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DependentTypeID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Requirement)
             </th>
             <th>
@@ -29,12 +26,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddedBy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedBy)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateCreated)
@@ -52,10 +43,7 @@
                 @Html.DisplayFor(modelItem => item.RegNo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IndividualProduct.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DependentTypeID)
+                @Html.DisplayFor(modelItem => item.IndividualProduct.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Requirement.Id)
@@ -67,21 +55,15 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AddedBy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedBy)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.DateCreated)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateModified)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp;
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger "><i class="fa fa-trash"></i></a>&nbsp;
             </td>
         </tr>
 }

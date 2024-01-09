@@ -129,22 +129,6 @@ namespace ShortTerm.Web.Controllers
             return View(schemeVM);
         }
 
-        // GET: Schemes/Delete/5
-        //public async Task<IActionResult> Delete(int? id)
-        //{
-        //    if (id == null || schemeRepository.GetAllAsync() == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var scheme = await schemeRepository.GetAsync( id);
-        //    if (scheme == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(scheme);
-        //}
 
         // POST: Schemes/Delete/5
         [HttpPost, ActionName("Delete")]

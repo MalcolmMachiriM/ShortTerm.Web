@@ -9,7 +9,7 @@ namespace ShortTerm.Web.Data
         [ForeignKey("IndividualProductID")]
         public IndividualProduct? IndividualProduct { get; set; }
         public int? IndividualProductID { get; set; }
-        public int? DependentTypeID { get; set; }
+
         [ForeignKey("RequirementID")]
         public Requirement? Requirement { get; set; }
         public int? RequirementID { get; set; }

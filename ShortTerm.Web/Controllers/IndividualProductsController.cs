@@ -200,7 +200,7 @@ namespace ShortTerm.Web.Controllers
             try
             {
 
-                ProductPolicyRequirement model = new ProductPolicyRequirement { Id=0, Description = "", IndividualProductID = productID,  DateModified = DateTime.Now, IsMandatory = false, DependentTypeID = 0 };
+                ProductPolicyRequirement model = new ProductPolicyRequirement { Id=0, Description = "", IndividualProductID = productID,  DateModified = DateTime.Now, IsMandatory = false };
 
 
 

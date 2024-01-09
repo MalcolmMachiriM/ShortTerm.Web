@@ -7,5 +7,6 @@ namespace ShortTerm.Web.Contracts
     {
         Task CreateGroup(ProductGroupCreateVM model);
         //Task<ProductGroupVM> SchemeDetails();
+        Task<List<ProductGroupVM>> GetAllGroups(int Id);
     }
 }
