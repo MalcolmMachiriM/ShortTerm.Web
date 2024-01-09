@@ -25,6 +25,7 @@ builder.Services.AddScoped<ISchemeRepository , SchemeRepository>();
 builder.Services.AddScoped<IProductGroupRepository , ProductGroupRepository>();
 builder.Services.AddScoped<IIndividualProductsRepository, IndividualProductsRepository>();
 builder.Services.AddScoped<IPolicyRepository, PolicyRepository>();
+builder.Services.AddScoped<IProductPolicyRequirementRepository, ProductPolicyRequirementRepository>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 

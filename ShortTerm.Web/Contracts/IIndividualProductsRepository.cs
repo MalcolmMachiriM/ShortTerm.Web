@@ -1,4 +1,5 @@
 ﻿using ShortTerm.Web.Data;
+using ShortTerm.Web.Models;
 using ShortTerm.Web.Repositories;
 
 namespace ShortTerm.Web.Contracts

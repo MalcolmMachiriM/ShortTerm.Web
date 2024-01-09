@@ -17,12 +17,14 @@ namespace ShortTerm.Web.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper mapper;
         private readonly IIndividualProductsRepository individualProductsRepository;
+        private readonly IProductPolicyRequirementRepository productPolicyRequirementRepository;
 
-        public IndividualProductsController(ApplicationDbContext context,IMapper mapper, IIndividualProductsRepository individualProductsRepository)
+        public IndividualProductsController(ApplicationDbContext context,IMapper mapper, IIndividualProductsRepository individualProductsRepository,IProductPolicyRequirementRepository productPolicyRequirementRepository)
         {
             _context = context;
             this.mapper = mapper;
             this.individualProductsRepository = individualProductsRepository;
+            this.productPolicyRequirementRepository = productPolicyRequirementRepository;
         }
 
         // GET: IndividualProducts
@@ -173,6 +175,22 @@ namespace ShortTerm.Web.Controllers
         private bool IndividualProductExists(int id)
         {
           return (_context.IndividualProducts?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> PolicyRules(int Id)
+        {
+            try
+            {
+                var model = await productPolicyRequirementRepository.GetAllPolicyRules(Id);
+                
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("",$"Something Happened: {ex.Message}");
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

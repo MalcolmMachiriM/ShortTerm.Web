@@ -1,9 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using ShortTerm.Web.Data;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ShortTerm.Web.Data
+namespace ShortTerm.Web.Models
 {
-    public class ProductPolicyRequirement : BaseEntity
+    public class ProductPolicyRequirementVM
     {
+        public int Id { get; set; }
+        [Display(Name ="Reg No")]
         public string? RegNo { get; set; }
 
         [ForeignKey("IndividualProductID")]
@@ -15,7 +19,5 @@ namespace ShortTerm.Web.Data
         public int? RequirementID { get; set; }
         public bool? IsMandatory { get; set; }
         public string? Description { get; set; }
-        public string? AddedBy { get; set; }
-        public string? ModifiedBy { get; set; }
     }
 }
