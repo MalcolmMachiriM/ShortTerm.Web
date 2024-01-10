@@ -57,7 +57,21 @@ namespace ShortTerm.Web.Controllers
         // GET: Schemes/Create
         public IActionResult Create()
         {
-            return View();
+            try
+            {
+                var model = new SchemeVM
+                {
+                    InstitutionalClients = new SelectList(_context.Clients.Where(q => q.ClientTypeId == 2), "Id", "Firstname"+" "+"Surname" )
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("",ex.Message);
+                return null;
+            }
+            
         }
 
         // POST: Schemes/Create

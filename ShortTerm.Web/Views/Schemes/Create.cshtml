@@ -61,7 +61,10 @@
             <br />
             <div class="form-group">
                 <label asp-for="InstitutionalClientsName" class="control-label"></label>
-                <input asp-for="InstitutionalClientsName" class="form-control" />
+                <select asp-for="InstitutionalClientsName" class="form-select" asp-items="Model.InstitutionalClients">
+                    <option>Select Institutional Client</option>
+                </select>
+                
                 <span asp-validation-for="InstitutionalClientsName" class="text-danger"></span>
             </div>
             <br />
