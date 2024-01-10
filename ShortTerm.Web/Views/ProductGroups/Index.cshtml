@@ -13,6 +13,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Scheme)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -21,15 +24,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Scheme)
-            </th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Scheme.RegName)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -40,12 +43,10 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Scheme)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp;
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger "><i class="fa fa-trash"></i></a>&nbsp;
+                <a asp-controller="IndividualProducts" asp-action="Index" asp-route-id="@item.Id" class="btn btn-outline-success mt-1"><i class="fa fa-check"></i></a>
             </td>
         </tr>
 }

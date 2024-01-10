@@ -35,9 +35,11 @@ namespace ShortTerm.Web.Models
         public int MinPremiumTerm { get; set; }
 
         [Display(Name = "Minimum Sum Assured")]
+        [DataType(DataType.Currency)]
         public int MinSumAssured { get; set; }
 
         [Display(Name = "Maximum Sum Assured")]
+        [DataType(DataType.Currency)]
         public int MaxSumAssured { get; set; }
     }
 }

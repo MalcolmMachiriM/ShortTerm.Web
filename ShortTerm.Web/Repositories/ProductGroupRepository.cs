@@ -29,13 +29,30 @@ namespace ShortTerm.Web.Repositories
             await AddAsync(productGroup);
         }
 
-        public async Task<List<ProductGroupVM>> GetAllGroups(int Id)
+        public async Task<List<ProductGroupVM>> GetAll()
         {
-            return mapper.Map<List<ProductGroupVM>>( await context.ProductGroups.Where(q => q.SchemeId == Id)
-               
-                .ToListAsync());
+            var productGroups = await context.ProductGroups
+                                .Include(q => q.Scheme)
+                                .ProjectTo<ProductGroupVM>(configurationProvider)
+                                .ToListAsync();
+            return productGroups;
         }
 
+        public async Task<List<ProductGroupVM>> GetAllGroups(int Id)
+        {
+
+            // very buggy
+              var products = await context.ProductGroups
+                .Include(q => q.Scheme)
+                .ProjectTo<ProductGroupVM>(configurationProvider)
+                .Where(q => q.Scheme.Id == Id)
+                .ToListAsync();
+            return products;
+
+            
+        }
+
+         
         //    public async Task<ProductGroupVM> SchemeDetails()
         //    {
         //        var id = 1;

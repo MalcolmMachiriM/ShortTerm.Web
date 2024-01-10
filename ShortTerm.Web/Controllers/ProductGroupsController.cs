@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,12 +16,14 @@ namespace ShortTerm.Web.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper mapper;
         private readonly IProductGroupRepository productGroupRepository;
+        private readonly AutoMapper.IConfigurationProvider configurationProvider;
 
-        public ProductGroupsController(ApplicationDbContext context, IMapper mapper, IProductGroupRepository productGroupRepository)
+        public ProductGroupsController(ApplicationDbContext context, IMapper mapper, IProductGroupRepository productGroupRepository,AutoMapper.IConfigurationProvider configurationProvider)
         {
             _context = context;
             this.mapper = mapper;
             this.productGroupRepository = productGroupRepository;
+            this.configurationProvider = configurationProvider;
         }
 
         // GET: ProductGroups
@@ -28,14 +31,16 @@ namespace ShortTerm.Web.Controllers
         {
             if (Id==0)
             {
-                var clients = await productGroupRepository.GetAllAsync();
-                var model = mapper.Map<List<ProductGroupVM>>(clients);
-                return clients != null ?
-                    View(model) : NotFound("No Product Groups Found");
+                var clients = await productGroupRepository.GetAll();
+               
+                return clients != null ? View(clients) : NotFound("No Product Groups Found");
             }
-            var products = productGroupRepository.GetAllGroups(Id);
-            var model2 = new List<ProductGroupVM>((IEnumerable<ProductGroupVM>)products);
-            return products!= null? View(model2) : NotFound("No Product Groups Found");
+            else
+            {
+                var products = await productGroupRepository.GetAllGroups(Id);
+                return products != null ? View(products) : NotFound("No Product Groups Found");
+            }
+
             
         }
 

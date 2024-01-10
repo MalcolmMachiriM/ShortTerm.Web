@@ -30,11 +30,16 @@ namespace ShortTerm.Web.Controllers
         }
 
         // GET: IndividualProducts
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int Id)
         {
-            var products = await individualProductsRepository.GetAllAsync();
-            var model = mapper.Map<List<IndividualProductVM>>(products);
-            return products !=null ? View(model) : NotFound("No Products Found");
+            if (Id==0)
+            {
+                var products = await individualProductsRepository.GetAllProducts();
+                return products != null ? View(products) : NotFound("No Products Found");
+            }
+            
+                 var specificProducts = await individualProductsRepository.GetSpecificProducts(Id);
+            return View(specificProducts);
         }
 
         // GET: IndividualProducts/Details/5

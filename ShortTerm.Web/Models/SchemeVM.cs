@@ -32,6 +32,7 @@ namespace ShortTerm.Web.Models
         [DataType(DataType.Date)]
         public DateTime RulesAmmendment { get; set; }
 
+        [DataType(DataType.Currency)]
         [Display(Name = "Retention Limit")]
         public double RetentionLimit { get; set; }
 
