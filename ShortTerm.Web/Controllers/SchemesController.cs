@@ -49,14 +49,14 @@ namespace ShortTerm.Web.Controllers
                 return NotFound();
             }
 
-            var model = mapper.Map<SchemeVM>(scheme);
+            var model = mapper.Map<SchemeCreateVM>(scheme);
             return View(model);
         }
 
         // GET: Schemes/Create
         public IActionResult Create()
         {
-            var model = new SchemeVM
+            var model = new SchemeCreateVM
             {
                 InstitutionalClients = new SelectList(_context.Clients.Where(q => q.ClientTypeId == 2), "Id", "FirstName")
             };
@@ -69,7 +69,7 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(SchemeVM model)
+        public async Task<IActionResult> Create(SchemeCreateVM model)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace ShortTerm.Web.Controllers
             {
                 return NotFound();
             }
-            var model = mapper.Map<SchemeVM>(scheme);
+            var model = mapper.Map<SchemeCreateVM>(scheme);
             return View(model);
         }
 
@@ -104,7 +104,7 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, SchemeVM schemeVM)
+        public async Task<IActionResult> Edit(int id, SchemeCreateVM schemeVM)
         {
             if (id != schemeVM.Id)
             {

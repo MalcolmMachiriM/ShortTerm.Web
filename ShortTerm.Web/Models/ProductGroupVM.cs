@@ -19,6 +19,6 @@ namespace ShortTerm.Web.Models
         public string Description { get; set; }
 
         [Display(Name = "Scheme Name")]
-        public SchemeVM? Scheme { get; set; }
+        public SchemeListVM? Scheme { get; set; }
     }
 }

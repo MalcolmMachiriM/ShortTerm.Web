@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShortTerm.Web.Models
 {
-    public class SchemeVM
+    public class SchemeCreateVM
     {
         public int Id { get; set; }
         [Display(Name = "Reg No")]
@@ -41,6 +41,6 @@ namespace ShortTerm.Web.Models
         [Display(Name = "Institutional Client's Name")]
         public int InstitutionalClientsName { get; set; }
         public SelectList? InstitutionalClients { get; set; }
-        public Client? Client { get; set; }
+        public ClientListVM? Client { get; set; }
     }
 }

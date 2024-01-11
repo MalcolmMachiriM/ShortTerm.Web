@@ -10,7 +10,8 @@ namespace ShortTerm.Web.Configurations
         {
             CreateMap<Client, ClientListVM>().ReverseMap();
             CreateMap<Client, ClientCreateVM>().ReverseMap();
-            CreateMap<Scheme, SchemeVM>().ReverseMap();
+            CreateMap<Scheme, SchemeCreateVM>().ReverseMap();
+            CreateMap<Scheme, SchemeListVM>().ReverseMap();
             CreateMap<ProductGroup, ProductGroupVM>().ReverseMap();
             CreateMap<ProductGroup, ProductGroupCreateVM>().ReverseMap();
             CreateMap<IndividualProduct, IndividualProductVM>().ReverseMap();
