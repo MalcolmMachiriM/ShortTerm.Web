@@ -53,5 +53,7 @@ namespace ShortTerm.Web.Data
         public DbSet<RequirementType> RequirementTypes { get; set; }
         public DbSet<ProductPolicyRequirement> ProductPolicyRequirements { get; set; }
         public DbSet<SumAssuredBasis> SumAssuredBasis { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<PaymentFrequency> PaymentFrequencies { get; set; }
     }
 }
