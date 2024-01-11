@@ -66,8 +66,9 @@ namespace ShortTerm.Web.Controllers
         {
             var model = new IndividualProductCreateVM
             {
-                ProductGroup = new SelectList(_context.ProductGroups, "Id", "Name")
-        };
+                ProductGroup = new SelectList(_context.ProductGroups, "Id", "Name"),
+                SumAssuredBase = new SelectList(_context.SumAssuredBasis, "Id", "SumAssuredBase")
+            };
             return View(model);
         }
 
@@ -85,6 +86,7 @@ namespace ShortTerm.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             model.ProductGroup = new SelectList(_context.ProductGroups, "Id", "Name", model.ProductGroupId);
+            model.SumAssuredBase = new SelectList(_context.SumAssuredBasis, "Id", "SumAssuredBase", model.SumAssuredBasis);
             return View(model);
         }
 

@@ -11,7 +11,7 @@ namespace ShortTerm.Web.Data
         public string Name { get; set; }
         public int ProcessTime { get; set; }
         public double Retention { get; set; }
-        public double SumAssuredBasis  { get; set; }
+        public int SumAssuredBasis  { get; set; }
         public bool CanBeCeded { get; set; }
         public DateTime EffectiveDate { get; set; }
         public string Description { get; set; }

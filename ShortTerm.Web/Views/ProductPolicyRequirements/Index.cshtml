@@ -13,9 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RegNo)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.IndividualProduct)
             </th>
             <th>
@@ -34,13 +31,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RegNo)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.IndividualProduct.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Requirement.RequirementType.Description)
+                @Html.DisplayFor(modelItem => item.Requirement.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsMandatory)

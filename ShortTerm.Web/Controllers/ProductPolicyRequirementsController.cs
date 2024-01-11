@@ -60,7 +60,7 @@ namespace ShortTerm.Web.Controllers
                 IndividualProduct = new SelectList(_context.IndividualProducts, "Id", "Name"),
                 Requirements = new SelectList(_context.Requirements, "Id", "Description")
             };
-            return View();
+            return View(model);
         }
 
         // POST: ProductPolicyRequirements/Create

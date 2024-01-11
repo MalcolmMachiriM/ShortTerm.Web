@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShortTerm.Web.Data;
 
@@ -11,9 +12,10 @@ using ShortTerm.Web.Data;
 namespace ShortTerm.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240111132322_SumAssuredBasis")]
+    partial class SumAssuredBasis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "a917eb74-d499-4dd5-8517-739051ece458",
+                            ConcurrencyStamp = "eb1afe1b-cf2c-4eb9-b2ad-8c685a883d1e",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "db4ca5b2-534d-4a0d-843b-b9fb808a63d4",
+                            ConcurrencyStamp = "25df4172-8dc8-4987-a6a5-506a1104e199",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -918,28 +920,6 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("Schemes");
                 });
 
-            modelBuilder.Entity("ShortTerm.Web.Data.SumAssuredBasis", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SumAssuredBase")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SumAssuredBasis");
-                });
-
             modelBuilder.Entity("ShortTerm.Web.Data.Title", b =>
                 {
                     b.Property<int>("Id")
@@ -979,14 +959,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dbe08b92-530e-4ef7-a08c-0d167d95f8d2",
+                            ConcurrencyStamp = "723c59cc-07a0-48f8-a973-d346b14010bc",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEALjUIQewOGhw00Flty2RoI/lHtkcNrrd8HiYaRukDXkFWTERh6FezLcouPlkgGHjQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELDG7pv0270qCfU/3c1ACB2NKGMKpECzvqSofKInDUddL9YIgtpHmbLHXJyzCcJAEg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1f6c13ea-0f67-44bb-a8de-d2353dc29b2c",
+                            SecurityStamp = "f1d6a4fe-482a-4418-aaad-81961d8ee621",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -997,14 +977,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ec376b61-7692-42e9-b07f-5490553b3345",
+                            ConcurrencyStamp = "850726d9-c92e-4a33-9d0e-cc083dee9918",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELBcI3b1qWBExnT5+MaBZxDcdp2k3EmK9SoovtioJNsjfQqtTtgXuSkZO1r6nbjOlg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDMoIh5X7DrNkMNTuBfDbnERkM7NOmw3E86NfF75htiwb0bE+ra0B+z3ZRGWcuErxA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f2331757-b5f0-4b0e-ac34-bb6c3168166c",
+                            SecurityStamp = "4a110a08-8946-4c81-bdbe-c8e12cf7d6e0",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
