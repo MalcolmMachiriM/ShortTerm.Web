@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 
 namespace ShortTerm.Web.Controllers
@@ -12,17 +13,19 @@ namespace ShortTerm.Web.Controllers
     public class ProductPolicyRequirementsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IProductPolicyRequirementRepository productPolicyRequirementRepository;
 
-        public ProductPolicyRequirementsController(ApplicationDbContext context)
+        public ProductPolicyRequirementsController(ApplicationDbContext context, IProductPolicyRequirementRepository productPolicyRequirementRepository)
         {
             _context = context;
+            this.productPolicyRequirementRepository = productPolicyRequirementRepository;
         }
 
         // GET: ProductPolicyRequirements
         public async Task<IActionResult> Index(int Id)
         {
-            var applicationDbContext = _context.ProductPolicyRequirements.Include(p => p.IndividualProduct).Include(p => p.Requirement).Where(x=> x.IndividualProductID ==Id);
-            return View(await applicationDbContext.ToListAsync());
+            var Requirements = await productPolicyRequirementRepository.GetAllPolicyRules(Id);
+            return View(Requirements);
         }
 
         // GET: ProductPolicyRequirements/Details/5
