@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Models;
 
 namespace ShortTerm.Web.Controllers
 {
@@ -14,11 +16,13 @@ namespace ShortTerm.Web.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IProductPolicyRequirementRepository productPolicyRequirementRepository;
+        private readonly IMapper mapper;
 
-        public ProductPolicyRequirementsController(ApplicationDbContext context, IProductPolicyRequirementRepository productPolicyRequirementRepository)
+        public ProductPolicyRequirementsController(ApplicationDbContext context, IProductPolicyRequirementRepository productPolicyRequirementRepository,IMapper mapper)
         {
             _context = context;
             this.productPolicyRequirementRepository = productPolicyRequirementRepository;
+            this.mapper = mapper;
         }
 
         // GET: ProductPolicyRequirements
@@ -51,8 +55,11 @@ namespace ShortTerm.Web.Controllers
         // GET: ProductPolicyRequirements/Create
         public IActionResult Create()
         {
-            ViewData["IndividualProductID"] = new SelectList(_context.IndividualProducts, "Id", "Name");
-            ViewData["RequirementID"] = new SelectList(_context.Requirements.Include(q => q.RequirementType), "Id", /*"Requirement.RequirementType"*/ "Id");
+            var model = new ProductPolicyRequirementCreateVM
+            {
+                IndividualProduct = new SelectList(_context.IndividualProducts, "Id", "Name"),
+                Requirements = new SelectList(_context.Requirements, "Id", "Description")
+            };
             return View();
         }
 
@@ -61,17 +68,17 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RegNo,IndividualProductID,DependentTypeID,RequirementID,IsMandatory,Description,AddedBy,ModifiedBy,Id,DateCreated,DateModified")] ProductPolicyRequirement productPolicyRequirement)
+        public async Task<IActionResult> Create( ProductPolicyRequirementCreateVM model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(productPolicyRequirement);
-                await _context.SaveChangesAsync();
+                var rule = mapper.Map<ProductPolicyRequirement>(model);
+                await productPolicyRequirementRepository.AddAsync(rule);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IndividualProductID"] = new SelectList(_context.IndividualProducts, "Id", "Id", productPolicyRequirement.IndividualProductID);
-            ViewData["RequirementID"] = new SelectList(_context.Requirements, "Id", "Id", productPolicyRequirement.RequirementID);
-            return View(productPolicyRequirement);
+            model.IndividualProduct = new SelectList(_context.IndividualProducts, "Id", "Id",  model.IndividualProductID);
+            model.Requirements = new SelectList(_context.Requirements, "Id", "Id", model.RequirementID);
+            return View(model);
         }
 
         // GET: ProductPolicyRequirements/Edit/5
@@ -97,9 +104,9 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RegNo,IndividualProductID,DependentTypeID,RequirementID,IsMandatory,Description,AddedBy,ModifiedBy,Id,DateCreated,DateModified")] ProductPolicyRequirement productPolicyRequirement)
+        public async Task<IActionResult> Edit(int id, ProductPolicyRequirementCreateVM model)
         {
-            if (id != productPolicyRequirement.Id)
+            if (id != model.Id)
             {
                 return NotFound();
             }
@@ -108,12 +115,12 @@ namespace ShortTerm.Web.Controllers
             {
                 try
                 {
-                    _context.Update(productPolicyRequirement);
-                    await _context.SaveChangesAsync();
+                    var rule = mapper.Map<ProductPolicyRequirement>(model);
+                    await productPolicyRequirementRepository.UpdateAsync(rule);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductPolicyRequirementExists(productPolicyRequirement.Id))
+                    if (!ProductPolicyRequirementExists(model.Id))
                     {
                         return NotFound();
                     }
@@ -124,9 +131,9 @@ namespace ShortTerm.Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IndividualProductID"] = new SelectList(_context.IndividualProducts, "Id", "Id", productPolicyRequirement.IndividualProductID);
-            ViewData["RequirementID"] = new SelectList(_context.Requirements, "Id", "Id", productPolicyRequirement.RequirementID);
-            return View(productPolicyRequirement);
+            model.IndividualProduct = new SelectList(_context.IndividualProducts, "Id", "Id", model.IndividualProductID);
+            model.Requirements = new SelectList(_context.Requirements, "Id", "Id", model.RequirementID);
+            return View(model);
         }
 
         // GET: ProductPolicyRequirements/Delete/5
