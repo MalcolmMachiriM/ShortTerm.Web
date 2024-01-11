@@ -13,7 +13,7 @@ namespace ShortTerm.Web.Models
         public DateTime ApplicationDate { get; set; }
 
         [Display(Name ="Product Group")]
-        public ProductGroup? ProductGroup { get; set; }
+        public ProductGroupVM? ProductGroup { get; set; }
         public int Product { get; set; }
 
         [Display(Name = "Client Name")]
