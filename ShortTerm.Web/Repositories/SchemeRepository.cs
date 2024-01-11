@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
@@ -8,16 +9,18 @@ namespace ShortTerm.Web.Repositories
     public class SchemeRepository : GenericRepository<Scheme>, ISchemeRepository
     {
         private readonly ApplicationDbContext context;
+        private readonly AutoMapper.IConfigurationProvider configurationProvider;
 
-        public SchemeRepository(ApplicationDbContext context) : base(context)
+        public SchemeRepository(ApplicationDbContext context,AutoMapper.IConfigurationProvider configurationProvider) : base(context)
         {
             this.context = context;
+            this.configurationProvider = configurationProvider;
         }
 
-        public Task<List<SchemeVM>> GetAllSchemeDetails()
+        public async Task<List<SchemeVM>> GetAllSchemeDetails()
         {
-            //var schemes = context.Schemes.Include(q => q.Clients);
-            return null;
+            var schemes =await  context.Schemes.Include(q => q.Clients).ProjectTo<SchemeVM>(configurationProvider).ToListAsync();
+            return schemes;
         }
     }
 }

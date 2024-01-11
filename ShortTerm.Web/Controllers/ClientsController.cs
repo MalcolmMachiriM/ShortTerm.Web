@@ -25,12 +25,8 @@ namespace ShortTerm.Web.Controllers
         // GET: Clients
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Clients.Include(c => c.Gender).Include(c => c.MaritalStatus);
-            var clients = await clientRepository.GetAllAsync();
-            var model = mapper.Map<List<ClientListVM>>(clients);
-            //return View(await applicationDbContext.ToListAsync());
-            return await clientRepository.GetAllAsync() != null ?
-                View(model) : Problem("No Clients Found");
+
+            return View(await clientRepository.GetAllClients());
         }
 
         // GET: Clients/Details/5

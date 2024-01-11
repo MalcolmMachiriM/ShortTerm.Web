@@ -29,9 +29,8 @@ namespace ShortTerm.Web.Controllers
         // GET: Schemes
         public async Task<IActionResult> Index()
         {
-            var model = mapper.Map<List<SchemeVM>>(await schemeRepository.GetAllAsync());
-            return await schemeRepository.GetAllAsync() != null ?
-                View(model) : Problem("No Schemea Found");
+            var model = await schemeRepository.GetAllSchemeDetails();
+            return model != null ? View(model) : Problem("No Schemea Found");
         }
 
         // GET: Schemes/Details/5
@@ -57,21 +56,12 @@ namespace ShortTerm.Web.Controllers
         // GET: Schemes/Create
         public IActionResult Create()
         {
-            try
+            var model = new SchemeVM
             {
-                var model = new SchemeVM
-                {
-                    InstitutionalClients = new SelectList(_context.Clients.Where(q => q.ClientTypeId == 2), "Id", "Firstname"+" "+"Surname" )
-                };
-                return View(model);
-            }
-            catch (Exception ex)
-            {
-
-                ModelState.AddModelError("",ex.Message);
-                return null;
-            }
-            
+                InstitutionalClients = new SelectList(_context.Clients.Where(q => q.ClientTypeId == 2), "Id", "FirstName")
+            };
+            return View(model);
+           
         }
 
         // POST: Schemes/Create
@@ -87,6 +77,7 @@ namespace ShortTerm.Web.Controllers
                 await schemeRepository.AddAsync(scheme);
                 return RedirectToAction(nameof(Index));
             }
+            model.InstitutionalClients = new SelectList(_context.Clients.Where(q => q.ClientTypeId == 2), "Id", "Firstname" , model.InstitutionalClientsName);
             return View(model);
         }
 

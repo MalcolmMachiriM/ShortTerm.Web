@@ -12,10 +12,9 @@ namespace ShortTerm.Web.Data
         public DateTime ConversionDate { get; set; }
         public DateTime RulesAmmendment { get; set; }
         public double RetentionLimit { get; set; }
+        
+        [ForeignKey("InstitutionalClientsName")]
+        public Client? Clients { get; set; }
         public int InstitutionalClientsName { get; set; }
-
-        //[ForeignKey("ClientId")]
-        //public Client? Clients { get; set; }
-        //public int ClientId { get; set; }
     }
 }

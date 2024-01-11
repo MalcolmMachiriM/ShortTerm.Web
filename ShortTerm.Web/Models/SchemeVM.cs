@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ShortTerm.Web.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShortTerm.Web.Models
@@ -40,5 +41,6 @@ namespace ShortTerm.Web.Models
         [Display(Name = "Institutional Client's Name")]
         public int InstitutionalClientsName { get; set; }
         public SelectList? InstitutionalClients { get; set; }
+        public Client? Client { get; set; }
     }
 }
