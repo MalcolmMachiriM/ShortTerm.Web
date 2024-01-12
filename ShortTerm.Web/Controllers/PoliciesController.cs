@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
+
 
 namespace ShortTerm.Web.Controllers
 {
@@ -30,7 +26,7 @@ namespace ShortTerm.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = mapper.Map<List<PolicyListVM>>(await _context.Policies.Include(p => p.ProductGroup).ToListAsync());
-            return View( applicationDbContext);
+            return View(applicationDbContext);
         }
 
         // GET: Policies/Details/5
@@ -57,9 +53,9 @@ namespace ShortTerm.Web.Controllers
         {
             var model = new PolicyCreateVM
             {
-                Groups= new SelectList(_context.ProductGroups,"Id", "Name"),
-                Products = new SelectList(_context.IndividualProducts,"Id", "Name"),
-                Clients = new SelectList(_context.Clients,"Id", "FirstName"),
+                Groups = new SelectList(_context.ProductGroups, "Id", "Name"),
+                Products = new SelectList(_context.IndividualProducts, "Id", "Name"),
+                Clients = new SelectList(_context.Clients, "Id", "FirstName"),
                 PaymentMethod = new SelectList(_context.PaymentMethods, "Id", "Method"),
                 PaymentFrequency = new SelectList(_context.PaymentFrequencies, "Id", "Frequency")
 
@@ -170,19 +166,26 @@ namespace ShortTerm.Web.Controllers
             {
                 _context.Policies.Remove(policy);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PolicyExists(int id)
         {
-          return (_context.Policies?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Policies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
         public IActionResult GetClientData(int clientId)
         {
             var client = _context.Clients.Find(clientId);
-            return Json(client);
+            return Json(new SearchClientResultVM
+            {
+                ID = client.Id,
+                Firstname = client.FirstName,
+                Surname = client.Surname,
+                DateOfBirth = client.DateOfBirth.ToString(),
+                NationalID = client.NationalId
+            });
         }
     }
 }

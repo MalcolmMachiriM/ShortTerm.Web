@@ -147,32 +147,26 @@
     
 </div>
 @section Scripts{
+    
     <script type ="text/javascript">
 
         $(document).ready(function () {
             // debugger;
             $(".ClientSearch").chosen().change(function () {
-                debugger;
                 var selectedClientId = $(this).val();
 
                 // Fetch client data using AJAX
                 $.ajax({
-            url: "@Url.Action("GetClientData", "Policies")",
-            data: { clientId: selectedClientId },
-            success: function (clientData) {
-                // Check if data is not null before accessing properties
-                if (clientData) {
-                    $("#FirstName").val(clientData.FirstName || '');
-                    $("#Surname").val(clientData.Surname || '');
-                    $("#DateOfBirth").val(clientData.DateOfBirth || '');
-                    $("#NationalID").val(clientData.NationalID || '');
-                }
-            },
-            error: function (xhr, status, error) {
-                console.error("AJAX request failed:", status, error);
-            }
-        });
+                    url: "@Url.Action("GetClientData", "Policies")",
+                    data: { clientId: selectedClientId },
+                    success: function (clientData) {
+                        $("#FirstName").val(clientData.FirstName);
+                        $("#Surname").val(clientData.Surname);
+                        $("#DateOfBirth").val(clientData.DateOfBirth);
+                        $("#NationalID").val(clientData.NationalID);
+                    }
                 });
+            });
         });
 
     </script >
