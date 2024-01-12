@@ -22,7 +22,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="ProductGroupId" class="control-label"></label>
-                    <select asp-for="ProductGroupId" class ="form-control" asp-items="Model.Groups">
+                    <select asp-for="ProductGroupId" class ="form-select" asp-items="Model.Groups">
                         <option>Select Group</option>
                     </select>
                 </div>
@@ -32,7 +32,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="ProductId" class="control-label"></label>
-                    <select asp-for="ProductId" class="form-control" asp-items="Model.Products">
+                    <select asp-for="ProductId" class="form-select" asp-items="Model.Products">
                         <option>Select Product</option>
                     </select>
                     <span asp-validation-for="ProductId" class="text-danger"></span>
@@ -41,8 +41,9 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="ClientId" class="control-label"></label>
-                    @* <select asp-for="ClientId" class="form-select" asp-items=""></select> *@
-                    <input asp-for="ClientId" class="form-control" />
+                    <select asp-for="ClientId" class="form-select ClientSearch" asp-items="Model.Clients">
+                        <option>Search Client</option>
+                    </select>
                     <span asp-validation-for="ClientId" class="text-danger"></span>
                 </div>
             </div>
@@ -51,14 +52,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="FirstName" class="control-label"></label>
-                    <input asp-for="FirstName" class="form-control" />
+                    <input asp-for="FirstName" id="FirstName" class="form-control FirstName" disabled />
                     <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Surname" class="control-label"></label>
-                    <input asp-for="Surname" class="form-control" />
+                    <input asp-for="Surname" id="Surname" class="form-control" disabled />
                     <span asp-validation-for="Surname" class="text-danger"></span>
                 </div>
             </div>
@@ -67,14 +68,14 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="NationalID" class="control-label"></label>
-                    <input asp-for="NationalID" class="form-control" />
+                    <input asp-for="NationalID" id="NationalID" class="form-control" disabled />
                     <span asp-validation-for="NationalID" class="text-danger"></span>
                 </div>
              </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="DateOfBirth" class="control-label"></label>
-                    <input asp-for="DateOfBirth" class="form-control" />
+                    <input asp-for="DateOfBirth" id="DateOfBirth" class="form-control" disabled/>
                     <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                 </div>
              </div>
@@ -145,5 +146,38 @@
     </form>
     
 </div>
+@section Scripts{
+    <script type ="text/javascript">
+
+        $(document).ready(function () {
+            // debugger;
+            $(".ClientSearch").chosen().change(function () {
+                debugger;
+                var selectedClientId = $(this).val();
+
+                // Fetch client data using AJAX
+                $.ajax({
+            url: "@Url.Action("GetClientData", "Policies")",
+            data: { clientId: selectedClientId },
+            success: function (clientData) {
+                // Check if data is not null before accessing properties
+                if (clientData) {
+                    $("#FirstName").val(clientData.FirstName || '');
+                    $("#Surname").val(clientData.Surname || '');
+                    $("#DateOfBirth").val(clientData.DateOfBirth || '');
+                    $("#NationalID").val(clientData.NationalID || '');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX request failed:", status, error);
+            }
+        });
+                });
+        });
+
+    </script >
+}
+
+
 
 

@@ -64,7 +64,7 @@ namespace ShortTerm.Web.Controllers
                 PaymentFrequency = new SelectList(_context.PaymentFrequencies, "Id", "Frequency")
 
             };
-            return View();
+            return View(model);
         }
 
         // POST: Policies/Create
@@ -178,6 +178,11 @@ namespace ShortTerm.Web.Controllers
         private bool PolicyExists(int id)
         {
           return (_context.Policies?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+        public IActionResult GetClientData(int clientId)
+        {
+            var client = _context.Clients.Find(clientId);
+            return Json(client);
         }
     }
 }
