@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShortTerm.Web.Data;
 
@@ -11,9 +12,10 @@ using ShortTerm.Web.Data;
 namespace ShortTerm.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240115095908_BenefitTermCOlumn_Policy")]
+    partial class BenefitTermCOlumn_Policy
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "cf3d9f88-7c43-4e82-9409-53d7abe88330",
+                            ConcurrencyStamp = "7ec4868f-cb53-4711-80c8-e97dc77cfc6c",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "56c14d62-d1b6-496d-89d5-3205a82f4529",
+                            ConcurrencyStamp = "229f0747-4911-485d-a27a-ddce74ca88b1",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -305,19 +307,21 @@ namespace ShortTerm.Web.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool?>("Active")
+                    b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("AddedBy")
+                    b.Property<int>("AddedBy")
                         .HasColumnType("int");
 
                     b.Property<int>("ClientTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("ContactPersonName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactPersonNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryOfBirth")
@@ -339,43 +343,47 @@ namespace ShortTerm.Web.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GenderId")
+                    b.Property<int>("GenderId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HighestQualificationId")
+                    b.Property<int>("HighestQualificationId")
                         .HasColumnType("int");
 
                     b.Property<int?>("IncomeGroupId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("IsAuthorized")
+                    b.Property<bool>("IsAuthorized")
                         .HasColumnType("bit");
 
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("MaritalStatusId")
+                    b.Property<int>("MaritalStatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("MiddleName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ModifiedBy")
+                    b.Property<int>("ModifiedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("NationalId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("RegNo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Religion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Status")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StatusValue")
+                    b.Property<int>("StatusValue")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -646,25 +654,25 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IndividualProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("NationalID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PaymentFrequencyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PaymentMethodId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Premium")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PremiumPaymentFrequency")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PremiumPaymentMethod")
                         .HasColumnType("float");
 
                     b.Property<int>("PremiumTerm")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<double>("SumAssured")
@@ -674,14 +682,6 @@ namespace ShortTerm.Web.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("IndividualProductId");
-
-                    b.HasIndex("PaymentFrequencyId");
-
-                    b.HasIndex("PaymentMethodId");
 
                     b.HasIndex("ProductGroupId");
 
@@ -1047,14 +1047,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d653a48e-ca67-49c1-a6d4-6730e6942159",
+                            ConcurrencyStamp = "cc37660a-fa95-43f1-8332-dd22ff14661d",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELSzuMnNfx+U4VH5DJBD7Xk7Mqbb5k5PKnSA6MQg/+6Fbpq9MdXiR8flWHU8a9KGvA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED34ip4khLDIgrNaUQqUKmwUyArnpCvPXVPmHb2h7q0xk9fHXB6AJZeKEf4+6YTR3g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a19ee393-d491-491e-a67d-cad5d778d241",
+                            SecurityStamp = "b9e07eb0-322a-4870-9792-1bbbbe7f4b67",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1065,14 +1065,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bf53360f-248b-47c2-a7cf-04d462d08fe9",
+                            ConcurrencyStamp = "39bac63f-c233-4d60-a4e2-fcda5c75ceca",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM8Nys8dnIx/o9dj+EIVtKBmvFSD8QT1GnaHJSKLnhdbSItdz9MGBHB3iAg2wt1ZmQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENPTfIlE9ixJB4Wrx4nfc+AiEYiAGHnFvQhK+7uRsp0cTD6hik9kxcRpjgbGu01HTQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "43f4fcda-a1b2-4e32-819c-d50543c7a740",
+                            SecurityStamp = "1eefcd50-610d-4be3-99d0-773de573ac25",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1147,15 +1147,21 @@ namespace ShortTerm.Web.Data.Migrations
                 {
                     b.HasOne("ShortTerm.Web.Data.Gender", "Gender")
                         .WithMany()
-                        .HasForeignKey("GenderId");
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ShortTerm.Web.Data.HighestQualification", "HighestQualification")
                         .WithMany()
-                        .HasForeignKey("HighestQualificationId");
+                        .HasForeignKey("HighestQualificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ShortTerm.Web.Data.MaritalStatus", "MaritalStatus")
                         .WithMany()
-                        .HasForeignKey("MaritalStatusId");
+                        .HasForeignKey("MaritalStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Gender");
 
@@ -1177,27 +1183,9 @@ namespace ShortTerm.Web.Data.Migrations
 
             modelBuilder.Entity("ShortTerm.Web.Data.Policy", b =>
                 {
-                    b.HasOne("ShortTerm.Web.Data.Client", "Client")
+                    b.HasOne("ShortTerm.Web.Data.IndividualProduct", "Product")
                         .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShortTerm.Web.Data.IndividualProduct", "IndividualProduct")
-                        .WithMany()
-                        .HasForeignKey("IndividualProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShortTerm.Web.Data.PaymentFrequency", "PaymentFrequency")
-                        .WithMany()
-                        .HasForeignKey("PaymentFrequencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShortTerm.Web.Data.PaymentMethod", "PaymentMethod")
-                        .WithMany()
-                        .HasForeignKey("PaymentMethodId")
+                        .HasForeignKey("ProductGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1207,13 +1195,7 @@ namespace ShortTerm.Web.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Client");
-
-                    b.Navigation("IndividualProduct");
-
-                    b.Navigation("PaymentFrequency");
-
-                    b.Navigation("PaymentMethod");
+                    b.Navigation("Product");
 
                     b.Navigation("ProductGroup");
                 });

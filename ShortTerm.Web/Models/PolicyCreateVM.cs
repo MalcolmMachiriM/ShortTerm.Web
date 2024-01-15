@@ -14,11 +14,15 @@ namespace ShortTerm.Web.Models
 
         [Display(Name ="Product Group")]
         public int ProductGroupId { get; set; }
+
+        [Display(Name ="Individual Product")]
+        public int IndividualGroupId { get; set; }
         public SelectList? Groups { get; set; }
 
         [Display(Name = "Product ")]
-        public int ProductId { get; set; }
+        public int IndividualProductId { get; set; }
         public SelectList? Products { get; set; }
+
         [Display(Name ="Client")]
         public int ClientId { get; set; }
         public SelectList? Clients { get; set; }
@@ -42,7 +46,7 @@ namespace ShortTerm.Web.Models
         [DataType(DataType.Currency)]
         public double AnnualSalary { get; set; }
 
-        [Display(Name = "Premium Term")]
+        [Display(Name = "Premium Term (In Months)")]
         public int PremiumTerm { get; set; }
 
         [Display(Name = "Sum Assured")]
@@ -54,11 +58,14 @@ namespace ShortTerm.Web.Models
         public double Premium { get; set; }
 
         [Display(Name = "Premium Payment Method ")]
-        public int PremiumPaymentMethod { get; set; }
+        public int PaymentMethodId { get; set; }
         public SelectList? PaymentMethod { get; set; }
 
         [Display(Name = "Premium Payment Frequency")]
-        public int PremiumPaymentFrequency { get; set; }
+        public int PaymentFrequencyId { get; set; }
         public SelectList? PaymentFrequency { get; set; }
+
+        [Display(Name = "Benefit Term (In Months)")]
+        public int BenefitTerm { get; set; }
     }
 }

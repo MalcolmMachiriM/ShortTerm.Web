@@ -7,12 +7,13 @@ namespace ShortTerm.Web.Data
         public DateTime ApplicationDate { get; set; }
 
         [ForeignKey("ProductGroupId")]
-        public ProductGroup ProductGroup { get; set; }
+        public ProductGroup? ProductGroup { get; set; }
         public int ProductGroupId { get; set; }
 
-        [ForeignKey("ProductGroupId")]
-        public IndividualProduct? Product { get; set; }
-        public int ProductId { get; set; }
+        [ForeignKey("IndividualProductId")]
+        public IndividualProduct? IndividualProduct { get; set; }
+        public int IndividualProductId { get; set; }
+        public Client? Client { get; set; }
         public int ClientId { get; set; }
         public string? FirstName { get; set; }
         public string? Surname { get; set; }
@@ -21,9 +22,13 @@ namespace ShortTerm.Web.Data
         public int Age { get; set; }
         public double AnnualSalary { get; set; }
         public int PremiumTerm { get; set; }
+        public int BenefitTerm { get; set; }
         public double SumAssured { get; set; }
         public double Premium { get; set; }
-        public double PremiumPaymentMethod { get; set; }
-        public double PremiumPaymentFrequency { get; set; }
+        public PaymentFrequency? PaymentFrequency { get; set; }
+        public PaymentMethod? PaymentMethod { get; set; }
+        public int PaymentMethodId { get; set; }
+        public int PaymentFrequencyId { get; set; }
+        public bool Approved { get; set; }
     }
 }

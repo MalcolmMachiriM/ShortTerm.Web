@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShortTerm.Web.Data;
 
@@ -11,9 +12,10 @@ using ShortTerm.Web.Data;
 namespace ShortTerm.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240115103614_PolicyTAbleRedesign")]
+    partial class PolicyTAbleRedesign
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "cf3d9f88-7c43-4e82-9409-53d7abe88330",
+                            ConcurrencyStamp = "bd4da1a3-3bdf-46c7-ad40-4d2b1985306d",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "56c14d62-d1b6-496d-89d5-3205a82f4529",
+                            ConcurrencyStamp = "0f8f8cb3-6f4d-429e-9d62-76d3efcb696e",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -646,25 +648,25 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IndividualProductId")
-                        .HasColumnType("int");
-
                     b.Property<string>("NationalID")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PaymentFrequencyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PaymentMethodId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Premium")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PremiumPaymentFrequency")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PremiumPaymentMethod")
                         .HasColumnType("float");
 
                     b.Property<int>("PremiumTerm")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<double>("SumAssured")
@@ -674,14 +676,6 @@ namespace ShortTerm.Web.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("IndividualProductId");
-
-                    b.HasIndex("PaymentFrequencyId");
-
-                    b.HasIndex("PaymentMethodId");
 
                     b.HasIndex("ProductGroupId");
 
@@ -1047,14 +1041,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d653a48e-ca67-49c1-a6d4-6730e6942159",
+                            ConcurrencyStamp = "713e159d-2fc2-4a5f-a586-97c0eef1877f",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAELSzuMnNfx+U4VH5DJBD7Xk7Mqbb5k5PKnSA6MQg/+6Fbpq9MdXiR8flWHU8a9KGvA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEsDnWBF5y9XIPv7WTo2TtmjMx63RzFXNIQc5auBNXMG2MMHjpmb4CQ1J9j4j49rxA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a19ee393-d491-491e-a67d-cad5d778d241",
+                            SecurityStamp = "dace61a3-d317-44d2-a253-962c3f8fd161",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1065,14 +1059,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bf53360f-248b-47c2-a7cf-04d462d08fe9",
+                            ConcurrencyStamp = "2a176262-1245-4371-9569-47d3b7e06097",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM8Nys8dnIx/o9dj+EIVtKBmvFSD8QT1GnaHJSKLnhdbSItdz9MGBHB3iAg2wt1ZmQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELMAWk06ae9BvoWggEFsOWguCgUhmD6Xhh0lTqOSssV0HQAzFzBtn0suOBUzxHzR3g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "43f4fcda-a1b2-4e32-819c-d50543c7a740",
+                            SecurityStamp = "607e8da8-f324-4a03-b03d-8d27641a23fb",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1177,27 +1171,9 @@ namespace ShortTerm.Web.Data.Migrations
 
             modelBuilder.Entity("ShortTerm.Web.Data.Policy", b =>
                 {
-                    b.HasOne("ShortTerm.Web.Data.Client", "Client")
+                    b.HasOne("ShortTerm.Web.Data.IndividualProduct", "Product")
                         .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShortTerm.Web.Data.IndividualProduct", "IndividualProduct")
-                        .WithMany()
-                        .HasForeignKey("IndividualProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShortTerm.Web.Data.PaymentFrequency", "PaymentFrequency")
-                        .WithMany()
-                        .HasForeignKey("PaymentFrequencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShortTerm.Web.Data.PaymentMethod", "PaymentMethod")
-                        .WithMany()
-                        .HasForeignKey("PaymentMethodId")
+                        .HasForeignKey("ProductGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1207,13 +1183,7 @@ namespace ShortTerm.Web.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Client");
-
-                    b.Navigation("IndividualProduct");
-
-                    b.Navigation("PaymentFrequency");
-
-                    b.Navigation("PaymentMethod");
+                    b.Navigation("Product");
 
                     b.Navigation("ProductGroup");
                 });

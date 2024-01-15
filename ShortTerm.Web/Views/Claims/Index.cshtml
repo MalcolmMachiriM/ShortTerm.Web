@@ -68,10 +68,13 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn mt-1" type="button"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<form id="deleteForm" asp-action="Delete">
+    <input type="hidden" id="schemeId" name="Id" />
+</form>

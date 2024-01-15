@@ -25,8 +25,8 @@ namespace ShortTerm.Web.Controllers
         // GET: Policies
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = mapper.Map<List<PolicyListVM>>(await _context.Policies.Include(p => p.ProductGroup).ToListAsync());
-            return View(applicationDbContext);
+            var model = await policyRepository.GetAll();
+            return View(model);
         }
 
         // GET: Policies/Details/5
@@ -39,6 +39,10 @@ namespace ShortTerm.Web.Controllers
 
             var policy = await _context.Policies
                 .Include(p => p.ProductGroup)
+                .Include(p => p.IndividualProduct)
+                .Include(p => p.Client)
+                .Include(p => p.PaymentMethod)
+                .Include(p => p.PaymentFrequency)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (policy == null)
             {

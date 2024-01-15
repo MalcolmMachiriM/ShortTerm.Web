@@ -31,11 +31,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="ProductId" class="control-label"></label>
-                    <select asp-for="ProductId" class="form-select" asp-items="Model.Products">
+                    <label asp-for="IndividualProductId" class="control-label"></label>
+                    <select asp-for="IndividualProductId" class="form-select" asp-items="Model.Products">
                         <option>Select Product</option>
                     </select>
-                    <span asp-validation-for="ProductId" class="text-danger"></span>
+                    <span asp-validation-for="IndividualProductId" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-6">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        @* <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="FirstName" class="control-label"></label>
@@ -95,7 +95,7 @@
                     <span asp-validation-for="AnnualSalary" class="text-danger"></span>
                 </div>
             </div>
-         </div>
+         </div> *@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -122,18 +122,29 @@
              </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="PremiumPaymentMethod" class="control-label"></label>
-                    <input asp-for="PremiumPaymentMethod" class="form-control" />
-                    <span asp-validation-for="PremiumPaymentMethod" class="text-danger"></span>
+                    <label asp-for="PaymentMethodId" class="control-label"></label>
+                    <select asp-for="PaymentMethodId" class="form-select" asp-items="Model.PaymentMethod">
+                        <option>--Select Payment Method--</option>
+                    </select>
+                    <span asp-validation-for="PaymentMethodId" class="text-danger"></span>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label asp-for="PremiumPaymentFrequency" class="control-label"></label>
-                    <input asp-for="PremiumPaymentFrequency" class="form-control" />
-                    <span asp-validation-for="PremiumPaymentFrequency" class="text-danger"></span>
+                    <label asp-for="PaymentFrequencyId" class="control-label"></label>
+                    <select asp-for="PaymentFrequencyId" class="form-select" asp-items="Model.PaymentFrequency">
+                        <option>--Select Payment Frequency--</option>
+                    </select>
+                    <span asp-validation-for="PaymentFrequencyId" class="text-danger"></span>
+                </div>
+             </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="BenefitTerm" class="control-label"></label>
+                    <input asp-for="BenefitTerm" class="form-control" />
+                    <span asp-validation-for="BenefitTerm" class="text-danger"></span>
                 </div>
              </div>
          </div>

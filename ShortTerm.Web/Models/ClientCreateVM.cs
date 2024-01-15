@@ -8,7 +8,6 @@ namespace ShortTerm.Web.Models
 {
     public class ClientCreateVM
     {
-        public string? RegNo { get; set; }
         public SelectList? ClientType { get; set; }
 
         [Display(Name = "Client Type")]
@@ -19,7 +18,7 @@ namespace ShortTerm.Web.Models
         public SelectList? Titles { get; set; }
         public string FirstName { get; set; }
         public string? MiddleName { get; set; }
-        public string Surname { get; set; }
+        public string? Surname { get; set; }
 
         [Display(Name = "Date of Birth")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
