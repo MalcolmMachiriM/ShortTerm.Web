@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using ShortTerm.Web.Constants;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
@@ -190,6 +194,22 @@ namespace ShortTerm.Web.Controllers
                 DateOfBirth = client.DateOfBirth.ToString(),
                 NationalID = client.NationalId
             });
+        }
+
+        [Authorize(Roles = Roles.Administrator)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApprovePolicy(int id, bool approved)
+        {
+            try
+            {
+                await policyRepository.ChangeApprovalStatus(id, approved);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

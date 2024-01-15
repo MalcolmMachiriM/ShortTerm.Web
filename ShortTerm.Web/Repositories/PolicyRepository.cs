@@ -1,4 +1,6 @@
 ﻿using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
@@ -10,11 +12,13 @@ namespace ShortTerm.Web.Repositories
     {
         private readonly ApplicationDbContext context;
         private readonly AutoMapper.IConfigurationProvider configurationProvider;
+        private readonly IIndividualProductsRepository individualProductsRepository;
 
-        public PolicyRepository(ApplicationDbContext context,AutoMapper.IConfigurationProvider configurationProvider) : base(context)
+        public PolicyRepository(ApplicationDbContext context,AutoMapper.IConfigurationProvider configurationProvider,IIndividualProductsRepository individualProductsRepository) : base(context)
         {
             this.context = context;
             this.configurationProvider = configurationProvider;
+            this.individualProductsRepository = individualProductsRepository;
         }
 
         public Task<List<PolicyListVM>> GetAll()
@@ -29,5 +33,28 @@ namespace ShortTerm.Web.Repositories
                 .ToListAsync();
                 return policies;
         }
+
+        public async Task ChangeApprovalStatus(int PolicyId, bool approved)
+        {
+
+            var policy = await GetAsync(PolicyId);
+            TimeSpan timeDifference = DateTime.Now - policy.DateCreated;
+            bool isProcessTimeElapsed = policy.IndividualProduct.ProcessTime <= timeDifference.TotalDays / 30;
+            if (approved && isProcessTimeElapsed)
+            {
+                policy.Approved = true;
+
+            }
+            else
+            {
+                return;
+            }
+            policy.Approved = approved;
+            await UpdateAsync(policy);
+
+            
+        }
+
+
     }
 }

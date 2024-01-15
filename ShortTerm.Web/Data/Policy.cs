@@ -29,6 +29,6 @@ namespace ShortTerm.Web.Data
         public PaymentMethod? PaymentMethod { get; set; }
         public int PaymentMethodId { get; set; }
         public int PaymentFrequencyId { get; set; }
-        public bool Approved { get; set; }
+        public bool? Approved { get; set; }
     }
 }

@@ -5,10 +5,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1> Policy Details for: @Model.Client.FirstName @Model.Client.Surname</h1>
 
 <div>
-    <h4>Policy</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -127,10 +126,40 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
-    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model?.Id">Edit</a> 
+    <div class="row">
+        <div class="col-2">
+
+            <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
+        </div>
+        <div class="col-1">
+
+            <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model?.Id">Edit</a>
+        </div>
     @if (Model.SumAssured > Model.IndividualProduct.Retention && Model.IndividualProduct.CanBeCeded && SignInManager.IsSignedIn(User))
     {
         <a asp-action="Edit" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
     }
+    @if (Model.Approved == null && User.IsInRole(Roles.Administrator))
+    {
+        
+            <div class="col-1">
+
+                <form asp-action="ApprovePolicy">
+                    <input name="Id" value="@Model.Id" type="hidden">
+                    <input name="approved" value="true" type="hidden">
+                    <button type="submit" class="btn btn-outline-success">Approve</button>
+                </form>
+            </div>
+            <div class="col-1">
+                <form asp-action="ApprovePolicy">
+                    <input name="Id" value="@Model.Id" type="hidden">
+                    <input name="approved" value="false" type="hidden">
+                    <button type="submit" class="btn btn-outline-danger">Reject</button>
+                </form>
+            </div>
+        
+
+    }
+    </div>
+
 </div>

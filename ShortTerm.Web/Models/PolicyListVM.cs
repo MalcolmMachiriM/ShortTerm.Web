@@ -43,5 +43,6 @@ namespace ShortTerm.Web.Models
         public IndividualProduct? IndividualProduct { get; set; }
         [Display(Name = "Individual Product")]
         public int IndividualProductId { get; set; }
+        public bool? Approved { get; set; }
     }
 }

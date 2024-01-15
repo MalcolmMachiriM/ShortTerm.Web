@@ -31,12 +31,9 @@
                 @Html.DisplayNameFor(model => model.SumAssured)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PremiumPaymentMethod)
+                @Html.DisplayNameFor(model => model.Approved)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PremiumPaymentFrequency)
-            </th>
-            <th></th>
+            <th>Acition</th>
         </tr>
     </thead>
     <tbody>
@@ -61,15 +58,22 @@
                 @Html.DisplayFor(modelItem => item.SumAssured)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethod.Method)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentFrequency.Frequency)
+                    @if (item.Approved.Value)
+                    {
+                        <span class="badge bg-success">Approved</span>
+                    }
+                    else if (item.Approved == null)
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Rejected</span>
+                    }
             </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp
-                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn mt-1" type="button"><i class="fa fa-trash"></i></button>
+                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn " type="button"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
 }
