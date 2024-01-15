@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Configurations.Entities;
-using ShortTerm.Web.Data.Migrations;
-using ShortTerm.Web.Models;
 
 namespace ShortTerm.Web.Data
 {
