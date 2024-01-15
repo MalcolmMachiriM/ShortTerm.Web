@@ -6,6 +6,6 @@ namespace ShortTerm.Web.Contracts
 {
     public interface ISchemeRepository : IGenericRepository<Scheme>
     {
-        Task<List<SchemeVM>> GetAllSchemeDetails();
+        Task<List<SchemeListVM>> GetAllSchemeDetails();
     }
 }

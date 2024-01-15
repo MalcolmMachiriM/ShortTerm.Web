@@ -18,7 +18,8 @@ namespace ShortTerm.Web.Models
         public double Retention { get; set; }
 
         [Display(Name = "Sum Assured Basis")]
-        public double SumAssuredBasis { get; set; }
+        public int SumAssuredBasis { get; set; }
+        public SelectList? SumAssuredBase { get; set; }
 
         [Display(Name = "Can It Be Ceded?")]
         public bool CanBeCeded { get; set; }

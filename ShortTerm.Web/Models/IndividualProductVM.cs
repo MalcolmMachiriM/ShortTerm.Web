@@ -8,8 +8,9 @@ namespace ShortTerm.Web.Models
     {
         public int Id { get; set; }
 
-        [Display(Name="Product Group")]
+        [Display(Name="Group")]
         public ProductGroup ProductGroup { get; set; }
+        [Display(Name = "Product Group")]
         public string Name { get; set; }
 
         [Display(Name = "Process Time")]
@@ -17,7 +18,7 @@ namespace ShortTerm.Web.Models
         public double Retention { get; set; }
 
         [Display(Name = "Sum Assured Basis")]
-        public double SumAssuredBasis { get; set; }
+        public int SumAssuredBasis { get; set; }
 
         [Display(Name = "Can It Be Ceded?")]
         public bool CanBeCeded { get; set; }

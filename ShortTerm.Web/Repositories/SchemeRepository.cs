@@ -17,9 +17,12 @@ namespace ShortTerm.Web.Repositories
             this.configurationProvider = configurationProvider;
         }
 
-        public async Task<List<SchemeVM>> GetAllSchemeDetails()
+        public async Task<List<SchemeListVM>> GetAllSchemeDetails()
         {
-            var schemes =await  context.Schemes.Include(q => q.Clients).ProjectTo<SchemeVM>(configurationProvider).ToListAsync();
+            var schemes =await  context.Schemes
+                .Include(q => q.Clients)
+                .ProjectTo<SchemeListVM>(configurationProvider)
+                .ToListAsync();
             return schemes;
         }
     }

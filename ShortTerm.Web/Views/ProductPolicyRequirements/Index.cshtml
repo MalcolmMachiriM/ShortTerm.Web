@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShortTerm.Web.Data.ProductPolicyRequirement>
+﻿@model IEnumerable<ProductPolicyRuquirementsListVM>
 
 @{
     ViewData["Title"] = "Policy Rules";
@@ -13,9 +13,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RegNo)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.IndividualProduct)
             </th>
             <th>
@@ -27,12 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateModified)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -40,25 +31,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RegNo)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.IndividualProduct.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Requirement.Id)
+                @Html.DisplayFor(modelItem => item.Requirement.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsMandatory)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;

@@ -52,14 +52,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "70b972ce-8523-4dd1-a898-5062db2c1bf9",
+                            ConcurrencyStamp = "278ccea0-a7ef-46e4-b75b-921d8bc218a3",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "f7c91161-e708-429b-9f3b-6c4c02562a07",
+                            ConcurrencyStamp = "f120615f-bbcd-4c06-83c4-d030c2bbe7cc",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -504,8 +504,8 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<double>("Retention")
                         .HasColumnType("float");
 
-                    b.Property<double>("SumAssuredBasis")
-                        .HasColumnType("float");
+                    b.Property<int>("SumAssuredBasis")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -552,6 +552,66 @@ namespace ShortTerm.Web.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MaritalStatuses");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.PaymentFrequency", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Frequency")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentFrequencies");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.PaymentMethod", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("BankDetailsRequired")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("MobileNumRequired")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentMethods");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Policy", b =>
@@ -918,6 +978,51 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("Schemes");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.SumAssuredBasis", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SumAssuredBase")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SumAssuredBasis");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.SystemVariables.TimeGroup", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TimeGroups");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.Title", b =>
                 {
                     b.Property<int>("Id")
@@ -957,14 +1062,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7bed0d4a-fecb-4a13-ae46-b89deec76c7e",
+                            ConcurrencyStamp = "f221ce71-0220-422f-8715-5ae2386d60cc",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPS53a5LASkVwW8HjipcClU5F/eQ7PDLRYjuTItMC1MRqWccy5lFWb4UtVoZ0SRB7A==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEELpQwjovRwRoVKDHBNEaeS2qykYG6yAK8/XJiPkk9z+2n0Qfxgu2KcWwvomDQg/3g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1d189f61-0784-4131-9b2e-87082d4e43e6",
+                            SecurityStamp = "445e90c6-72fa-48e1-8cac-40011556b49e",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -975,14 +1080,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "96daa257-6708-4d3a-a4a5-7531c3359a41",
+                            ConcurrencyStamp = "9c26e360-e655-4633-b9d5-ec1ae8d2ecd0",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH2ghJ72wwrGD7qG1I3eRtjyeUjRZTbsANtWPffypCUYqknx2jdwF7PqzRvMvk3Itw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEP56Cph5q+CEAMO3qU2SehPducKFNCvVdkAVX/VOyt95qMvQwuNpSDgmWUJ79yL1cQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b7fcc70f-f2d6-405d-a1d0-4e48af2aa2ab",
+                            SecurityStamp = "f2017e4f-5729-47dc-b018-c8a8bf6c12b7",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

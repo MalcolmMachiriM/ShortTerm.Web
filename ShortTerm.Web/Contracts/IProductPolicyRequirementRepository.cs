@@ -5,7 +5,7 @@ namespace ShortTerm.Web.Contracts
 {
     public interface IProductPolicyRequirementRepository : IGenericRepository<ProductPolicyRequirement>
     {
-        Task<List<ProductPolicyRequirementCreateVM>> GetAllPolicyRules(int productId);
+        Task<List<ProductPolicyRuquirementsListVM>> GetAllPolicyRules(int productId);
         
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Configurations.Entities;
-using ShortTerm.Web.Models;
 
 namespace ShortTerm.Web.Data
 {
@@ -51,5 +50,8 @@ namespace ShortTerm.Web.Data
         public DbSet<Requirement> Requirements { get; set; }
         public DbSet<RequirementType> RequirementTypes { get; set; }
         public DbSet<ProductPolicyRequirement> ProductPolicyRequirements { get; set; }
+        public DbSet<SumAssuredBasis> SumAssuredBasis { get; set; }
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public DbSet<PaymentFrequency> PaymentFrequencies { get; set; }
     }
 }
