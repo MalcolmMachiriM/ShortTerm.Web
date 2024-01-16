@@ -26,7 +26,7 @@ namespace ShortTerm.Web.Controllers
         public async Task<IActionResult> Index()
         {
 
-            return View(await clientRepository.GetAllClients());
+            return View(await clientRepository.GetApprovedClients());
         }
 
         // GET: Clients/Details/5
@@ -74,7 +74,7 @@ namespace ShortTerm.Web.Controllers
             {
                 var client = mapper.Map<Client>(clientVM);
                 await clientRepository.AddAsync(client);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ChangeApprovalStatus));
             }
 
 
@@ -188,6 +188,31 @@ namespace ShortTerm.Web.Controllers
         private bool ClientExists(int id)
         {
             return (_context.Clients?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        // GET: Clients/ChangeApprovalStatus
+        public async Task<IActionResult> ChangeApprovalStatus()
+        {
+            var model = mapper.Map<List<ClientListVM>>(await clientRepository.GetAllClients());
+            
+            return View(model);
+        }
+
+        // POST: Clients/ChangeApprovalStatus/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangeApprovalStatus(int id, int approved)
+        {
+            try
+            {
+                await clientRepository.ChangeStatus(id, approved);
+            }
+            catch (Exception ex )
+            {
+
+                ModelState.AddModelError("",ex.Message);
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }
