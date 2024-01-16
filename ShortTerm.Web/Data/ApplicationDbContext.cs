@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Configurations.Entities;
 using ShortTerm.Web.Models;
+using ShortTerm.Web.Data;
 
 namespace ShortTerm.Web.Data
 {
@@ -55,6 +56,6 @@ namespace ShortTerm.Web.Data
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<PaymentFrequency> PaymentFrequencies { get; set; }
         public DbSet<ReassuranceType> ReassuranceTypes { get; set; }
-        public DbSet<ShortTerm.Web.Models.ClientListVM>? ClientListVM { get; set; }
+        public DbSet<UnderWriting> UnderWritings { get; set; }
     }
 }
