@@ -53,5 +53,6 @@ namespace ShortTerm.Web.Data
         public DbSet<SumAssuredBasis> SumAssuredBasis { get; set; }
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<PaymentFrequency> PaymentFrequencies { get; set; }
+        public DbSet<ReassuranceType> ReassuranceTypes { get; set; }
     }
 }

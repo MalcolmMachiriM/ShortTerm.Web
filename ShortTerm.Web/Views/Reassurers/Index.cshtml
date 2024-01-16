@@ -13,16 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ClientFullname)
+                @Html.DisplayNameFor(model => model.ClientId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Manager)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContractType)
+                @Html.DisplayNameFor(model => model.ReassuranceType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ContractStartDate)
@@ -43,16 +37,11 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ClientFullname)
+                @Html.DisplayFor(modelItem => item.ClientId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Manager)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContractType)
+                 @Html.DisplayFor(modelItem => item.ReassuranceType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ContractStartDate)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShortTerm.Web.Data;
 
@@ -11,9 +12,10 @@ using ShortTerm.Web.Data;
 namespace ShortTerm.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240116062009_ReassurerEdits")]
+    partial class ReassurerEdits
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "38e9e5e8-ce0c-4187-be9a-545200d33f4f",
+                            ConcurrencyStamp = "f5f433aa-3ec9-4762-8f96-9db75590d236",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "ffa86576-b404-4e6e-bf3c-99098ecf6c85",
+                            ConcurrencyStamp = "6388521d-e6b5-4cea-8c84-6656b6e54553",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -815,29 +817,6 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("ProductPolicyRequirements");
                 });
 
-            modelBuilder.Entity("ShortTerm.Web.Data.ReassuranceType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Descriptiom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ReassuranceTypes");
-                });
-
             modelBuilder.Entity("ShortTerm.Web.Data.Reassurer", b =>
                 {
                     b.Property<int>("Id")
@@ -861,14 +840,12 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ReassuranceTypeId")
+                    b.Property<int>("ReassuranceType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
-
-                    b.HasIndex("ReassuranceTypeId");
 
                     b.ToTable("Reassurers");
                 });
@@ -1064,14 +1041,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "798d9139-9a11-4a78-a206-bcd35231263b",
+                            ConcurrencyStamp = "9f61c97e-911a-4c10-a4c0-6365ca8b5e5e",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAIiHtP+xuJmDDwMi2MBWLJ203M18vG5WdhECYFnPuDVU5wrbeY64TZKF6fEeSbQDA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDTR9hnrnJY7547IrfHGcj4e4fU7n0hAcHCWKORXtjtL8DOWsZfJuYUht6+nclefBw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "eae68398-d811-4879-9092-88a0db88ce58",
+                            SecurityStamp = "9b30f9b4-0980-4649-9896-833d06c9554c",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1082,14 +1059,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3d7a50b0-978d-4c1d-a102-dbca256f0108",
+                            ConcurrencyStamp = "35eb8ed3-89a9-4537-b00e-91b9fe1669b5",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMexc/IwJpqSzuZi8XoiqTrirZyJ4v65SMbMJFP0JZ7LNVuTXIj6LAlga7o2XTKegA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMhS2/D85Bwtex1pRAedQsZsG7SX0c5k+E6P2YTZ53q0OjoU2AFfxnrKown2qmmxCw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "768f50d0-d6cd-429d-aa08-aa8048dfeb64",
+                            SecurityStamp = "091baebc-9c34-4271-8dd2-08e82aaf8aa5",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1278,15 +1255,7 @@ namespace ShortTerm.Web.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ShortTerm.Web.Data.ReassuranceType", "ReassuranceType")
-                        .WithMany()
-                        .HasForeignKey("ReassuranceTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Client");
-
-                    b.Navigation("ReassuranceType");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Requirement", b =>
