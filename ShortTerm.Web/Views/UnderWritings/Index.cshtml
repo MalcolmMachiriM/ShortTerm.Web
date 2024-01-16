@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ShortTerm.Web.Data.UnderWriting>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Policy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClientProposedValueOfAsset)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StateOfProperty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationOfProperty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecurityOfPropertyScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimaryUseOfPropertyScore)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdditionalNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Approved)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policy.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientProposedValueOfAsset)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateOfProperty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationOfProperty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecurityOfPropertyScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryUseOfPropertyScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdditionalNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Approved)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

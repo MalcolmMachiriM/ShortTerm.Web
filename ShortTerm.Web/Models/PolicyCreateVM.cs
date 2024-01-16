@@ -7,6 +7,7 @@ namespace ShortTerm.Web.Models
 {
     public class PolicyCreateVM
     {
+        public int Id { get; set; }
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
         [Display(Name = "Application Date")]

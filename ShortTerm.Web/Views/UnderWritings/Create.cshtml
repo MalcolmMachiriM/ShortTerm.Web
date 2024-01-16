@@ -1,0 +1,78 @@
+﻿@model ShortTerm.Web.Data.UnderWriting
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>UnderWriting</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClientId" class="control-label"></label>
+                <select asp-for="ClientId" class ="form-control" asp-items="ViewBag.ClientId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicyId" class="control-label"></label>
+                <select asp-for="PolicyId" class ="form-control" asp-items="ViewBag.PolicyId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientProposedValueOfAsset" class="control-label"></label>
+                <input asp-for="ClientProposedValueOfAsset" class="form-control" />
+                <span asp-validation-for="ClientProposedValueOfAsset" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StateOfProperty" class="control-label"></label>
+                <input asp-for="StateOfProperty" class="form-control" />
+                <span asp-validation-for="StateOfProperty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationOfProperty" class="control-label"></label>
+                <input asp-for="LocationOfProperty" class="form-control" />
+                <span asp-validation-for="LocationOfProperty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SecurityOfPropertyScore" class="control-label"></label>
+                <input asp-for="SecurityOfPropertyScore" class="form-control" />
+                <span asp-validation-for="SecurityOfPropertyScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrimaryUseOfPropertyScore" class="control-label"></label>
+                <input asp-for="PrimaryUseOfPropertyScore" class="form-control" />
+                <span asp-validation-for="PrimaryUseOfPropertyScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdditionalNotes" class="control-label"></label>
+                <input asp-for="AdditionalNotes" class="form-control" />
+                <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Approved" class="control-label"></label>
+                <input asp-for="Approved" class="form-control" />
+                <span asp-validation-for="Approved" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateModified" class="control-label"></label>
+                <input asp-for="DateModified" class="form-control" />
+                <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
