@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Configurations.Entities;
+using ShortTerm.Web.Models;
 using ShortTerm.Web.Data;
 
 namespace ShortTerm.Web.Data
