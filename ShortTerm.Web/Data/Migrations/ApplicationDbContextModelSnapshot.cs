@@ -52,14 +52,22 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
+<<<<<<<<< Temporary merge branch 1
+                            ConcurrencyStamp = "90bd09be-27b3-40eb-8eea-1f68ad3cfade",
+=========
                             ConcurrencyStamp = "5a770e17-f570-4f59-8caa-41b327bc7c3e",
+>>>>>>>>> Temporary merge branch 2
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
+<<<<<<<<< Temporary merge branch 1
+                            ConcurrencyStamp = "02d6aed8-9e91-4077-be3e-24e0dd8f2c3f",
+=========
                             ConcurrencyStamp = "aec4639e-e1f5-42b1-aa29-0314252356bb",
+>>>>>>>>> Temporary merge branch 2
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -1683,7 +1691,11 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("Titles");
                 });
 
+<<<<<<<<< Temporary merge branch 1
+            modelBuilder.Entity("ShortTerm.Web.Data.Titles", b =>
+=========
             modelBuilder.Entity("ShortTerm.Web.Data.UnderWriting", b =>
+>>>>>>>>> Temporary merge branch 2
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1691,6 +1703,30 @@ namespace ShortTerm.Web.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+<<<<<<<<< Temporary merge branch 1
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Titles_1");
+
+
+            modelBuilder.Entity("ShortTerm.Web.Data.UnderwritingQuestions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+=========
                     b.Property<string>("AdditionalNotes")
                         .HasColumnType("nvarchar(max)");
 
@@ -1702,35 +1738,50 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.Property<double>("ClientProposedValueOfAsset")
                         .HasColumnType("float");
+>>>>>>>>> Temporary merge branch 2
 
-                    b.Property<DateTime>("DateCreated")
+
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
+<<<<<<<<< Temporary merge branch 1
+                    b.Property<string>("QuestionDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QuestionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UnderwritingQuestions");
+=========
                     b.Property<int>("LocationOfProperty")
                         .HasColumnType("int");
 
                     b.Property<int>("PolicyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PrimaryUseOfPropertyScore")
+
                         .HasColumnType("int");
 
                     b.Property<int>("SecurityOfPropertyScore")
                         .HasColumnType("int");
 
                     b.Property<int>("StateOfProperty")
-                        .HasColumnType("int");
+
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+
 
                     b.HasIndex("PolicyId");
 
                     b.ToTable("UnderWritings");
+>>>>>>>>> Temporary merge branch 2
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Employee", b =>
@@ -1738,7 +1789,7 @@ namespace ShortTerm.Web.Data.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
                     b.Property<DateTime>("DateJoined")
-                        .HasColumnType("datetime2");
+
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -1755,14 +1806,24 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
+<<<<<<<<< Temporary merge branch 1
+                            ConcurrencyStamp = "bff67d7a-b1a9-40e0-a686-9d2c20157385",
+=========
                             ConcurrencyStamp = "6b7c16d3-d7d2-4e94-b7e0-6a72ec073ba4",
+>>>>>>>>> Temporary merge branch 2
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
+<<<<<<<<< Temporary merge branch 1
+                            PasswordHash = "AQAAAAEAACcQAAAAEK0hSeM09EHOe/RdLrTO47y/Q8EfjkeOKHKTkEW4QwijrymSqB56idbQhmfbJmzZ7w==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "51d0394d-0fdc-409f-bb50-79009a3b3f5d",
+=========
                             PasswordHash = "AQAAAAEAACcQAAAAEOOe88ot26G74i7uZZzI8SSGYG1wi8h3RXW+3HVBzTFC2XCYYQ0WsbRN/JUjERd8kQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "94018d4f-3066-4ce5-9d16-320f69b2aaeb",
+>>>>>>>>> Temporary merge branch 2
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1773,14 +1834,24 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
+<<<<<<<<< Temporary merge branch 1
+                            ConcurrencyStamp = "343cacee-be13-4263-b9d8-688d2ca14bbc",
+=========
                             ConcurrencyStamp = "cec06f30-5109-4f53-8507-a3c200e53fd0",
+>>>>>>>>> Temporary merge branch 2
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
+<<<<<<<<< Temporary merge branch 1
+                            PasswordHash = "AQAAAAEAACcQAAAAECJ0NY1fHjototGUFSj+r5A/6VwchtnCV+Mj+70wpLLFR9BGoSJBifgP0qVmyEPOKQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "2d99a5c1-11e3-498c-afd8-d5da49c9ea5a",
+=========
                             PasswordHash = "AQAAAAEAACcQAAAAENGVxsZfojDxYmu3goNmPSHEF4NkizlJoSZelrVv1dAsUscpLcVF6pqrgZjFJgS4IA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "b86e10fe-90c3-4d7e-aea0-46ed7cc6c7f5",
+>>>>>>>>> Temporary merge branch 2
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
