@@ -25,6 +25,7 @@ namespace ShortTerm.Web.Configurations
             CreateMap<UnderWriting, UnderWritingVM>().ReverseMap();
             CreateMap<Policy, UnderWritingVM>().ReverseMap();
             CreateMap<Client, ClientDetailsVM>().ReverseMap();
+            CreateMap<Client, InstitutionalClientCreateVM>().ReverseMap();
 
         }
     }

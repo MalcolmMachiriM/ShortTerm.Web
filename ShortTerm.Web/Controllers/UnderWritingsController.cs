@@ -59,13 +59,13 @@ namespace ShortTerm.Web.Controllers
         // GET: UnderWritings/Create
         public IActionResult Create(int id=0)
         {
-            var policy = _context.Policies.Include(q => q.Client)
-                .ProjectTo<UnderWritingVM>(configurationProvider)
-                .Where(q => q.PolicyId == id);
+            //var policy = _context.Policies.Include(q => q.Client)
+            //    .ProjectTo<UnderWritingVM>(configurationProvider)
+            //    .Where(q => q.PolicyId == id);
 
             var model = new UnderWritingVM
             {
-                StateOfProps = new SelectList(_context.StateOfProperty, "Id", "Description"),
+                StateOfProps = new SelectList( _context.StateOfProperty, "Id", "Description"),
                 LocationOfProps = new SelectList(_context.LocationOfProperty, "Id", "Description"),
                 SecurityOfProps = new SelectList(_context.SecurityOfPropertyScore, "Id", "Description"),
                 PrimaryUseOfProps = new SelectList(_context.PrimaryUseOfPropertyScore, "Id", "Description")
