@@ -9,8 +9,8 @@ namespace ShortTerm.Web.Models
         public int Id { get; set; }
         public Client? Client { get; set; }
         public int ClientTypeId { get; set; }
-        public Title? Title { get; set; }
-        public int? TitleId { get; set; }
+        public Title? Titles { get; set; }
+        public int? Title { get; set; }
         public string FirstName { get; set; }
         public string? Surname { get; set; }
         public string? MiddleName { get; set; }
@@ -26,6 +26,7 @@ namespace ShortTerm.Web.Models
         public int? MaritalStatusId { get; set; }
         [Display(Name = "Country of Birth")]
         public int? CountryOfBirth { get; set; }
+        public Countries? Countries { get; set; }
 
         [Display(Name = "Country of Residence")]
         public int? CountryOfResidence { get; set; }
@@ -33,9 +34,11 @@ namespace ShortTerm.Web.Models
 
         [Display(Name = "Language")]
         public int? Language { get; set; }
+        public Language? Languages { get; set; }
 
         [Display(Name = "Religion")]
         public int? Religion { get; set; }
+        public Religion? Religions { get; set; }
 
         [Display(Name = "Income Group")]
         public int? IncomeGroupId { get; set; }

@@ -43,6 +43,10 @@ namespace ShortTerm.Web.Controllers
             var client = await _context.Clients
                 .Include(c => c.Gender)
                 .Include(c => c.MaritalStatus)
+                .Include(c => c.Languages)
+                .Include(c => c.Countries)
+                .Include(c => c.IncomeGroup)
+                .Include(c => c.HighestQualification)
                 .ProjectTo<ClientDetailsVM>(configurationProvider)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
@@ -63,11 +67,11 @@ namespace ShortTerm.Web.Controllers
                 HighestQualification = new SelectList(_context.HighestQualifications, "Id", "Qualification"),
                 MaritalStatus = new SelectList(_context.MaritalStatuses, "Id", "Status"),
                 Titles = new SelectList(_context.Titles, "Id", "Name"),
-                CountriesOfBirth = new SelectList(_context.Countries, "Id", "Description"),
-                CountriesOfResidence = new SelectList(_context.Countries, "Id", "Description"),
-                Languages = new SelectList(_context.Languages, "Id", "Name"),
-                IncomeGroups = new SelectList(_context.IncomeTypes, "Id", "Name"),
-                Religions = new SelectList(_context.Religions, "Id", "Name")
+                CountriesOfBirth = new SelectList(_context.Countries, "Id", "Name"),
+                CountriesOfResidence = new SelectList(_context.Countries, "Id", "Name"),
+                Languages = new SelectList(_context.Languages_1, "Id", "Description"),
+                IncomeGroups = new SelectList(_context.IncomeTypes, "Id", "IncomeType"),
+                Religions = new SelectList(_context.Religions_1, "Id", "Religion")
                 
             };
             return View(model);
@@ -93,11 +97,11 @@ namespace ShortTerm.Web.Controllers
             clientVM.ClientType = new SelectList(_context.ClientTypes, "Id", "Type", clientVM.ClientTypeId);
             clientVM.HighestQualification = new SelectList(_context.HighestQualifications, "Id", "Qualification", clientVM.HighestQualificationId);
             clientVM.Titles = new SelectList(_context.Titles, "Id", "Name", clientVM.TitleId);
-            clientVM.CountriesOfBirth = new SelectList(_context.Countries, "Id", "Description", clientVM.CountryOfBirth);
-            clientVM.CountriesOfResidence = new SelectList(_context.Countries, "Id", "Description", clientVM.CountryOfResidence);
+            clientVM.CountriesOfBirth = new SelectList(_context.Countries, "Id", "Name", clientVM.CountryOfBirth);
+            clientVM.CountriesOfResidence = new SelectList(_context.Countries, "Id", "Name", clientVM.CountryOfResidence);
             clientVM.Languages = new SelectList(_context.Languages, "Id", "Name", clientVM.Language);
             clientVM.Religions = new SelectList(_context.Religions, "Id", "Name", clientVM.Religion);
-            clientVM.IncomeGroups = new SelectList(_context.IncomeTypes, "Id", "Name",clientVM.IncomeGroups);
+            clientVM.IncomeGroups = new SelectList(_context.IncomeTypes, "Id", "IncomeType", clientVM.IncomeGroups);
 
             return View(clientVM);
         }

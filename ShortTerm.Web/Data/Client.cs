@@ -18,12 +18,14 @@ namespace ShortTerm.Web.Data
         [ForeignKey(name: "MaritalStatusId")]
         public MaritalStatus? MaritalStatus { get; set; }
         public int? MaritalStatusId { get; set; }
+        public Countries? Countries { get; set; }
         public int? CountryOfBirth { get; set; }
         public int? CountryOfResidence { get; set; }
-
-        public int? Language { get; set; }
-
+        public Language? Languages { get; set; }
+        public int? LanguageId { get; set; }
+        public Religion? Religions { get; set; }
         public int? Religion { get; set; }
+        public IncomeTypes? IncomeGroup { get; set; }
         public int? IncomeGroupId { get; set; }
 
         [ForeignKey(name: "HighestQualificationId")]
