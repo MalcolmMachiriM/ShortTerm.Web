@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShortTerm.Web.Data;
 
@@ -11,9 +12,10 @@ using ShortTerm.Web.Data;
 namespace ShortTerm.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240117094801_corrections")]
+    partial class corrections
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "b0b5adaf-cfb2-4da6-bf9d-ba667d047de4",
+                            ConcurrencyStamp = "cde40b2c-1e66-437c-8dda-4253c2184b21",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "1976f759-40d1-4a76-9d91-b3db5439e11b",
+                            ConcurrencyStamp = "6c231d1d-d21b-4330-ab1f-1b340983f541",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -453,11 +455,11 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<string>("ContactPersonNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CountryOfBirth")
-                        .HasColumnType("int");
+                    b.Property<string>("CountryOfBirth")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CountryOfResidence")
-                        .HasColumnType("int");
+                    b.Property<string>("CountryOfResidence")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -484,8 +486,8 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<bool?>("IsAuthorized")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("Language")
-                        .HasColumnType("int");
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("MaritalStatusId")
                         .HasColumnType("int");
@@ -499,8 +501,8 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<string>("NationalId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Religion")
-                        .HasColumnType("int");
+                    b.Property<string>("Religion")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Status")
                         .HasColumnType("int");
@@ -511,8 +513,8 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Title")
-                        .HasColumnType("int");
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -1805,14 +1807,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a28ea7ff-54c3-443a-8a68-7aa8d75433c5",
+                            ConcurrencyStamp = "811c2660-8a97-4a7a-bd2a-5972c1a30bce",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBukjM7Kz9zh44CRucHvZmuD5XlB4OSNHNdDrembI064LQGQtJI9/ps5CXUGtVilAw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFse5BjuV89E9BTblCSp+ryQ52TR9sJzPgFF9sjUaglMudCoH2zMRP/4SNC5DvnOkQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2ad6ea2b-50c4-4c58-987c-ec5678191cef",
+                            SecurityStamp = "45d0323d-04d0-4085-b352-17a952fe126a",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1823,14 +1825,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e218af8-0554-47f6-9237-78b6af0a37f6",
+                            ConcurrencyStamp = "6dfd6942-6cfd-4c7b-8e45-4338760e1b6f",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOUlCwpvpKCMjq3BwRqMBHppQ9d8Sm9QVLLesNqEc5xNfaVFGjA+XmKZUPgUh3dqFQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEObajGjXRlKJgBdmWcr5KJsjo0MT1cbRaFWzYF9Br9frqVXT9KKpVzlueIQZJE5xvA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "585bffb7-1a12-47aa-a70d-de49b56a6f3e",
+                            SecurityStamp = "7df6d79f-a8b4-42ad-a247-942d84d7d566",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

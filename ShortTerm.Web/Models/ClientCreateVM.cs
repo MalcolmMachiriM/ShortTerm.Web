@@ -34,17 +34,22 @@ namespace ShortTerm.Web.Models
         public SelectList? MaritalStatus { get; set; }
 
         [Display(Name = "Country of Birth")]
-        public string? CountryOfBirth { get; set; }
+        public int? CountryOfBirth { get; set; }
+        public SelectList? CountriesOfBirth { get; set; }
 
         [Display(Name = "Country of Residence")]
         public string? CountryOfResidence { get; set; }
+        public SelectList? CountriesOfResidence { get; set; }
 
-        public string? Language { get; set; }
+        public int? Language { get; set; }
+        public SelectList? Languages { get; set; }
 
-        public string? Religion { get; set; }
+        public int? Religion { get; set; }
+        public SelectList? Religions { get; set; }
 
         [Display(Name = "Income Group")]
         public int? IncomeGroupId { get; set; }
+        public SelectList? IncomeGroups { get; set; }
 
         [Display(Name = "Highest Qualification")]
         public int? HighestQualificationId { get; set; }

@@ -1,4 +1,4 @@
-﻿@model ShortTerm.Web.Data.Client
+﻿@model ClientDetailsVM
 
 @{
     ViewData["Title"] = "Details";
@@ -101,18 +101,6 @@
             @Html.DisplayFor(model => model.Active)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddedBy)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ContactPersonName)
         </dt>
         <dd class = "col-sm-10">
@@ -135,30 +123,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StatusValue)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StatusValue)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsAuthorized)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsAuthorized)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateModified)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateModified)
         </dd>
     </dl>
 </div>

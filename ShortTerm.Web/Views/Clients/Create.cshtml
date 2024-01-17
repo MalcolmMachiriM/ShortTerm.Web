@@ -94,8 +94,10 @@
         <br />
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="CountryOfBirth" class="control-label"></label>
-                <input asp-for="CountryOfBirth" class="form-control" />
+                    <label asp-for="CountryOfBirth" class="control-label"></label>
+                    <select asp-for="CountryOfBirth" class="form-select" asp-items="Model?.CountriesOfResidence">
+                        <option>Select Country Of Birth </option>
+                    </select>
                 <span asp-validation-for="CountryOfBirth" class="text-danger"></span>
             </div>
         </div>
@@ -104,16 +106,20 @@
         <div class="row">
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="CountryOfResidence" class="control-label"></label>
-            <input asp-for="CountryOfResidence" class="form-control" />
+                    <label asp-for="CountryOfResidence" class="control-label"></label>
+                    <select asp-for="CountryOfResidence" class="form-select" asp-items="Model?.CountriesOfResidence">
+                        <option>Select Country Of Residence </option>
+                    </select>
             <span asp-validation-for="CountryOfResidence" class="text-danger"></span>
         </div>
         </div>
         <br />
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="Language" class="control-label"></label>
-            <input asp-for="Language" class="form-control" />
+                    <label asp-for="Language" class="control-label"></label>
+                    <select asp-for="Language" class="form-select" asp-items="Model?.Languages">
+                        <option>Select Language </option>
+                    </select>
             <span asp-validation-for="Language" class="text-danger"></span>
         </div>
         </div>
@@ -122,16 +128,20 @@
         <div class="row">
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="Religion" class="control-label"></label>
-            <input asp-for="Religion" class="form-control" />
+                <label asp-for="Religion" class="control-label"></label>
+                    <select asp-for="Religion" class="form-select" asp-items="Model?.Religions">
+                        <option>Select Religion </option>
+                </select>
             <span asp-validation-for="Religion" class="text-danger"></span>
         </div>
         </div>
         <br />
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="IncomeGroupId" class="control-label"></label>
-            <input asp-for="IncomeGroupId" class="form-control" />
+                    <label asp-for="IncomeGroupId" class="control-label"></label>
+                    <select asp-for="IncomeGroupId" class="form-select" asp-items="Model?.IncomeGroups">
+                        <option>Select Income Group </option>
+                    </select>
             <span asp-validation-for="IncomeGroupId" class="text-danger"></span>
         </div>
         </div>
