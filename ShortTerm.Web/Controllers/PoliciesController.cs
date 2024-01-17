@@ -65,7 +65,7 @@ namespace ShortTerm.Web.Controllers
                 Groups = new SelectList(_context.ProductGroups, "Id", "Name"),
                 Products = new SelectList(_context.IndividualProducts, "Id", "Name"),
                 Clients = new SelectList(_context.Clients
-                                .Where(q => q.Status == 1)
+                                .Where(q => q.Status == 1 &&  q.ClientTypeId ==1)
                                 .Select(c => new { Id = c.Id, FullName = $"{c.FirstName} {c.Surname}" }),
                             "Id", "FullName"),
                 PaymentMethod = new SelectList(_context.PaymentMethods, "Id", "Method"),

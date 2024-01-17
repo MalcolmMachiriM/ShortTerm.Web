@@ -65,10 +65,10 @@ namespace ShortTerm.Web.Controllers
 
             var model = new UnderWritingVM
             {
-                StateOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
-                LocationOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
-                SecurityOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
-                PrimaryUseOfProps = new SelectList(_context.Clients, "Id", "FirstName")
+                StateOfProps = new SelectList(_context.StateOfProperty, "Id", "Description"),
+                LocationOfProps = new SelectList(_context.LocationOfProperty, "Id", "Description"),
+                SecurityOfProps = new SelectList(_context.SecurityOfPropertyScore, "Id", "Description"),
+                PrimaryUseOfProps = new SelectList(_context.PrimaryUseOfPropertyScore, "Id", "Description")
             };
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id");
             ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id");
@@ -88,10 +88,10 @@ namespace ShortTerm.Web.Controllers
                 await underwritingRepository.AddAsync(underwriting);
                 return RedirectToAction(nameof(Index),"Policies");
             }
-            model.StateOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.StateOfProperty);
-            model.LocationOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.LocationOfProperty);
-            model.SecurityOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.SecurityOfPropertyScore);
-            model.PrimaryUseOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.PrimaryUseOfPropertyScore);
+            model.StateOfProps = new SelectList(_context.StateOfProperty, "Id", "Description",model.StateOfProperty);
+            model.LocationOfProps = new SelectList(_context.LocationOfProperty, "Id", "Description", model.LocationOfProperty);
+            model.SecurityOfProps = new SelectList(_context.SecurityOfPropertyScore, "Id", "Description", model.SecurityOfPropertyScore);
+            model.PrimaryUseOfProps = new SelectList(_context.PrimaryUseOfPropertyScore, "Id", "Description", model.PrimaryUseOfPropertyScore);
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", model.ClientId);
             ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id", model.PolicyId);
             return View(model);
