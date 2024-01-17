@@ -7,5 +7,6 @@ namespace ShortTerm.Web.Contracts
     {
         public Task<List<PolicyListVM>> GetAll();
         public Task ChangeApprovalStatus(int PolicyId, bool approved);
+
     }
 }

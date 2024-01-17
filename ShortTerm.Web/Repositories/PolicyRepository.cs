@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
+using AutoMapper;
 
 namespace ShortTerm.Web.Repositories
 {
@@ -13,12 +14,14 @@ namespace ShortTerm.Web.Repositories
         private readonly ApplicationDbContext context;
         private readonly AutoMapper.IConfigurationProvider configurationProvider;
         private readonly IIndividualProductsRepository individualProductsRepository;
+        private readonly IMapper mapper;
 
-        public PolicyRepository(ApplicationDbContext context,AutoMapper.IConfigurationProvider configurationProvider,IIndividualProductsRepository individualProductsRepository) : base(context)
+        public PolicyRepository(ApplicationDbContext context,AutoMapper.IConfigurationProvider configurationProvider,IIndividualProductsRepository individualProductsRepository,IMapper mapper) : base(context)
         {
             this.context = context;
             this.configurationProvider = configurationProvider;
             this.individualProductsRepository = individualProductsRepository;
+            this.mapper = mapper;
         }
 
         public Task<List<PolicyListVM>> GetAll()
@@ -55,6 +58,6 @@ namespace ShortTerm.Web.Repositories
             
         }
 
-
+        
     }
 }

@@ -9,6 +9,7 @@ using ShortTerm.Web.Constants;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
+using ShortTerm.Web.Repositories;
 
 
 namespace ShortTerm.Web.Controllers
@@ -63,7 +64,10 @@ namespace ShortTerm.Web.Controllers
             {
                 Groups = new SelectList(_context.ProductGroups, "Id", "Name"),
                 Products = new SelectList(_context.IndividualProducts, "Id", "Name"),
-                Clients = new SelectList(_context.Clients, "Id", "FirstName"),
+                Clients = new SelectList(_context.Clients
+                                .Where(q => q.Status == 1)
+                                .Select(c => new { Id = c.Id, FullName = $"{c.FirstName} {c.Surname}" }),
+                            "Id", "FullName"),
                 PaymentMethod = new SelectList(_context.PaymentMethods, "Id", "Method"),
                 PaymentFrequency = new SelectList(_context.PaymentFrequencies, "Id", "Frequency")
 
@@ -209,6 +213,37 @@ namespace ShortTerm.Web.Controllers
             {
                 ModelState.AddModelError("", ex.Message);
             }
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Clients/UnderWriting
+        public async Task<IActionResult> UnderWriting(int policyId)
+        {
+            var model = new UnderWritingVM
+            {
+                StateOfProps = new SelectList( _context.Clients, "Id","FirstName"),
+                LocationOfProps = new SelectList( _context.Clients, "Id", "FirstName"),
+                SecurityOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
+                PrimaryUseOfProps = new SelectList(_context.Clients, "Id", "FirstName")
+            };
+
+            return View(model);
+        }
+
+        // POST: Clients/ChangeApprovalStatus/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UnderWriting(int id, int approved)
+        {
+            //try
+            //{
+            //    await clientRepository.ChangeStatus(id, approved);
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    ModelState.AddModelError("", ex.Message);
+            //}
             return RedirectToAction(nameof(Index));
         }
     }

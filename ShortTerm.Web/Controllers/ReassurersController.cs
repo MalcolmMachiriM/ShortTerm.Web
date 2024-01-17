@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Models;
 
 namespace ShortTerm.Web.Controllers
 {
     public class ReassurersController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMapper mapper;
 
-        public ReassurersController(ApplicationDbContext context)
+        public ReassurersController(ApplicationDbContext context,IMapper mapper)
         {
             _context = context;
+            this.mapper = mapper;
         }
 
         // GET: Reassurers
@@ -55,15 +59,15 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientFullname,Code,Manager,ContractType,ContractStartDate,ContractEndDate,Id,DateCreated,DateModified")] Reassurer reassurer)
+        public async Task<IActionResult> Create(ReasurerCreateVM model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reassurer);
+                _context.Add(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(reassurer);
+            return View(model);
         }
 
         // GET: Reassurers/Edit/5
