@@ -1,62 +1,54 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace ShortTerm.Web.Data.Migrations
 {
-    public partial class SYstemVariables : Migration
+    public partial class PolicyTableUpdates : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "TimeGroups",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModified = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TimeGroups", x => x.Id);
-                });
+            migrationBuilder.AddColumn<bool>(
+                name: "Approved",
+                table: "Policies",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "73ad90b0-1234-7896-9587-283f579e4764",
                 column: "ConcurrencyStamp",
-                value: "f120615f-bbcd-4c06-83c4-d030c2bbe7cc");
+                value: "eaf3fb5d-8d77-446f-a462-2bf4fb6325df");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "73ad90b0-1728-44eb-1995-283f579e4764",
                 column: "ConcurrencyStamp",
-                value: "278ccea0-a7ef-46e4-b75b-921d8bc218a3");
+                value: "14b2792c-9db7-4d80-bc37-62ee82b0b1c3");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "73ad90b0-4238-44eb-9587-283f579e4764",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "9c26e360-e655-4633-b9d5-ec1ae8d2ecd0", "AQAAAAEAACcQAAAAEP56Cph5q+CEAMO3qU2SehPducKFNCvVdkAVX/VOyt95qMvQwuNpSDgmWUJ79yL1cQ==", "f2017e4f-5729-47dc-b018-c8a8bf6c12b7" });
+                values: new object[] { "a3765c4b-10dc-41d4-9c9d-c77e1ed0863a", "AQAAAAEAACcQAAAAEAG4dXel+vP4Z6HasUkw13fsiEJj2NSsYCo7yDTfK+IU/d+dnle68lq9BBFIfrZyBg==", "602e2853-ee99-4c07-9e0c-be65e392c7f1" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "e18dc662-c956-45fc-a834-63128024ce27",
                 columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "f221ce71-0220-422f-8715-5ae2386d60cc", "AQAAAAEAACcQAAAAEELpQwjovRwRoVKDHBNEaeS2qykYG6yAK8/XJiPkk9z+2n0Qfxgu2KcWwvomDQg/3g==", "445e90c6-72fa-48e1-8cac-40011556b49e" });
+                values: new object[] { "f390ef15-f317-4c11-aa2b-6bcd2e67f79f", "AQAAAAEAACcQAAAAELgvoviWORZBj/y7bJq6C+6dx+yGn4aKrE/lo9eMgvIczDf8L7Xw513gzdiwSV5lKw==", "633dd05c-2621-41a6-9621-9f8353b468b4" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "TimeGroups");
+            migrationBuilder.DropColumn(
+                name: "Approved",
+                table: "Policies");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",

@@ -14,14 +14,6 @@
         <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="RegNo" class="control-label"></label>
-                <input asp-for="RegNo" class="form-control" />
-                <span asp-validation-for="RegNo" class="text-danger"></span>
-            </div>
-        </div>
-        <br />
-        <div class="col-md-6">
-            <div class="form-group">
                 <label asp-for="ClientTypeId" class="control-label"></label>
                 <select asp-for="ClientTypeId" class="form-select" asp-items="Model?.ClientType" asp-dropdown>
                     <option>Select Client Type</option>

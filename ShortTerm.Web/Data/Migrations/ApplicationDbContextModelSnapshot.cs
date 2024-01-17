@@ -52,14 +52,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "278ccea0-a7ef-46e4-b75b-921d8bc218a3",
+                            ConcurrencyStamp = "90bd09be-27b3-40eb-8eea-1f68ad3cfade",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "f120615f-bbcd-4c06-83c4-d030c2bbe7cc",
+                            ConcurrencyStamp = "02d6aed8-9e91-4077-be3e-24e0dd8f2c3f",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -258,6 +258,139 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.AccountTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AccountTypes");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.AddressTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AddressTypes");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Banks", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BankName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NumberOfBranches")
+                        .HasColumnType("int");
+
+                    b.Property<int>("accountNumberLength")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Banks");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.BusinessDecisions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BusinessDecisions");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Cities", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.Claim", b =>
                 {
                     b.Property<int>("Id")
@@ -305,21 +438,19 @@ namespace ShortTerm.Web.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("Active")
+                    b.Property<bool?>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("AddedBy")
+                    b.Property<int?>("AddedBy")
                         .HasColumnType("int");
 
                     b.Property<int>("ClientTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("ContactPersonName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactPersonNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CountryOfBirth")
@@ -341,47 +472,43 @@ namespace ShortTerm.Web.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GenderId")
+                    b.Property<int?>("GenderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("HighestQualificationId")
+                    b.Property<int?>("HighestQualificationId")
                         .HasColumnType("int");
 
                     b.Property<int?>("IncomeGroupId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsAuthorized")
+                    b.Property<bool?>("IsAuthorized")
                         .HasColumnType("bit");
 
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MaritalStatusId")
+                    b.Property<int?>("MaritalStatusId")
                         .HasColumnType("int");
 
                     b.Property<string>("MiddleName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ModifiedBy")
+                    b.Property<int?>("ModifiedBy")
                         .HasColumnType("int");
 
                     b.Property<string>("NationalId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RegNo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Religion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Status")
+                    b.Property<int?>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("StatusValue")
+                    b.Property<int?>("StatusValue")
                         .HasColumnType("int");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
@@ -415,6 +542,63 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("ClientTypes");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.Countries", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Currencies", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Rate")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Currencies");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.Gender", b =>
                 {
                     b.Property<int>("Id")
@@ -438,6 +622,29 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("Genders");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.HabitsAndInterests", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HabitOrInterest")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HabitsAndInterests");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.HighestQualification", b =>
                 {
                     b.Property<int>("Id")
@@ -453,6 +660,85 @@ namespace ShortTerm.Web.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("HighestQualifications");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.HumanDemographicGroups", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HumanDemographicGroups");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.IdentificationTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Format")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentificationTypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MaximumRequiredLength")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MinimunRequiredLength")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IdentificationTypes");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.IncomeTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IncomeType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IncomeTypes");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.IndividualProduct", b =>
@@ -514,6 +800,75 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("IndividualProducts");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.InstitutionTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InstitutionTypes");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.InterestRateFrequencies", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InterestRateFrequencies");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.InterestRateTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("InterestRateTypes");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.Language", b =>
                 {
                     b.Property<int>("Id")
@@ -537,6 +892,29 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("Languages");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.Languages", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages_1");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.MaritalStatus", b =>
                 {
                     b.Property<int>("Id")
@@ -552,6 +930,59 @@ namespace ShortTerm.Web.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MaritalStatuses");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.MedicalRequirements", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Tariff")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MedicalRequirements");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Occupations", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Occupations");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.PaymentFrequency", b =>
@@ -614,6 +1045,41 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("PaymentMethods");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.PaymentMethods", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("BankDetailsRequired")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Method")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNumRequired")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaymentMethods_1");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.Policy", b =>
                 {
                     b.Property<int>("Id")
@@ -631,6 +1097,12 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<DateTime>("ApplicationDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool?>("Approved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("BenefitTerm")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
@@ -646,25 +1118,25 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IndividualProductId")
+                        .HasColumnType("int");
+
                     b.Property<string>("NationalID")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PaymentFrequencyId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PaymentMethodId")
+                        .HasColumnType("int");
+
                     b.Property<double>("Premium")
-                        .HasColumnType("float");
-
-                    b.Property<double>("PremiumPaymentFrequency")
-                        .HasColumnType("float");
-
-                    b.Property<double>("PremiumPaymentMethod")
                         .HasColumnType("float");
 
                     b.Property<int>("PremiumTerm")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductGroupId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<double>("SumAssured")
@@ -675,9 +1147,40 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("IndividualProductId");
+
+                    b.HasIndex("PaymentFrequencyId");
+
+                    b.HasIndex("PaymentMethodId");
+
                     b.HasIndex("ProductGroupId");
 
                     b.ToTable("Policies");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.PremiumPaymentFrequencies", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PremiumPaymentFrequencies");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.ProductGroup", b =>
@@ -807,6 +1310,52 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("ProductPolicyRequirements");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.Qualifications", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("QualificationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Qualifications");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.ReassuranceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descriptiom")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ReassuranceTypes");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.Reassurer", b =>
                 {
                     b.Property<int>("Id")
@@ -815,23 +1364,14 @@ namespace ShortTerm.Web.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("ClientFullname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ContractEndDate")
+                    b.Property<DateTime?>("ContractEndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ContractStartDate")
+                    b.Property<DateTime?>("ContractStartDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ContractType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -839,13 +1379,39 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Manager")
+                    b.Property<int>("ReassuranceTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("ReassuranceTypeId");
+
+                    b.ToTable("Reassurers");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.RelationshipTypes", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Reassurers");
+                    b.ToTable("RelationshipTypes");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Religion", b =>
@@ -863,6 +1429,29 @@ namespace ShortTerm.Web.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Religions");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Religions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Religion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Religions_1");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Requirement", b =>
@@ -896,6 +1485,29 @@ namespace ShortTerm.Web.Data.Migrations
                     b.HasIndex("RequirementTypeID");
 
                     b.ToTable("Requirements");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Requirements", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Requirements_1");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.RequirementType", b =>
@@ -978,6 +1590,37 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("Schemes");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.StopOrderName", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmployeeNum")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmployerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StopOrderName");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.SumAssuredBasis", b =>
                 {
                     b.Property<int>("Id")
@@ -1000,7 +1643,7 @@ namespace ShortTerm.Web.Data.Migrations
                     b.ToTable("SumAssuredBasis");
                 });
 
-            modelBuilder.Entity("ShortTerm.Web.Data.SystemVariables.TimeGroup", b =>
+            modelBuilder.Entity("ShortTerm.Web.Data.Timegroups", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1020,7 +1663,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TimeGroups");
+                    b.ToTable("Timegroups");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Title", b =>
@@ -1038,6 +1681,56 @@ namespace ShortTerm.Web.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Titles");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Titles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Titles_1");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.UnderwritingQuestions", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("QuestionDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QuestionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UnderwritingQuestions");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Employee", b =>
@@ -1062,14 +1755,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f221ce71-0220-422f-8715-5ae2386d60cc",
+                            ConcurrencyStamp = "bff67d7a-b1a9-40e0-a686-9d2c20157385",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEELpQwjovRwRoVKDHBNEaeS2qykYG6yAK8/XJiPkk9z+2n0Qfxgu2KcWwvomDQg/3g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK0hSeM09EHOe/RdLrTO47y/Q8EfjkeOKHKTkEW4QwijrymSqB56idbQhmfbJmzZ7w==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "445e90c6-72fa-48e1-8cac-40011556b49e",
+                            SecurityStamp = "51d0394d-0fdc-409f-bb50-79009a3b3f5d",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1080,14 +1773,14 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9c26e360-e655-4633-b9d5-ec1ae8d2ecd0",
+                            ConcurrencyStamp = "343cacee-be13-4263-b9d8-688d2ca14bbc",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP56Cph5q+CEAMO3qU2SehPducKFNCvVdkAVX/VOyt95qMvQwuNpSDgmWUJ79yL1cQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECJ0NY1fHjototGUFSj+r5A/6VwchtnCV+Mj+70wpLLFR9BGoSJBifgP0qVmyEPOKQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f2017e4f-5729-47dc-b018-c8a8bf6c12b7",
+                            SecurityStamp = "2d99a5c1-11e3-498c-afd8-d5da49c9ea5a",
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1162,21 +1855,15 @@ namespace ShortTerm.Web.Data.Migrations
                 {
                     b.HasOne("ShortTerm.Web.Data.Gender", "Gender")
                         .WithMany()
-                        .HasForeignKey("GenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GenderId");
 
                     b.HasOne("ShortTerm.Web.Data.HighestQualification", "HighestQualification")
                         .WithMany()
-                        .HasForeignKey("HighestQualificationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("HighestQualificationId");
 
                     b.HasOne("ShortTerm.Web.Data.MaritalStatus", "MaritalStatus")
                         .WithMany()
-                        .HasForeignKey("MaritalStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MaritalStatusId");
 
                     b.Navigation("Gender");
 
@@ -1198,9 +1885,27 @@ namespace ShortTerm.Web.Data.Migrations
 
             modelBuilder.Entity("ShortTerm.Web.Data.Policy", b =>
                 {
-                    b.HasOne("ShortTerm.Web.Data.IndividualProduct", "Product")
+                    b.HasOne("ShortTerm.Web.Data.Client", "Client")
                         .WithMany()
-                        .HasForeignKey("ProductGroupId")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShortTerm.Web.Data.IndividualProduct", "IndividualProduct")
+                        .WithMany()
+                        .HasForeignKey("IndividualProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShortTerm.Web.Data.PaymentFrequency", "PaymentFrequency")
+                        .WithMany()
+                        .HasForeignKey("PaymentFrequencyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShortTerm.Web.Data.PaymentMethod", "PaymentMethod")
+                        .WithMany()
+                        .HasForeignKey("PaymentMethodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1210,7 +1915,13 @@ namespace ShortTerm.Web.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Product");
+                    b.Navigation("Client");
+
+                    b.Navigation("IndividualProduct");
+
+                    b.Navigation("PaymentFrequency");
+
+                    b.Navigation("PaymentMethod");
 
                     b.Navigation("ProductGroup");
                 });
@@ -1248,6 +1959,25 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Navigation("IndividualProduct");
 
                     b.Navigation("Requirement");
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.Reassurer", b =>
+                {
+                    b.HasOne("ShortTerm.Web.Data.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShortTerm.Web.Data.ReassuranceType", "ReassuranceType")
+                        .WithMany()
+                        .HasForeignKey("ReassuranceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("ReassuranceType");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Requirement", b =>

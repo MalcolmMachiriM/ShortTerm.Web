@@ -1,4 +1,5 @@
-﻿using ShortTerm.Web.Data;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using ShortTerm.Web.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,18 +18,31 @@ namespace ShortTerm.Web.Models
         public int Product { get; set; }
 
         [Display(Name = "Client Name")]
-        public int FirstName { get; set; }
-        public int Surname { get; set; }
+        public Client? Client { get; set; }
+        public string? FirstName { get; set; }
+        public string? Surname { get; set; }
+
+        [Display(Name = "Premium Term")]
         public int PremiumTerm { get; set; }
 
         [Display(Name = "Sum Assured")]
+        [DataType(DataType.Currency)]
         public double SumAssured { get; set; }
+
+        [DataType(DataType.Currency)]
         public double Premium { get; set; }
 
         [Display(Name = "Payment Method")]
-        public double PremiumPaymentMethod { get; set; }
+        public int PremiumPaymentMethod { get; set; }
+        public PaymentMethod? PaymentMethod { get; set; }
 
         [Display(Name = "Payment Frequency")]
-        public double PremiumPaymentFrequency { get; set; }
+        public int PremiumPaymentFrequency { get; set; }
+        public PaymentFrequency? PaymentFrequency { get; set; }
+
+        public IndividualProduct? IndividualProduct { get; set; }
+        [Display(Name = "Individual Product")]
+        public int IndividualProductId { get; set; }
+        public bool? Approved { get; set; }
     }
 }

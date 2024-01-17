@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using ShortTerm.Web.Constants;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
@@ -25,8 +29,8 @@ namespace ShortTerm.Web.Controllers
         // GET: Policies
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = mapper.Map<List<PolicyListVM>>(await _context.Policies.Include(p => p.ProductGroup).ToListAsync());
-            return View(applicationDbContext);
+            var model = await policyRepository.GetAll();
+            return View(model);
         }
 
         // GET: Policies/Details/5
@@ -39,6 +43,10 @@ namespace ShortTerm.Web.Controllers
 
             var policy = await _context.Policies
                 .Include(p => p.ProductGroup)
+                .Include(p => p.IndividualProduct)
+                .Include(p => p.Client)
+                .Include(p => p.PaymentMethod)
+                .Include(p => p.PaymentFrequency)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (policy == null)
             {
@@ -186,6 +194,22 @@ namespace ShortTerm.Web.Controllers
                 DateOfBirth = client.DateOfBirth.ToString(),
                 NationalID = client.NationalId
             });
+        }
+
+        [Authorize(Roles = Roles.Administrator)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ApprovePolicy(int id, bool approved)
+        {
+            try
+            {
+                await policyRepository.ChangeApprovalStatus(id, approved);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

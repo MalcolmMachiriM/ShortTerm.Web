@@ -13,16 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ClientFullname)
+                @Html.DisplayNameFor(model => model.ClientId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Code)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Manager)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContractType)
+                @Html.DisplayNameFor(model => model.ReassuranceType)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ContractStartDate)
@@ -43,16 +37,11 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ClientFullname)
+                @Html.DisplayFor(modelItem => item.ClientId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Code)
-            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Manager)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContractType)
+                 @Html.DisplayFor(modelItem => item.ReassuranceType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ContractStartDate)
@@ -68,10 +57,13 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn mt-1" type="button"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<form id="deleteForm" asp-action="Delete">
+    <input type="hidden" id="schemeId" name="Id" />
+</form>
