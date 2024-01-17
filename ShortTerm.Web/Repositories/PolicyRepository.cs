@@ -58,14 +58,6 @@ namespace ShortTerm.Web.Repositories
             
         }
 
-        public Task<UnderWritingVM> GetPolicyDetails(int Id)
-        {
-            //var policy = context.Policies
-            //    .Include (q => q.Client)
-            //    .Where(q => q.Id == Id)
-            //    .ProjectTo<UnderWritingVM>(configurationProvider);
-
-            return null; ;
-        }
+        
     }
 }

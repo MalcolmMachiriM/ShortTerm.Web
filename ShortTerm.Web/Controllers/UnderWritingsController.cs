@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
 
@@ -13,10 +17,16 @@ namespace ShortTerm.Web.Controllers
     public class UnderWritingsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly AutoMapper.IConfigurationProvider configurationProvider;
+        private readonly IMapper mapper;
+        private readonly IUnderwritingRepository underwritingRepository;
 
-        public UnderWritingsController(ApplicationDbContext context)
+        public UnderWritingsController(ApplicationDbContext context, AutoMapper.IConfigurationProvider configurationProvider, IMapper mapper, IUnderwritingRepository underwritingRepository)
         {
             _context = context;
+            this.configurationProvider = configurationProvider;
+            this.mapper = mapper;
+            this.underwritingRepository = underwritingRepository;
         }
 
         // GET: UnderWritings
@@ -49,6 +59,10 @@ namespace ShortTerm.Web.Controllers
         // GET: UnderWritings/Create
         public IActionResult Create(int id=0)
         {
+            var policy = _context.Policies.Include(q => q.Client)
+                .ProjectTo<UnderWritingVM>(configurationProvider)
+                .Where(q => q.PolicyId == id);
+
             var model = new UnderWritingVM
             {
                 StateOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
@@ -58,7 +72,7 @@ namespace ShortTerm.Web.Controllers
             };
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id");
             ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id");
-            return View();
+            return View(model);
         }
 
         // POST: UnderWritings/Create
@@ -66,17 +80,21 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClientId,PolicyId,ClientProposedValueOfAsset,StateOfProperty,LocationOfProperty,SecurityOfPropertyScore,PrimaryUseOfPropertyScore,AdditionalNotes,Approved,Id,DateCreated,DateModified")] UnderWriting underWriting)
+        public async Task<IActionResult> Create(UnderWritingVM model)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(underWriting);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var underwriting = mapper.Map<UnderWriting>(model);
+                await underwritingRepository.AddAsync(underwriting);
+                return RedirectToAction(nameof(Index),"Policies");
             }
-            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", underWriting.ClientId);
-            ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id", underWriting.PolicyId);
-            return View(underWriting);
+            model.StateOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.StateOfProperty);
+            model.LocationOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.LocationOfProperty);
+            model.SecurityOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.SecurityOfPropertyScore);
+            model.PrimaryUseOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.PrimaryUseOfPropertyScore);
+            ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", model.ClientId);
+            ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id", model.PolicyId);
+            return View(model);
         }
 
         // GET: UnderWritings/Edit/5
