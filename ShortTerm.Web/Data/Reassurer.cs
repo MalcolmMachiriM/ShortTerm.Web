@@ -4,13 +4,9 @@ namespace ShortTerm.Web.Data
 {
     public class Reassurer : BaseEntity
     {
-        [ForeignKey("ClientId")]
-        public Client? Client { get; set; }
-        public int ClientId { get; set; }
-        [ForeignKey("ReassuranceTypeId")]
-        public ReassuranceType? ReassuranceType { get; set; }
-        public int ReassuranceTypeId  { get; set; }
-        public DateTime? ContractStartDate { get; set; }
-        public DateTime? ContractEndDate { get; set; }
+        public string Name { get; set; }
+        public string ContactPerson { get; set; }
+        public string ContactDetails { get; set; }
+        public string Email { get; set; }
     }
 }
