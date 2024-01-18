@@ -187,7 +187,7 @@
             <a class="sl-menu-link active" asp-area="" asp-controller="Home" asp-action="Index">
                 <div class="sl-menu-item">
                     <i class="menu-item-icon icon ion-ios-home-outline tx-22"></i>
-                    <span class="menu-item-label">Dashboard</span>
+                    <span class="menu-item-label">Home</span>
                 </div><!-- menu-item -->
             </a><!-- sl-menu-link -->
             @if (SignInManager.IsSignedIn(User)){
@@ -290,6 +290,7 @@
             <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href="#"><i class="icon ion-navicon-round"></i></a></div>
         </div><!-- sl-header-left -->
         <div class="">
+            @if (SignInManager.IsSignedIn(User)){
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>
                     @* <li><a href="index.html" class="active">Home</a></li> *@
@@ -336,6 +337,7 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
+            }
         </div>
         <div class="sl-header-right">
 

@@ -1,13 +1,13 @@
-﻿@model IEnumerable<ShortTerm.Web.Data.UnderWriting>
+﻿@model IEnumerable<UnderwritingListVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Underwriting Enquiries";
 }
 
-<h1>Index</h1>
+<h1>Policy Underwriting Enquiries</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -39,12 +39,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Approved)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateModified)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -52,7 +46,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Client.Id)
+                @Html.DisplayFor(modelItem => item.Client.FirstName) @Html.DisplayFor(modelItem => item.Client.Surname)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Policy.Id)
@@ -61,35 +55,44 @@
                 @Html.DisplayFor(modelItem => item.ClientProposedValueOfAsset)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StateOfProperty)
+                @Html.DisplayFor(modelItem => item.StateOfProperty.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LocationOfProperty)
+                @Html.DisplayFor(modelItem => item.LocationOfProperty.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SecurityOfPropertyScore)
+                @Html.DisplayFor(modelItem => item.SecurityOfPropertyScore.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrimaryUseOfPropertyScore)
+                @Html.DisplayFor(modelItem => item.PrimaryUseOfPropertyScore.Description)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AdditionalNotes)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Approved)
+                @if (item.Approved == null)
+                {
+                    <span class="badge bg-warning"> Awaiting Approval </span>
+                }
+                else if (item.Approved == true)
+                {
+                    <span class="badge bg-success"> Approved </span>
+                }
+                else if (item.Approved == false)
+                {
+                    <span class="badge bg-danger"> Rejected </span>
+                }
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateModified)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" class="btn btn-outline-info" asp-route-id="@item.Id"><i class="fa fa-info-circle"> </i></a>
+                <button class="btn btn-outline-danger mt-1 btnDelete" data-id="@item.Id" type="button"><i class="fa fa-trash"> </i></button>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<form id="deleteForm" asp-action="Delete">
+    <input type="hidden" id="schemeId" name="Id" />
+</form>
