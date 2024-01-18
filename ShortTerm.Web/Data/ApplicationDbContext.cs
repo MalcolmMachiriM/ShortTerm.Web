@@ -5,6 +5,7 @@ using ShortTerm.Web.Configurations.Entities;
 using ShortTerm.Web.Models;
 
 using ShortTerm.Web.Data;
+using ShortTerm.Web.Data.SystemVariables;
 
 namespace ShortTerm.Web.Data
 {
@@ -61,33 +62,37 @@ namespace ShortTerm.Web.Data
 
         public DbSet<UnderWriting> UnderWritings { get; set; }
 
-        public DbSet<ShortTerm.Web.Data.Timegroups>? Timegroups { get; set; }
-        public DbSet<ShortTerm.Web.Data.InstitutionTypes>? InstitutionTypes { get; set; }
-        public DbSet<ShortTerm.Web.Data.HumanDemographicGroups>? HumanDemographicGroups { get; set; }
-        public DbSet<ShortTerm.Web.Data.PremiumPaymentFrequencies>? PremiumPaymentFrequencies { get; set; }
-        public DbSet<ShortTerm.Web.Data.BusinessDecisions>? BusinessDecisions { get; set; }
-        public DbSet<ShortTerm.Web.Data.RelationshipTypes>? RelationshipTypes { get; set; }
-        public DbSet<ShortTerm.Web.Data.Requirements>? Requirements_1 { get; set; }
-        public DbSet<ShortTerm.Web.Data.PaymentMethods>? PaymentMethods_1 { get; set; }
-        public DbSet<ShortTerm.Web.Data.InterestRateTypes>? InterestRateTypes { get; set; }
-        public DbSet<ShortTerm.Web.Data.InterestRateFrequencies>? InterestRateFrequencies { get; set; }
-        public DbSet<ShortTerm.Web.Data.Banks>? Banks { get; set; }
-        public DbSet<ShortTerm.Web.Data.StopOrderName>? StopOrderName { get; set; }
-        public DbSet<ShortTerm.Web.Data.Countries>? Countries { get; set; }
-        public DbSet<ShortTerm.Web.Data.Cities>? Cities { get; set; }
-        public DbSet<ShortTerm.Web.Data.IdentificationTypes>? IdentificationTypes { get; set; }
-        public DbSet<ShortTerm.Web.Data.Languages>? Languages_1 { get; set; }
-        public DbSet<ShortTerm.Web.Data.MedicalRequirements>? MedicalRequirements { get; set; }
-        public DbSet<ShortTerm.Web.Data.HabitsAndInterests>? HabitsAndInterests { get; set; }
-        public DbSet<ShortTerm.Web.Data.Currencies>? Currencies { get; set; }
-        public DbSet<ShortTerm.Web.Data.Occupations>? Occupations { get; set; }
-        public DbSet<ShortTerm.Web.Data.AddressTypes>? AddressTypes { get; set; }
-        public DbSet<ShortTerm.Web.Data.Titles>? Titles_1 { get; set; }
-        public DbSet<ShortTerm.Web.Data.IncomeTypes>? IncomeTypes { get; set; }
-        public DbSet<ShortTerm.Web.Data.Qualifications>? Qualifications { get; set; }
-        public DbSet<ShortTerm.Web.Data.Religions>? Religions_1 { get; set; }
-        public DbSet<ShortTerm.Web.Data.AccountTypes>? AccountTypes { get; set; }
-        public DbSet<ShortTerm.Web.Data.UnderwritingQuestions>? UnderwritingQuestions { get; set; }
+        public DbSet<Timegroups>? Timegroups { get; set; }
+        public DbSet<InstitutionTypes>? InstitutionTypes { get; set; }
+        public DbSet<HumanDemographicGroups>? HumanDemographicGroups { get; set; }
+        public DbSet<PremiumPaymentFrequencies>? PremiumPaymentFrequencies { get; set; }
+        public DbSet<BusinessDecisions>? BusinessDecisions { get; set; }
+        public DbSet<RelationshipTypes>? RelationshipTypes { get; set; }
+        public DbSet<Requirements>? Requirements_1 { get; set; }
+        public DbSet<PaymentMethods>? PaymentMethods_1 { get; set; }
+        public DbSet<InterestRateTypes>? InterestRateTypes { get; set; }
+        public DbSet<InterestRateFrequencies>? InterestRateFrequencies { get; set; }
+        public DbSet<Banks>? Banks { get; set; }
+        public DbSet<StopOrderName>? StopOrderName { get; set; }
+        public DbSet<Countries>? Countries { get; set; }
+        public DbSet<Cities>? Cities { get; set; }
+        public DbSet<IdentificationTypes>? IdentificationTypes { get; set; }
+        public DbSet<Languages>? Languages_1 { get; set; }
+        public DbSet<MedicalRequirements>? MedicalRequirements { get; set; }
+        public DbSet<HabitsAndInterests>? HabitsAndInterests { get; set; }
+        public DbSet<Currencies>? Currencies { get; set; }
+        public DbSet<Occupations>? Occupations { get; set; }
+        public DbSet<AddressTypes>? AddressTypes { get; set; }
+        public DbSet<Titles>? Titles_1 { get; set; }
+        public DbSet<IncomeTypes>? IncomeTypes { get; set; }
+        public DbSet<Qualifications>? Qualifications { get; set; }
+        public DbSet<Religions>? Religions_1 { get; set; }
+        public DbSet<AccountTypes>? AccountTypes { get; set; }
+        public DbSet<UnderwritingQuestions>? UnderwritingQuestions { get; set; }
+        public DbSet<StateOfProperty>? StateOfProperty { get; set; }
+        public DbSet<LocationOfProperty>? LocationOfProperty { get; set; }
+        public DbSet<SecurityOfPropertyScore>? SecurityOfPropertyScore { get; set; }
+        public DbSet<PrimaryUseOfPropertyScore>? PrimaryUseOfPropertyScore { get; set; }
 
     }
 }

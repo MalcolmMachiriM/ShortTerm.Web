@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +15,14 @@ namespace ShortTerm.Web.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMapper mapper;
         private readonly IClientRepository clientRepository;
+        private readonly AutoMapper.IConfigurationProvider configurationProvider;
 
-        public ClientsController(ApplicationDbContext context, IMapper mapper, IClientRepository clientRepository)
+        public ClientsController(ApplicationDbContext context, IMapper mapper, IClientRepository clientRepository,AutoMapper.IConfigurationProvider configurationProvider)
         {
             _context = context;
             this.mapper = mapper;
             this.clientRepository = clientRepository;
+            this.configurationProvider = configurationProvider;
         }
 
         // GET: Clients
@@ -40,6 +43,11 @@ namespace ShortTerm.Web.Controllers
             var client = await _context.Clients
                 .Include(c => c.Gender)
                 .Include(c => c.MaritalStatus)
+                .Include(c => c.Languages)
+                .Include(c => c.Countries)
+                .Include(c => c.IncomeGroup)
+                .Include(c => c.HighestQualification)
+                .ProjectTo<ClientDetailsVM>(configurationProvider)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (client == null)
             {
@@ -58,7 +66,13 @@ namespace ShortTerm.Web.Controllers
                 ClientType = new SelectList(_context.ClientTypes, "Id", "Type"),
                 HighestQualification = new SelectList(_context.HighestQualifications, "Id", "Qualification"),
                 MaritalStatus = new SelectList(_context.MaritalStatuses, "Id", "Status"),
-                Titles = new SelectList(_context.Titles, "Id", "Name")
+                Titles = new SelectList(_context.Titles, "Id", "Name"),
+                CountriesOfBirth = new SelectList(_context.Countries, "Id", "Name"),
+                CountriesOfResidence = new SelectList(_context.Countries, "Id", "Name"),
+                Languages = new SelectList(_context.Languages_1, "Id", "Description"),
+                IncomeGroups = new SelectList(_context.IncomeTypes, "Id", "IncomeType"),
+                Religions = new SelectList(_context.Religions_1, "Id", "Religion")
+                
             };
             return View(model);
         }
@@ -83,6 +97,11 @@ namespace ShortTerm.Web.Controllers
             clientVM.ClientType = new SelectList(_context.ClientTypes, "Id", "Type", clientVM.ClientTypeId);
             clientVM.HighestQualification = new SelectList(_context.HighestQualifications, "Id", "Qualification", clientVM.HighestQualificationId);
             clientVM.Titles = new SelectList(_context.Titles, "Id", "Name", clientVM.TitleId);
+            clientVM.CountriesOfBirth = new SelectList(_context.Countries, "Id", "Name", clientVM.CountryOfBirth);
+            clientVM.CountriesOfResidence = new SelectList(_context.Countries, "Id", "Name", clientVM.CountryOfResidence);
+            clientVM.Languages = new SelectList(_context.Languages, "Id", "Name", clientVM.Language);
+            clientVM.Religions = new SelectList(_context.Religions, "Id", "Name", clientVM.Religion);
+            clientVM.IncomeGroups = new SelectList(_context.IncomeTypes, "Id", "IncomeType", clientVM.IncomeGroups);
 
             return View(clientVM);
         }

@@ -20,6 +20,19 @@ namespace ShortTerm.Web.Repositories
             this.mapper = mapper;
         }
 
+        public Task<List<UnderwritingListVM>> GetAll()
+        {
+            var model = context.UnderWritings.Include(q=>q.Policy)
+                .Include(q=>q.Client)
+                .Include(q=>q.StateOfProperty)
+                .Include(q=>q.LocationOfProperty)
+                .Include(q=>q.SecurityOfPropertyScore)
+                .Include(q=>q.PrimaryUseOfPropertyScore)
+                .ProjectTo<UnderwritingListVM>(configurationProvider)
+                .ToListAsync();
+            return model;
+        }
+
         public  Task<UnderWritingVM> GetDetails(int id)
         {
             var policy =  context.Policies.Include(q=>q.Client)

@@ -24,7 +24,10 @@ namespace ShortTerm.Web.Configurations
             CreateMap<Reassurer, ReasurerCreateVM>().ReverseMap();
             CreateMap<UnderWriting, UnderWritingVM>().ReverseMap();
             CreateMap<Policy, UnderWritingVM>().ReverseMap();
-            
+            CreateMap<Client, ClientDetailsVM>().ReverseMap();
+            CreateMap<Client, InstitutionalClientCreateVM>().ReverseMap();
+            CreateMap<UnderWriting, UnderwritingListVM>().ReverseMap();
+
         }
     }
 }

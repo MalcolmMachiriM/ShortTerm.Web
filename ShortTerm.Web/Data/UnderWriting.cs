@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using ShortTerm.Web.Data.SystemVariables;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShortTerm.Web.Data
 {
@@ -12,10 +13,14 @@ namespace ShortTerm.Web.Data
         public Policy? Policy { get; set; }
         public int PolicyId { get; set; }
         public double ClientProposedValueOfAsset { get; set; }
-        public int StateOfProperty { get; set; }
-        public int LocationOfProperty { get; set; }
-        public int SecurityOfPropertyScore { get; set; }
-        public int PrimaryUseOfPropertyScore { get; set; }
+        public StateOfProperty? StateOfProperty { get; set; }
+        public int StateOfPropertyId { get; set; }
+        public LocationOfProperty? LocationOfProperty { get; set; }
+        public int LocationOfPropertyId { get; set; }
+        public SecurityOfPropertyScore? SecurityOfPropertyScore { get; set; }
+        public int SecurityOfPropertyScoreId { get; set; }
+        public PrimaryUseOfPropertyScore? PrimaryUseOfPropertyScore { get; set; }
+        public int PrimaryUseOfPropertyScoreId { get; set; }
         public string? AdditionalNotes { get; set; }
         public bool? Approved { get; set; }
     }

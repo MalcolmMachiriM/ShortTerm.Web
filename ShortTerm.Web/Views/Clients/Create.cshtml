@@ -2,12 +2,13 @@
 
 @{
     ViewData["Title"] = "Create Client";
+  
 }
 
 <h1>Create Client</h1>
 
 <hr />
-<div class="row">
+<div class="row" id="IndividualClient">
     
     <form asp-action="Create">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -15,7 +16,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label asp-for="ClientTypeId" class="control-label"></label>
-                <select asp-for="ClientTypeId" class="form-select" asp-items="Model?.ClientType" asp-dropdown>
+                    <select asp-for="ClientTypeId" class="form-select ClientTypeId" asp-items="Model?.ClientType" asp-dropdown>
                     <option>Select Client Type</option>
                 </select>
                 <span asp-validation-for="ClientTypeId" class="text-danger"></span>
@@ -94,8 +95,10 @@
         <br />
         <div class="col-md-6">
             <div class="form-group">
-                <label asp-for="CountryOfBirth" class="control-label"></label>
-                <input asp-for="CountryOfBirth" class="form-control" />
+                    <label asp-for="CountryOfBirth" class="control-label"></label>
+                    <select asp-for="CountryOfBirth" class="form-select" asp-items="Model?.CountriesOfResidence">
+                        <option>Select Country Of Birth </option>
+                    </select>
                 <span asp-validation-for="CountryOfBirth" class="text-danger"></span>
             </div>
         </div>
@@ -104,16 +107,20 @@
         <div class="row">
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="CountryOfResidence" class="control-label"></label>
-            <input asp-for="CountryOfResidence" class="form-control" />
+                    <label asp-for="CountryOfResidence" class="control-label"></label>
+                    <select asp-for="CountryOfResidence" class="form-select" asp-items="Model?.CountriesOfResidence">
+                        <option>Select Country Of Residence </option>
+                    </select>
             <span asp-validation-for="CountryOfResidence" class="text-danger"></span>
         </div>
         </div>
         <br />
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="Language" class="control-label"></label>
-            <input asp-for="Language" class="form-control" />
+                    <label asp-for="Language" class="control-label"></label>
+                    <select asp-for="Language" class="form-select" asp-items="Model?.Languages">
+                        <option>Select Language </option>
+                    </select>
             <span asp-validation-for="Language" class="text-danger"></span>
         </div>
         </div>
@@ -122,16 +129,20 @@
         <div class="row">
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="Religion" class="control-label"></label>
-            <input asp-for="Religion" class="form-control" />
+                <label asp-for="Religion" class="control-label"></label>
+                    <select asp-for="Religion" class="form-select" asp-items="Model?.Religions">
+                        <option>Select Religion </option>
+                </select>
             <span asp-validation-for="Religion" class="text-danger"></span>
         </div>
         </div>
         <br />
             <div class="col-md-6">
         <div class="form-group">
-            <label asp-for="IncomeGroupId" class="control-label"></label>
-            <input asp-for="IncomeGroupId" class="form-control" />
+                    <label asp-for="IncomeGroupId" class="control-label"></label>
+                    <select asp-for="IncomeGroupId" class="form-select" asp-items="Model?.IncomeGroups">
+                        <option>Select Income Group </option>
+                    </select>
             <span asp-validation-for="IncomeGroupId" class="text-danger"></span>
         </div>
         </div>
@@ -183,5 +194,110 @@
     </form>
     
 </div>
+<div class="row" id="InstitutionalClient" style="display: none;">
+    
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="ClientTypeId" class="control-label"></label>
+                    <select asp-for="ClientTypeId" class="form-select ClientTypeId" asp-items="Model?.ClientType" asp-dropdown>
+                    <option>Select Client Type</option>
+                </select>
+                <span asp-validation-for="ClientTypeId" class="text-danger"></span>
+            </div>
+            </div>
+            </div>
+        <br />
+        <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DateOfBirth" class="control-label"></label>
+                    <input asp-for="DateOfBirth" class="form-control" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="CountryOfBirth" class="control-label"></label>
+                    <select asp-for="CountryOfBirth" class="form-select" asp-items="Model?.CountriesOfResidence">
+                        <option>Select Country Of Birth </option>
+                    </select>
+                    <span asp-validation-for="CountryOfBirth" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+        <div class="form-group">
+                    <label asp-for="CountryOfResidence" class="control-label"></label>
+                    <select asp-for="CountryOfResidence" class="form-select" asp-items="Model?.CountriesOfResidence">
+                        <option>Select Country Of Residence </option>
+                    </select>
+            <span asp-validation-for="CountryOfResidence" class="text-danger"></span>
+        </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NationalId" class="control-label"></label>
+                    <input asp-for="NationalId" class="form-control" />
+                    <span asp-validation-for="NationalId" class="text-danger"></span>
+                </div>
+            </div>
+        <br />
+        </div>
+        <br />
+        <div class="row">
+        <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="ContactPersonNumber" class="control-label"></label>
+            <input asp-for="ContactPersonNumber" class="form-control" />
+            <span asp-validation-for="ContactPersonNumber" class="text-danger"></span>
+        </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ContactPersonName" class="control-label"></label>
+                    <input asp-for="ContactPersonName" class="form-control" />
+                    <span asp-validation-for="ContactPersonName" class="text-danger"></span>
+                </div>
+            </div>
+        <br />
+        </div>
+        <br />
+        <div class="form-group">
 
+            <a class="btn btn-dark" asp-action="Index">Back to List</a>
+            <input type="submit" value="Create" class="btn btn-primary " />
+        </div>
+    </form>
+    
+</div>
 
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.ClientTypeId').change(function () {
+                var selectedClientType = $(this).val();
+                if (selectedClientType === "Institutional") {
+                    $("#institutionalFields").show();
+                    model = 'InstitutionalClientCreateVM';
+                } else {
+                    $("#institutionalFields").hide();
+                    model = 'ClientCreateVM;
+                }
+            });
+        });
+    </script>
+}

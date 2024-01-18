@@ -5,7 +5,7 @@ namespace ShortTerm.Web.Data
     public class Client : BaseEntity
     {
         public int ClientTypeId { get; set; }
-        public string? Title { get; set; }
+        public int? Title { get; set; }
         public string FirstName { get; set; }
         public string? Surname { get; set; }
         public string? MiddleName { get; set; }
@@ -18,12 +18,14 @@ namespace ShortTerm.Web.Data
         [ForeignKey(name: "MaritalStatusId")]
         public MaritalStatus? MaritalStatus { get; set; }
         public int? MaritalStatusId { get; set; }
-        public string? CountryOfBirth { get; set; }
-        public string? CountryOfResidence { get; set; }
-
-        public string? Language { get; set; }
-
-        public string? Religion { get; set; }
+        public Countries? Countries { get; set; }
+        public int? CountryOfBirth { get; set; }
+        public int? CountryOfResidence { get; set; }
+        public Language? Languages { get; set; }
+        public int? LanguageId { get; set; }
+        public Religion? Religions { get; set; }
+        public int? Religion { get; set; }
+        public IncomeTypes? IncomeGroup { get; set; }
         public int? IncomeGroupId { get; set; }
 
         [ForeignKey(name: "HighestQualificationId")]

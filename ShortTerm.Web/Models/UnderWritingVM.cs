@@ -17,19 +17,19 @@ namespace ShortTerm.Web.Models
         public decimal ClientProposedValueOfAsset { get; set; }
         [Display(Name = "State Of Property ")]
 
-        public int StateOfProperty { get; set; }
+        public int StateOfPropertyId { get; set; }
         public SelectList? StateOfProps { get; set; }
         [Display(Name = "Location Of Property ")]
 
-        public int LocationOfProperty { get; set; }
+        public int LocationOfPropertyId { get; set; }
         public SelectList? LocationOfProps { get; set; }
         [Display(Name = "Security Of Property ")]
 
-        public int SecurityOfPropertyScore { get; set; }
+        public int SecurityOfPropertyScoreId { get; set; }
         public SelectList? SecurityOfProps { get; set; }
         [Display(Name = "Primary Use Of Property ")]
 
-        public int PrimaryUseOfPropertyScore { get; set; }
+        public int PrimaryUseOfPropertyScoreId { get; set; }
         public SelectList? PrimaryUseOfProps { get; set; }
         [Display(Name = "AdditionalNotes ")]
 

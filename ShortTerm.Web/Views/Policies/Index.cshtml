@@ -72,9 +72,9 @@
                     }
             </td>
                 <td>
-                    <a asp-controller="UnderWritings" asp-action="Create" asp-route-id="@item.Id" class="btn btn-outline-warning "><i class="fa fa-check-circle"> </i></a>&nbsp
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp
-                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn " type="button"><i class="fa fa-trash"></i></button>
+                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn " type="button"><i class="fa fa-trash"></i></button>&nbsp
+                    <a asp-controller="UnderWritings" asp-action="Create" asp-route-id="@item.Id" class="btn btn-outline-warning mt-1">@* <i class="fa fa-check-circle"> </i> *@ Underwriting</a>
             </td>
         </tr>
 }

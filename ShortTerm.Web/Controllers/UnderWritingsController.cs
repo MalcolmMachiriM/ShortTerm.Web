@@ -32,8 +32,11 @@ namespace ShortTerm.Web.Controllers
         // GET: UnderWritings
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.UnderWritings.Include(u => u.Client).Include(u => u.Policy);
-            return View(await applicationDbContext.ToListAsync());
+            //var applicationDbContext = _context.UnderWritings.Include(u => u.Client).Include(u => u.Policy);
+            //return View(await applicationDbContext.ToListAsync());
+
+            var model = await underwritingRepository.GetAll();
+            return View(model);
         }
 
         // GET: UnderWritings/Details/5
@@ -59,16 +62,16 @@ namespace ShortTerm.Web.Controllers
         // GET: UnderWritings/Create
         public IActionResult Create(int id=0)
         {
-            var policy = _context.Policies.Include(q => q.Client)
-                .ProjectTo<UnderWritingVM>(configurationProvider)
-                .Where(q => q.PolicyId == id);
+            //var policy = _context.Policies.Include(q => q.Client)
+            //    .ProjectTo<UnderWritingVM>(configurationProvider)
+            //    .Where(q => q.PolicyId == id);
 
             var model = new UnderWritingVM
             {
-                StateOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
-                LocationOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
-                SecurityOfProps = new SelectList(_context.Clients, "Id", "FirstName"),
-                PrimaryUseOfProps = new SelectList(_context.Clients, "Id", "FirstName")
+                StateOfProps = new SelectList( _context.StateOfProperty, "Id", "Description"),
+                LocationOfProps = new SelectList(_context.LocationOfProperty, "Id", "Description"),
+                SecurityOfProps = new SelectList(_context.SecurityOfPropertyScore, "Id", "Description"),
+                PrimaryUseOfProps = new SelectList(_context.PrimaryUseOfPropertyScore, "Id", "Description")
             };
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id");
             ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id");
@@ -88,10 +91,10 @@ namespace ShortTerm.Web.Controllers
                 await underwritingRepository.AddAsync(underwriting);
                 return RedirectToAction(nameof(Index),"Policies");
             }
-            model.StateOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.StateOfProperty);
-            model.LocationOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.LocationOfProperty);
-            model.SecurityOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.SecurityOfPropertyScore);
-            model.PrimaryUseOfProps = new SelectList(_context.Clients, "Id", "FirstName",model.PrimaryUseOfPropertyScore);
+            model.StateOfProps = new SelectList(_context.StateOfProperty, "Id", "Description",model.StateOfPropertyId);
+            model.LocationOfProps = new SelectList(_context.LocationOfProperty, "Id", "Description", model.LocationOfPropertyId);
+            model.SecurityOfProps = new SelectList(_context.SecurityOfPropertyScore, "Id", "Description", model.SecurityOfPropertyScoreId);
+            model.PrimaryUseOfProps = new SelectList(_context.PrimaryUseOfPropertyScore, "Id", "Description", model.PrimaryUseOfPropertyScoreId);
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", model.ClientId);
             ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id", model.PolicyId);
             return View(model);
@@ -105,11 +108,18 @@ namespace ShortTerm.Web.Controllers
                 return NotFound();
             }
 
-            var underWriting = await _context.UnderWritings.FindAsync(id);
+            var underWriting = mapper.Map<UnderWritingVM>(await _context.UnderWritings.FindAsync(id));
             if (underWriting == null)
             {
                 return NotFound();
             }
+
+
+            underWriting.StateOfProps = new SelectList(_context.StateOfProperty, "Id", "Description", underWriting.StateOfPropertyId);
+            underWriting.LocationOfProps = new SelectList(_context.LocationOfProperty, "Id", "Description", underWriting.LocationOfPropertyId);
+            underWriting.SecurityOfProps = new SelectList(_context.SecurityOfPropertyScore, "Id", "Description", underWriting.SecurityOfPropertyScoreId);
+            underWriting.PrimaryUseOfProps = new SelectList(_context.PrimaryUseOfPropertyScore, "Id", "Description", underWriting.PrimaryUseOfPropertyScoreId);
+            
             ViewData["ClientId"] = new SelectList(_context.Clients, "Id", "Id", underWriting.ClientId);
             ViewData["PolicyId"] = new SelectList(_context.Policies, "Id", "Id", underWriting.PolicyId);
             return View(underWriting);
