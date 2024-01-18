@@ -32,7 +32,6 @@ namespace ShortTerm.Web.Models
         public int PrimaryUseOfPropertyScoreId { get; set; }
         public SelectList? PrimaryUseOfProps { get; set; }
         [Display(Name = "AdditionalNotes ")]
-
         public string? AdditionalNotes { get; set; }
     }
 }

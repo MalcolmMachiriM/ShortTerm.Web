@@ -30,5 +30,10 @@ namespace ShortTerm.Web.Models
         [Display(Name = "Additional Notes ")]
         public string? AdditionalNotes { get; set; }
         public bool? Approved { get; set; }
+
+        [Display(Name = "Date Added")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [DataType(DataType.Date)]
+        public DateTime DateCreated { get; set; }
     }
 }

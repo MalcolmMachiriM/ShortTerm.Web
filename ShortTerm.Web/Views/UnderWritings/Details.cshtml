@@ -1,84 +1,89 @@
-﻿@model ShortTerm.Web.Data.UnderWriting
+﻿@model UnderwritingListVM
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Underwriting Details";
 }
 
-<h1>Details</h1>
+<h1>Underwriting Details</h1>
 
 <div>
-    <h4>UnderWriting</h4>
+    <h4></h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.Client)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Client.Id)
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Client.FirstName) @Html.DisplayFor(model => model.Client.Surname)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.Policy)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-8">
             @Html.DisplayFor(model => model.Policy.Id)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.ClientProposedValueOfAsset)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-8">
             @Html.DisplayFor(model => model.ClientProposedValueOfAsset)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.StateOfProperty)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StateOfProperty)
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.StateOfProperty.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.LocationOfProperty)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LocationOfProperty)
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.LocationOfProperty.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.SecurityOfPropertyScore)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SecurityOfPropertyScore)
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.SecurityOfPropertyScore.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.PrimaryUseOfPropertyScore)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PrimaryUseOfPropertyScore)
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.PrimaryUseOfPropertyScore.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.AdditionalNotes)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-8">
             @Html.DisplayFor(model => model.AdditionalNotes)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.Approved)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Approved)
+        <dd class = "col-sm-8">
+            @if (Model.Approved == null)
+            {
+                <span class="badge bg-warning">Awaiting Approval</span>
+            }
+            else if (Model.Approved == true)
+            {
+                <span class="badge bg-success">Approved</span>
+            }
+            else
+            {
+                <span class="badge bg-danger">Rejected</span>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-4">
             @Html.DisplayNameFor(model => model.DateCreated)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-8">
             @Html.DisplayFor(model => model.DateCreated)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateModified)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateModified)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>  &nbsp;
+    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model?.Id">Edit</a> 
 </div>

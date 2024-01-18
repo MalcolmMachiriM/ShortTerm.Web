@@ -50,13 +50,18 @@ namespace ShortTerm.Web.Controllers
             var underWriting = await _context.UnderWritings
                 .Include(u => u.Client)
                 .Include(u => u.Policy)
+                .Include(u => u.StateOfProperty)
+                .Include(u => u.LocationOfProperty)
+                .Include(u => u.SecurityOfPropertyScore)
+                .Include(u => u.PrimaryUseOfPropertyScore)
                 .FirstOrDefaultAsync(m => m.Id == id);
+            var model = mapper.Map<UnderwritingListVM>(underWriting);
             if (underWriting == null)
             {
                 return NotFound();
             }
 
-            return View(underWriting);
+            return View(model);
         }
 
         // GET: UnderWritings/Create
