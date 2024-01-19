@@ -15,9 +15,6 @@ namespace ShortTerm.Web.Data
         public int IndividualProductId { get; set; }
         public Client? Client { get; set; }
         public int ClientId { get; set; }
-        public string? FirstName { get; set; }
-        public string? Surname { get; set; }
-        public string? NationalID { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
         public double AnnualSalary { get; set; }

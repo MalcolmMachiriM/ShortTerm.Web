@@ -8,8 +8,6 @@ namespace ShortTerm.Web.Models
     public class ProductPolicyRequirementCreateVM
     {
 
-        [Display(Name ="Reg No")]
-        public string? RegNo { get; set; }
         public SelectList? IndividualProduct { get; set; }
 
         [Display(Name = "Individual Product")]

@@ -4,12 +4,13 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create Policy Requirement</h1>
+<h1>Create Policy Requirement </h1>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
+            <input asp-for="IndividualProductID" value="@ViewContext.RouteData.Values["Id"]"  hidden  />
             <div class="form-group">
                 <label asp-for="IndividualProductID" class="control-label"></label>
                 <select asp-for="IndividualProductID" class="form-control" asp-items="Model?.IndividualProduct" disabled></select>
@@ -18,7 +19,9 @@
             <br />
             <div class="form-group">
                 <label asp-for="RequirementID" class="control-label"></label>
-                <select asp-for="RequirementID" class="form-control" asp-items="Model?.Requirements"></select>
+                <select asp-for="RequirementID" class="form-control" asp-items="Model?.Requirements">
+                    <option>--Select Requirement--</option>
+                </select>
                 <span asp-validation-for="RequirementID" class="text-danger"></span>
             </div>
             <br />
