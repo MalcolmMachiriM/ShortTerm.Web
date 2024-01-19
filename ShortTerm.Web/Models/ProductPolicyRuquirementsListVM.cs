@@ -13,6 +13,7 @@ namespace ShortTerm.Web.Models
 
         [Display(Name="Product Name")]
         public IndividualProductVM? IndividualProduct { get; set; }
+        public int? IndividualProductId { get; set; }
 
         [ForeignKey("Requirement")]
         public Requirement? Requirement { get; set; }

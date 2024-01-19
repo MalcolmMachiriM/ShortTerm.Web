@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using ShortTerm.Web.Data;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ShortTerm.Web.Models
 {
-    public class ProductPolicyRequirementCreateVM
+    public class ProductPolicyRequirementEditVM
     {
-
-        [Display(Name ="Reg No")]
+        public int Id { get; set; }
+        [Display(Name = "Reg No")]
         public string? RegNo { get; set; }
         public SelectList? IndividualProduct { get; set; }
 
