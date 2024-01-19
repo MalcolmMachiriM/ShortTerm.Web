@@ -5,45 +5,45 @@
     ViewData["Title"] = "Details";
 }
 
-<h1> Policy Details for: @Model.Client.FirstName @Model.Client.Surname</h1>
+<h1> Policy Details </h1>
 
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.ApplicationDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.ApplicationDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.ProductGroup)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.ProductGroup.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.IndividualProduct)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.IndividualProduct.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.ClientId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.ClientId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.DateOfBirth)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.Client.DateOfBirth)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.Age)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @{
                 DateTime currentDate = DateTime.Now;
                 TimeSpan ageSpan = currentDate - Model.Client.DateOfBirth;
@@ -51,58 +51,58 @@
             }
             @Html.DisplayFor(model =>ageInYears) years
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.AnnualSalary)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.AnnualSalary)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.PremiumTerm)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.PremiumTerm)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.SumAssured)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.SumAssured)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.Premium)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.Premium)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.PaymentMethodId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.PaymentMethodId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.PaymentFrequencyId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.PaymentFrequencyId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.DateCreated)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.DateCreated)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.DateModified)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.DateModified)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.IndividualProduct.Retention)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.IndividualProduct.Retention)
         </dd>
     </dl>
