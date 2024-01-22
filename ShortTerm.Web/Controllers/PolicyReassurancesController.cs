@@ -28,8 +28,19 @@ namespace ShortTerm.Web.Controllers
         // GET: PolicyReassurances
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.PolicyReassurances.Include(p => p.ReassuranceType);
-            return View(await applicationDbContext.ToListAsync());
+            try
+            {
+                var applicationDbContext = _context.PolicyReassurances.Include(p => p.ReassuranceType).Include(p => p.Policy)
+                .Include(p => p.Policy.Client).Include(p => p.Policy.IndividualProduct).Include(p => p.Reassurer);
+                return View(mapper.Map<List<PolicyReassuranceListVM>>(await applicationDbContext.ToListAsync()));
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("",ex.Message);
+                return null;
+            }
+            
         }
 
         // GET: PolicyReassurances/Details/5

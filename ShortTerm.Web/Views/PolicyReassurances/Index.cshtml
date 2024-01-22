@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShortTerm.Web.Data.PolicyReassurance>
+﻿@model IEnumerable<PolicyReassuranceListVM>
 
 @{
     ViewData["Title"] = "Reasssured Policies";
@@ -16,13 +16,16 @@
                 @Html.DisplayNameFor(model => model.SumAssured)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReasurerId)
+                @Html.DisplayNameFor(model => model.RetentionLimit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReassurerId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ReassuranceType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
+                @Html.DisplayNameFor(model => model.ReassuranceAmount)
             </th>
             <th></th>
         </tr>
@@ -31,24 +34,27 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PolicyId)
+                @Html.DisplayFor(modelItem => item.Policy.Client.FirstName) @Html.DisplayFor(modelItem => item.Policy.Client.Surname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SumAssured)
+                @Html.DisplayFor(modelItem => item.Policy.SumAssured)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReasurerId)
+                    @Html.DisplayFor(modelItem => item.Policy.IndividualProduct.Retention)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReassuranceType.Id)
+                @Html.DisplayFor(modelItem => item.Reassurer.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
+                @Html.DisplayFor(modelItem => item.ReassuranceType.Descriptiom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReassuranceAmount)
             </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp;
-                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn mt-1" type="button"><i class="fa fa-trash"></i></button>
+                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn mt-1" type="button"><i class="fa fa-trash"></i></button>&nbsp;
             </td>
         </tr>
 }
