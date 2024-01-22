@@ -1,8 +1,7 @@
 ﻿namespace ShortTerm.Web.Data
 {
-    public class MaritalStatus
+    public class MaritalStatus: BaseEntity
     {
-        public int Id { get; set; }
         public string Status { get; set; }
     }
 }
