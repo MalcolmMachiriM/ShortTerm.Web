@@ -30,6 +30,7 @@ namespace ShortTerm.Web.Configurations
             CreateMap<Reassurer, ReasurerCreateVM>().ReverseMap();
             CreateMap<Reassurer, ReasurerListVM>().ReverseMap();
             CreateMap<ProductPolicyRequirement, ProductPolicyRequirementEditVM>().ReverseMap();
+            CreateMap<Policy, PolicyDetailsVM>().ReverseMap();
 
         }
     }

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
 using ShortTerm.Web.Models;
 
@@ -13,10 +15,14 @@ namespace ShortTerm.Web.Controllers
     public class PolicyReassurancesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IPolicyReassurancesRepository policyReassurancesRepository;
+        private readonly IMapper mapper;
 
-        public PolicyReassurancesController(ApplicationDbContext context)
+        public PolicyReassurancesController(ApplicationDbContext context, IPolicyReassurancesRepository policyReassurancesRepository,IMapper mapper)
         {
             _context = context;
+            this.policyReassurancesRepository = policyReassurancesRepository;
+            this.mapper = mapper;
         }
 
         // GET: PolicyReassurances
@@ -51,7 +57,11 @@ namespace ShortTerm.Web.Controllers
             var model = new PolicyReassurancesCreateVM
             {
                 Reassurer = new SelectList(_context.Reassurers, "Id", "Name"),
-                ReassuranceType = new SelectList(_context.ReassuranceTypes, "Id", "Type"),
+                ReassuranceType = new SelectList(_context.ReassuranceTypes, "Id", "Descriptiom"),
+                SumAssured = _context.Policies.Where(p=>p.Id == Id).Select(q=>q.SumAssured).FirstOrDefault(),
+                PolicyId = Id,
+                Policy = _context.Policies.Include(p => p.IndividualProduct).Where(p=>p.Id == Id).FirstOrDefault()
+                
             };
 
             return View(model);
@@ -66,8 +76,7 @@ namespace ShortTerm.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(model);
-                await _context.SaveChangesAsync();
+                await policyReassurancesRepository.AddAsync(mapper.Map<PolicyReassurance>(model));
                 return RedirectToAction(nameof(Index));
             }
             model.ReassuranceType = new SelectList(_context.ReassuranceTypes, "Id", "Id", model.ReassuranceTypeId);
