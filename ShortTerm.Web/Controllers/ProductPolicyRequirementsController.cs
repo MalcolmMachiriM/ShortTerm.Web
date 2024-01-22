@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ShortTerm.Web.Contracts;
 using ShortTerm.Web.Data;
@@ -18,7 +15,7 @@ namespace ShortTerm.Web.Controllers
         private readonly IProductPolicyRequirementRepository productPolicyRequirementRepository;
         private readonly IMapper mapper;
 
-        public ProductPolicyRequirementsController(ApplicationDbContext context, IProductPolicyRequirementRepository productPolicyRequirementRepository,IMapper mapper)
+        public ProductPolicyRequirementsController(ApplicationDbContext context, IProductPolicyRequirementRepository productPolicyRequirementRepository, IMapper mapper)
         {
             _context = context;
             this.productPolicyRequirementRepository = productPolicyRequirementRepository;
@@ -26,7 +23,7 @@ namespace ShortTerm.Web.Controllers
         }
 
         // GET: ProductPolicyRequirements
-        public async Task<IActionResult> Index(int Id)
+        public async Task<IActionResult> Index(int Id = 0)
         {
             var Requirements = await productPolicyRequirementRepository.GetAllPolicyRules(Id);
             return View(Requirements);
@@ -53,11 +50,11 @@ namespace ShortTerm.Web.Controllers
         }
 
         // GET: ProductPolicyRequirements/Create
-        public IActionResult Create()
+        public IActionResult Create(int Id)
         {
             var model = new ProductPolicyRequirementCreateVM
             {
-                IndividualProduct = new SelectList(_context.IndividualProducts, "Id", "Name"),
+                IndividualProduct = new SelectList(_context.IndividualProducts.Where(q => q.Id == Id), "Id", "Name"),
                 Requirements = new SelectList(_context.Requirements, "Id", "Description")
             };
             return View(model);
@@ -68,7 +65,7 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( ProductPolicyRequirementCreateVM model)
+        public async Task<IActionResult> Create(ProductPolicyRequirementCreateVM model)
         {
             if (ModelState.IsValid)
             {
@@ -76,7 +73,7 @@ namespace ShortTerm.Web.Controllers
                 await productPolicyRequirementRepository.AddAsync(rule);
                 return RedirectToAction(nameof(Index));
             }
-            model.IndividualProduct = new SelectList(_context.IndividualProducts, "Id", "Id",  model.IndividualProductID);
+            model.IndividualProduct = new SelectList(_context.IndividualProducts, "Id", "Id", model.IndividualProductID);
             model.Requirements = new SelectList(_context.Requirements, "Id", "Id", model.RequirementID);
             return View(model);
         }
@@ -104,7 +101,7 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, ProductPolicyRequirementCreateVM model)
+        public async Task<IActionResult> Edit(int id, ProductPolicyRequirementEditVM model)
         {
             if (id != model.Id)
             {
@@ -170,14 +167,14 @@ namespace ShortTerm.Web.Controllers
             {
                 _context.ProductPolicyRequirements.Remove(productPolicyRequirement);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductPolicyRequirementExists(int id)
         {
-          return (_context.ProductPolicyRequirements?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.ProductPolicyRequirements?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

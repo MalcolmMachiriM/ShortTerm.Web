@@ -41,7 +41,6 @@ namespace ShortTerm.Web.Controllers
             {
                 return NotFound();
             }
-
             var policy = await _context.Policies
                 .Include(p => p.ProductGroup)
                 .Include(p => p.IndividualProduct)
@@ -49,6 +48,16 @@ namespace ShortTerm.Web.Controllers
                 .Include(p => p.PaymentMethod)
                 .Include(p => p.PaymentFrequency)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            var model = new PolicyDetailsVM
+            {
+                ClientId = policy.ClientId,
+                ProductGroup = policy.ProductGroup,
+                IndividualProduct = policy.IndividualProduct,
+                Client = policy.Client,
+                PaymentMethod = policy.PaymentMethod,
+                PaymentFrequency = policy.PaymentFrequency,
+            };
             if (policy == null)
             {
                 return NotFound();
