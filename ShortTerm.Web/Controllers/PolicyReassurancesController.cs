@@ -59,7 +59,7 @@ namespace ShortTerm.Web.Controllers
                 Reassurer = new SelectList(_context.Reassurers, "Id", "Name"),
                 ReassuranceType = new SelectList(_context.ReassuranceTypes, "Id", "Descriptiom"),
                 SumAssured = _context.Policies.Where(p=>p.Id == Id).Select(q=>q.SumAssured).FirstOrDefault(),
-                PolicyId = Id,
+                PolicyID = Id,
                 Policy = _context.Policies.Include(p => p.IndividualProduct).Where(p=>p.Id == Id).FirstOrDefault()
                 
             };
@@ -76,13 +76,15 @@ namespace ShortTerm.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.SumAssured = _context.Policies.Where(p => p.Id == Id).Select(q => q.SumAssured).FirstOrDefault();
+                model.PolicyID = Id;
                 await policyReassurancesRepository.AddAsync(mapper.Map<PolicyReassurance>(model));
                 return RedirectToAction(nameof(Index));
             }
             model.ReassuranceType = new SelectList(_context.ReassuranceTypes, "Id", "Id", model.ReassuranceTypeId);
             model.Reassurer = new SelectList(_context.Reassurers, "Id", "Name");
             model.SumAssured = _context.Policies.Where(p => p.Id == Id).Select(q => q.SumAssured).FirstOrDefault();
-            model.PolicyId = Id;
+            model.PolicyID = Id;
             model.Policy = _context.Policies.Include(p => p.IndividualProduct).Where(p => p.Id == Id).FirstOrDefault();
             return View(model);
         }

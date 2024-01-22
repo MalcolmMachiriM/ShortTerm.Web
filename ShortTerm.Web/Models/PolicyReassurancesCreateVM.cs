@@ -1,14 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ShortTerm.Web.Data;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShortTerm.Web.Models
 {
+    [BindProperties]
     public class PolicyReassurancesCreateVM
     {
         public Policy? Policy { get; set; }
-        public int PolicyId { get; set; }
-
+        [Key]
+        public int PolicyID { get; set; }
         [DataType(DataType.Currency)]
         public double SumAssured { get; set; }
 
