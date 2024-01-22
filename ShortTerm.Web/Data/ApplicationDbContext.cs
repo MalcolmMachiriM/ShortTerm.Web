@@ -93,6 +93,7 @@ namespace ShortTerm.Web.Data
         public DbSet<LocationOfProperty>? LocationOfProperty { get; set; }
         public DbSet<SecurityOfPropertyScore>? SecurityOfPropertyScore { get; set; }
         public DbSet<PrimaryUseOfPropertyScore>? PrimaryUseOfPropertyScore { get; set; }
+        public DbSet<PolicyReassurance> PolicyReassurances { get; set; }
 
     }
 }

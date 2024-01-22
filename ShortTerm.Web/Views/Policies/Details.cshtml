@@ -121,10 +121,10 @@
 
             <a asp-controller="UnderWritings" asp-action="Details" class="btn btn-outline-info" asp-route-id="@Model?.Id">View UnderWriting</a>
         </div>
-        @if (Model.SumAssured > Model.IndividualProduct.Retention && Model.IndividualProduct.CanBeCeded && User.IsInRole(Roles.Administrator))
+        @if (Model.SumAssured > Model.IndividualProduct.Retention && Model.IndividualProduct.CanBeCeded && SignInManager.IsSignedIn(User))
     {
             <div class="col-1">
-                <a asp-action="Edit" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
+                <a asp-controller="PolicyReassurances" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
             </div>
         
     }
