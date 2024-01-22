@@ -72,7 +72,7 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(PolicyReassurancesCreateVM model)
+        public async Task<IActionResult> Create(PolicyReassurancesCreateVM model, int Id)
         {
             if (ModelState.IsValid)
             {
@@ -80,6 +80,10 @@ namespace ShortTerm.Web.Controllers
                 return RedirectToAction(nameof(Index));
             }
             model.ReassuranceType = new SelectList(_context.ReassuranceTypes, "Id", "Id", model.ReassuranceTypeId);
+            model.Reassurer = new SelectList(_context.Reassurers, "Id", "Name");
+            model.SumAssured = _context.Policies.Where(p => p.Id == Id).Select(q => q.SumAssured).FirstOrDefault();
+            model.PolicyId = Id;
+            model.Policy = _context.Policies.Include(p => p.IndividualProduct).Where(p => p.Id == Id).FirstOrDefault();
             return View(model);
         }
 

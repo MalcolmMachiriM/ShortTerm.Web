@@ -8,7 +8,11 @@ namespace ShortTerm.Web.Models
     {
         public Policy? Policy { get; set; }
         public int PolicyId { get; set; }
+
+        [DataType(DataType.Currency)]
         public double SumAssured { get; set; }
+
+        [DataType(DataType.Currency)]
         public double Retention { get; set; }
 
         [Display(Name = "Reassurance Amount")]
