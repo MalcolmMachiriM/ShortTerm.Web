@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PolicyReassuranceListVM>
+
+@{
+    ViewData["Title"] = "Reasssured Policies";
+}
+
+<h1>Reasssured Policies</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SumAssured)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RetentionLimit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReassurerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReassuranceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReassuranceAmount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policy.Client.FirstName) @Html.DisplayFor(modelItem => item.Policy.Client.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Policy.SumAssured)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Policy.IndividualProduct.Retention)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reassurer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReassuranceType.Descriptiom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReassuranceAmount)
+            </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp;
+                    <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn mt-1" type="button"><i class="fa fa-trash"></i></button>&nbsp;
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<form id="deleteForm" asp-action="Delete">
+    <input type="hidden" id="schemeId" name="Id" />
+</form>

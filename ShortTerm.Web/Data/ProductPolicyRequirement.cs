@@ -4,7 +4,6 @@ namespace ShortTerm.Web.Data
 {
     public class ProductPolicyRequirement : BaseEntity
     {
-        public string? RegNo { get; set; }
 
         [ForeignKey("IndividualProductID")]
         public IndividualProduct? IndividualProduct { get; set; }

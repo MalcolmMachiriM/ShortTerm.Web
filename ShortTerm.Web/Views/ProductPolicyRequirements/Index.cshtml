@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<ProductPolicyRuquirementsListVM>
 
 @{
-    ViewData["Title"] = "Policy Rules";
+    ViewData["Title"] = "Policy Requirements";
 }
 
-<h1>Policy Rules</h1>
+<h1>Policy Rules </h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
+    <a asp-action="Create" asp-route-id="@ViewContext.RouteData.Values["Id"]" class="btn btn-outline-success">Create New</a>
 </p>
 <table class="table">
     <thead>

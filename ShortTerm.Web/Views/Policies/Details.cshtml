@@ -1,67 +1,49 @@
 ﻿@using ShortTerm.Web.Constants;
-@model ShortTerm.Web.Data.Policy
+@model Policy
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Policy Details";
 }
 
-<h1> Policy Details for: @Model.Client.FirstName @Model.Client.Surname</h1>
+<h1> Policy Details </h1>
 
 <div>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.ApplicationDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.ApplicationDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.ProductGroup)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.ProductGroup.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.IndividualProduct)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.IndividualProduct.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.ClientId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.ClientId)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Client.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Surname)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Client.Surname)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NationalID)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Client.NationalId)
-        </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.DateOfBirth)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.Client.DateOfBirth)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.Age)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @{
                 DateTime currentDate = DateTime.Now;
                 TimeSpan ageSpan = currentDate - Model.Client.DateOfBirth;
@@ -69,104 +51,86 @@
             }
             @Html.DisplayFor(model =>ageInYears) years
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.AnnualSalary)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.AnnualSalary)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.PremiumTerm)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.PremiumTerm)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.SumAssured)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.SumAssured)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.Premium)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.Premium)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.PaymentMethodId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.PaymentMethodId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.PaymentFrequencyId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.PaymentFrequencyId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.DateCreated)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.DateCreated)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateModified)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateModified)
-        </dd>
-        <dt class = "col-sm-2">
+        <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.IndividualProduct.Retention)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class = "col-sm-7">
             @Html.DisplayFor(model => model.IndividualProduct.Retention)
         </dd>
     </dl>
 </div>
 <div>
-    <div class="row">
-        <div class="col-2">
+    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>&nbsp;
+    <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model?.Id">Edit</a>&nbsp;
 
-            <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
-        </div>
-        <div class="col-1">
-
-            <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model?.Id">Edit</a>
-        </div>
-        <div class="col-1">
-
-            <a asp-controller="UnderWritings" asp-action="Details" class="btn btn-outline-info" asp-route-id="@Model?.Id">View UnderWriting</a>
-        </div>
-        @if (Model.SumAssured > Model.IndividualProduct.Retention && Model.IndividualProduct.CanBeCeded && User.IsInRole(Roles.Administrator))
-    {
-            <div class="col-1">
-                <a asp-action="Edit" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
-            </div>
-        
+    <a asp-controller="UnderWritings" asp-action="Details" class="btn btn-outline-info" asp-route-id="@Model?.Id">UnderWriting</a>&nbsp;
+    @if (Model.SumAssured > Model.IndividualProduct.Retention && Model.IndividualProduct.CanBeCeded && SignInManager.IsSignedIn(User))
+    {  
+        <a asp-controller="PolicyReassurances" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
     }
-    @if (Model.Approved == null && User.IsInRole(Roles.Administrator))
-    {
-        
+    <div class="row">
+        @if (Model.Approved == null && User.IsInRole(Roles.Administrator))
+        {
+
             <div class="col-1">
 
                 <form asp-action="ApprovePolicy">
                     <input name="Id" value="@Model.Id" type="hidden">
                     <input name="approved" value="true" type="hidden">
                     <button type="submit" class="btn btn-outline-success">Approve</button>
-                </form>
+                </form>&nbsp;
             </div>
             <div class="col-1">
                 <form asp-action="ApprovePolicy">
                     <input name="Id" value="@Model.Id" type="hidden">
                     <input name="approved" value="false" type="hidden">
                     <button type="submit" class="btn btn-outline-danger">Reject</button>
-                </form>
+                </form>&nbsp;
             </div>
-        
 
-    }
+
+        }
     </div>
-
 </div>
