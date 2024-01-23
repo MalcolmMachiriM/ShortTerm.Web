@@ -120,11 +120,12 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UnderWritingVM model)
+        public async Task<IActionResult> Create(UnderWritingVM model, int id=0)
         {
             if (ModelState.IsValid)
             {
                 var underwriting = mapper.Map<UnderWriting>(model);
+                underwriting.PolicyId = id;
                 await underwritingRepository.AddAsync(underwriting);
                 return RedirectToAction(nameof(Index),"Policies");
             }
