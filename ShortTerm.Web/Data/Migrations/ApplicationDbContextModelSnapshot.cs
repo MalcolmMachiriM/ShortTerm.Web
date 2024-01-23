@@ -17,7 +17,7 @@ namespace ShortTerm.Web.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.25")
+                .HasAnnotation("ProductVersion", "6.0.26")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -52,14 +52,14 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
-                            ConcurrencyStamp = "bbca917e-8681-4873-850d-361940f39bb1",
+                            ConcurrencyStamp = "e83c83ca-928a-4272-a9e3-57e4dd428da6",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
-                            ConcurrencyStamp = "141a0faf-8d4f-49f7-90ce-0363b1c67a18",
+                            ConcurrencyStamp = "d7d67292-fa6a-43fb-991b-c21aa0a0fcaa",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -278,7 +278,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AccountTypes");
+                    b.ToTable("AccountTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.AddressTypes", b =>
@@ -301,7 +301,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AddressTypes");
+                    b.ToTable("AddressTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Banks", b =>
@@ -334,7 +334,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Banks");
+                    b.ToTable("Banks", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.BusinessDecisions", b =>
@@ -361,7 +361,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BusinessDecisions");
+                    b.ToTable("BusinessDecisions", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Cities", b =>
@@ -388,7 +388,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cities");
+                    b.ToTable("Cities", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Claim", b =>
@@ -427,7 +427,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Claims");
+                    b.ToTable("Claims", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Client", b =>
@@ -536,7 +536,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("ReligionsId");
 
-                    b.ToTable("Clients");
+                    b.ToTable("Clients", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.ClientType", b =>
@@ -553,7 +553,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ClientTypes");
+                    b.ToTable("ClientTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Countries", b =>
@@ -580,7 +580,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Countries");
+                    b.ToTable("Countries", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Currencies", b =>
@@ -610,7 +610,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Currencies");
+                    b.ToTable("Currencies", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Gender", b =>
@@ -633,7 +633,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genders");
+                    b.ToTable("Genders", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.HabitsAndInterests", b =>
@@ -656,7 +656,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HabitsAndInterests");
+                    b.ToTable("HabitsAndInterests", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.HighestQualification", b =>
@@ -673,7 +673,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HighestQualifications");
+                    b.ToTable("HighestQualifications", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.HumanDemographicGroups", b =>
@@ -696,7 +696,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HumanDemographicGroups");
+                    b.ToTable("HumanDemographicGroups", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.IdentificationTypes", b =>
@@ -729,7 +729,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IdentificationTypes");
+                    b.ToTable("IdentificationTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.IncomeTypes", b =>
@@ -752,7 +752,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IncomeTypes");
+                    b.ToTable("IncomeTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.IndividualProduct", b =>
@@ -811,7 +811,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("ProductGroupId");
 
-                    b.ToTable("IndividualProducts");
+                    b.ToTable("IndividualProducts", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.InstitutionTypes", b =>
@@ -834,7 +834,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("InstitutionTypes");
+                    b.ToTable("InstitutionTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.InterestRateFrequencies", b =>
@@ -857,7 +857,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("InterestRateFrequencies");
+                    b.ToTable("InterestRateFrequencies", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.InterestRateTypes", b =>
@@ -880,7 +880,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("InterestRateTypes");
+                    b.ToTable("InterestRateTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Language", b =>
@@ -903,7 +903,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Languages");
+                    b.ToTable("Languages", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Languages", b =>
@@ -926,7 +926,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Languages_1");
+                    b.ToTable("Languages_1", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.MaritalStatus", b =>
@@ -949,7 +949,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MaritalStatuses");
+                    b.ToTable("MaritalStatuses", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.MedicalRequirements", b =>
@@ -979,7 +979,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MedicalRequirements");
+                    b.ToTable("MedicalRequirements", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Occupations", b =>
@@ -1002,7 +1002,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Occupations");
+                    b.ToTable("Occupations", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.PaymentFrequency", b =>
@@ -1029,7 +1029,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentFrequencies");
+                    b.ToTable("PaymentFrequencies", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.PaymentMethod", b =>
@@ -1062,7 +1062,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethods");
+                    b.ToTable("PaymentMethods", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.PaymentMethods", b =>
@@ -1097,7 +1097,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethods_1");
+                    b.ToTable("PaymentMethods_1", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Policy", b =>
@@ -1135,14 +1135,8 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("IndividualProductId")
                         .HasColumnType("int");
-
-                    b.Property<string>("NationalID")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentFrequencyId")
                         .HasColumnType("int");
@@ -1162,9 +1156,6 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<double>("SumAssured")
                         .HasColumnType("float");
 
-                    b.Property<string>("Surname")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
@@ -1177,7 +1168,47 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("ProductGroupId");
 
-                    b.ToTable("Policies");
+                    b.ToTable("Policies", (string)null);
+                });
+
+            modelBuilder.Entity("ShortTerm.Web.Data.PolicyReassurance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PolicyId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("ReassuranceAmount")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ReassuranceTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReassurerId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("SumAssured")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PolicyId");
+
+                    b.HasIndex("ReassuranceTypeId");
+
+                    b.HasIndex("ReassurerId");
+
+                    b.ToTable("PolicyReassurances", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.PremiumPaymentFrequencies", b =>
@@ -1200,7 +1231,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PremiumPaymentFrequencies");
+                    b.ToTable("PremiumPaymentFrequencies", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.ProductGroup", b =>
@@ -1235,7 +1266,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("SchemeId");
 
-                    b.ToTable("ProductGroups");
+                    b.ToTable("ProductGroups", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.ProductLapsePeriod", b =>
@@ -1283,7 +1314,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("IndividualProductID");
 
-                    b.ToTable("ProductLapsePeriods");
+                    b.ToTable("ProductLapsePeriods", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.ProductPolicyRequirement", b =>
@@ -1315,9 +1346,6 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RegNo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("RequirementID")
                         .HasColumnType("int");
 
@@ -1327,7 +1355,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("RequirementID");
 
-                    b.ToTable("ProductPolicyRequirements");
+                    b.ToTable("ProductPolicyRequirements", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Qualifications", b =>
@@ -1350,7 +1378,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Qualifications");
+                    b.ToTable("Qualifications", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.ReassuranceType", b =>
@@ -1373,7 +1401,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ReassuranceTypes");
+                    b.ToTable("ReassuranceTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Reassurer", b =>
@@ -1384,14 +1412,13 @@ namespace ShortTerm.Web.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
+                    b.Property<string>("ContactDetails")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("ContractEndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ContractStartDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ContactPerson")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
@@ -1399,16 +1426,17 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ReassuranceTypeId")
-                        .HasColumnType("int");
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("ReassuranceTypeId");
-
-                    b.ToTable("Reassurers");
+                    b.ToTable("Reassurers", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.RelationshipTypes", b =>
@@ -1431,7 +1459,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RelationshipTypes");
+                    b.ToTable("RelationshipTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Religion", b =>
@@ -1448,7 +1476,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Religions");
+                    b.ToTable("Religions", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Religions", b =>
@@ -1471,7 +1499,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Religions_1");
+                    b.ToTable("Religions_1", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Requirement", b =>
@@ -1504,7 +1532,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("RequirementTypeID");
 
-                    b.ToTable("Requirements");
+                    b.ToTable("Requirements", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Requirements", b =>
@@ -1527,7 +1555,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Requirements_1");
+                    b.ToTable("Requirements_1", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.RequirementType", b =>
@@ -1555,7 +1583,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RequirementTypes");
+                    b.ToTable("RequirementTypes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Scheme", b =>
@@ -1607,7 +1635,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("InstitutionalClientsName");
 
-                    b.ToTable("Schemes");
+                    b.ToTable("Schemes", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.StopOrderName", b =>
@@ -1638,7 +1666,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StopOrderName");
+                    b.ToTable("StopOrderName", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.SumAssuredBasis", b =>
@@ -1660,7 +1688,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SumAssuredBasis");
+                    b.ToTable("SumAssuredBasis", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.SystemVariables.LocationOfProperty", b =>
@@ -1683,7 +1711,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LocationOfProperty");
+                    b.ToTable("LocationOfProperty", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.SystemVariables.PrimaryUseOfPropertyScore", b =>
@@ -1706,7 +1734,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PrimaryUseOfPropertyScore");
+                    b.ToTable("PrimaryUseOfPropertyScore", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.SystemVariables.SecurityOfPropertyScore", b =>
@@ -1729,7 +1757,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SecurityOfPropertyScore");
+                    b.ToTable("SecurityOfPropertyScore", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.SystemVariables.StateOfProperty", b =>
@@ -1752,7 +1780,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("StateOfProperty");
+                    b.ToTable("StateOfProperty", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Timegroups", b =>
@@ -1775,7 +1803,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Timegroups");
+                    b.ToTable("Timegroups", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Title", b =>
@@ -1792,7 +1820,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Titles");
+                    b.ToTable("Titles", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Titles", b =>
@@ -1815,7 +1843,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Titles_1");
+                    b.ToTable("Titles_1", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.UnderWriting", b =>
@@ -1873,7 +1901,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasIndex("StateOfPropertyId");
 
-                    b.ToTable("UnderWritings");
+                    b.ToTable("UnderWritings", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.UnderwritingQuestions", b =>
@@ -1900,7 +1928,7 @@ namespace ShortTerm.Web.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UnderwritingQuestions");
+                    b.ToTable("UnderwritingQuestions", (string)null);
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Employee", b =>
@@ -1925,14 +1953,18 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b0788e57-dc2d-48f1-80c7-5d6d75d3a8d2",
+
+                            ConcurrencyStamp = "09009dd5-ae7e-4cac-8859-ac21fc07761d",
+
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEFb24KPj9/VTlAUr5wJ92564ae4XgQ5wHDFOwvIwJk7o9K76MuPXxooCc2oBZk/kpw==",
+
+                            PasswordHash = "AQAAAAEAACcQAAAAEDgRwd04QhWtX8K/VhRsE/jR0l2lyeOFQaYE5PSkC/OD19IgSZDZ+oWe7XmKWeTQHA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b20d9e50-c94d-4d5e-9e15-0787a1c8956c",
+                            SecurityStamp = "6fb50049-41f4-435e-a6e0-3289bc3b305c",
+
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -1943,14 +1975,18 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "afbbe580-abad-4670-b0d1-2a2b431fbd04",
+
+                            ConcurrencyStamp = "7882e39e-6859-414f-bf15-5ff3fcd307c1",
+
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKTGi+iC8XwKZrCRMPBUo8KDMWLk0WfV04Bbc7XggMoLN2Erd4lJKVtWYWJYu+K/gg==",
+
+                            PasswordHash = "AQAAAAEAACcQAAAAEBUaZH8E1GcBCRNkjkODX8I3uv5YqJqu64xUCi/gPN5nrG11Nf3NbRgqrqLenuf4zA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4dc396bb-e91c-453a-af23-c32331b1239e",
+                            SecurityStamp = "ac119476-85d7-40f4-a960-ab55ac8c236b",
+
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2120,6 +2156,33 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Navigation("ProductGroup");
                 });
 
+            modelBuilder.Entity("ShortTerm.Web.Data.PolicyReassurance", b =>
+                {
+                    b.HasOne("ShortTerm.Web.Data.Policy", "Policy")
+                        .WithMany()
+                        .HasForeignKey("PolicyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShortTerm.Web.Data.ReassuranceType", "ReassuranceType")
+                        .WithMany()
+                        .HasForeignKey("ReassuranceTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ShortTerm.Web.Data.Reassurer", "Reassurer")
+                        .WithMany()
+                        .HasForeignKey("ReassurerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Policy");
+
+                    b.Navigation("ReassuranceType");
+
+                    b.Navigation("Reassurer");
+                });
+
             modelBuilder.Entity("ShortTerm.Web.Data.ProductGroup", b =>
                 {
                     b.HasOne("ShortTerm.Web.Data.Scheme", "Scheme")
@@ -2153,25 +2216,6 @@ namespace ShortTerm.Web.Data.Migrations
                     b.Navigation("IndividualProduct");
 
                     b.Navigation("Requirement");
-                });
-
-            modelBuilder.Entity("ShortTerm.Web.Data.Reassurer", b =>
-                {
-                    b.HasOne("ShortTerm.Web.Data.Client", "Client")
-                        .WithMany()
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShortTerm.Web.Data.ReassuranceType", "ReassuranceType")
-                        .WithMany()
-                        .HasForeignKey("ReassuranceTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Client");
-
-                    b.Navigation("ReassuranceType");
                 });
 
             modelBuilder.Entity("ShortTerm.Web.Data.Requirement", b =>
