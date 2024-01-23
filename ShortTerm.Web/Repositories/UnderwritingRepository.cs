@@ -33,6 +33,20 @@ namespace ShortTerm.Web.Repositories
             return model;
         }
 
+        public Task<List<UnderwritingListVM>> GetAll(int Id)
+        {
+            var model = context.UnderWritings.Include(q => q.Policy)
+               .Include(q => q.Client)
+               .Include(q => q.StateOfProperty)
+               .Include(q => q.LocationOfProperty)
+               .Include(q => q.SecurityOfPropertyScore)
+               .Include(q => q.PrimaryUseOfPropertyScore)
+               .ProjectTo<UnderwritingListVM>(configurationProvider)
+               .Where(q => q.PolicyId == Id)
+               .ToListAsync();
+            return model;
+        }
+
         public  Task<UnderWritingVM> GetDetails(int id)
         {
             var policy =  context.Policies.Include(q=>q.Client)

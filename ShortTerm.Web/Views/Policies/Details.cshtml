@@ -105,10 +105,11 @@
     <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>&nbsp;
     <a asp-action="Edit" class="btn btn-outline-warning" asp-route-id="@Model?.Id">Edit</a>&nbsp;
 
-    <a asp-controller="UnderWritings" asp-action="Details" class="btn btn-outline-info" asp-route-id="@Model?.Id">UnderWriting</a>&nbsp;
+    <a asp-controller="UnderWritings" asp-action="Index" class="btn btn-outline-info" asp-route-id="@Model?.Id">UnderWriting</a>&nbsp;
+
     @if (Model.SumAssured > Model.IndividualProduct.Retention && Model.IndividualProduct.CanBeCeded && SignInManager.IsSignedIn(User))
     {  
-        <a asp-controller="PolicyReassurances" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
+        <a asp-controller="PolicyReassurances" asp-action="Create" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
     }
     <div class="row">
         @if (Model.Approved == null && User.IsInRole(Roles.Administrator))
