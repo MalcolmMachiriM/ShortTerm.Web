@@ -15,6 +15,8 @@ namespace ShortTerm.Web.Models
 
         [Display(Name = "Process Time")]
         public int ProcessTime { get; set; }
+        [Display(Name ="Retention Limit")]
+        [DataType(DataType.Currency)]
         public double Retention { get; set; }
 
         [Display(Name = "Sum Assured Basis")]

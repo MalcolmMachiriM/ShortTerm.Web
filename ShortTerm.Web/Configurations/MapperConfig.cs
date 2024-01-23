@@ -18,6 +18,7 @@ namespace ShortTerm.Web.Configurations
             CreateMap<Policy, PolicyListVM>().ReverseMap();
             CreateMap<Policy, PolicyCreateVM>().ReverseMap();
             CreateMap<IndividualProduct, IndividualProductCreateVM>().ReverseMap();
+            CreateMap<IndividualProduct, IndividualProductVM>().ReverseMap();
             CreateMap<PolicyRulesVM, ProductPolicyRequirement>().ReverseMap();
             CreateMap<ProductPolicyRequirement, ProductPolicyRequirementCreateVM>().ReverseMap();
             CreateMap<ProductPolicyRequirement, ProductPolicyRuquirementsListVM>().ReverseMap();

@@ -13,13 +13,13 @@ namespace ShortTerm.Web.Models
         public DateTime ApplicationDate { get; set; }
 
         [Display(Name = "Product Group")]
-        public ProductGroup? ProductGroup { get; set; }
+        public ProductGroupVM? ProductGroup { get; set; }
         public int ProductGroupId { get; set; }
 
         [Display(Name ="Individual Product")]
-        public IndividualProduct? IndividualProduct { get; set; }
+        public IndividualProductVM? IndividualProduct { get; set; }
         public int IndividualProductId { get; set; }
-        public Client? Client { get; set; }
+        public ClientListVM? Client { get; set; }
 
         [Display(Name = "Client Name")]
         public int ClientId { get; set; }
@@ -40,8 +40,15 @@ namespace ShortTerm.Web.Models
 
         [Display(Name = "Premium Term")]
         public int PremiumTerm { get; set; }
+
+        [Display(Name = "Benefit Term")]
         public int BenefitTerm { get; set; }
+
+        [Display(Name = "Sum Assured")]
+        [DataType(DataType.Currency)]
         public double SumAssured { get; set; }
+
+        [DataType(DataType.Currency)]
         public double Premium { get; set; }
         public PaymentFrequency? PaymentFrequency { get; set; }
         public PaymentMethod? PaymentMethod { get; set; }

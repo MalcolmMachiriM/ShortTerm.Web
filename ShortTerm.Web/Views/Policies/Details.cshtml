@@ -1,5 +1,5 @@
 ﻿@using ShortTerm.Web.Constants;
-@model Policy
+@model PolicyDetailsVM
 
 @{
     ViewData["Title"] = "Policy Details";
@@ -76,16 +76,16 @@
             @Html.DisplayFor(model => model.Premium)
         </dd>
         <dt class = "col-sm-5">
-            @Html.DisplayNameFor(model => model.PaymentMethodId)
+            @Html.DisplayNameFor(model => model.PaymentMethod)
         </dt>
         <dd class = "col-sm-7">
-            @Html.DisplayFor(model => model.PaymentMethodId)
+            @Html.DisplayFor(model => model.PaymentMethod.Method)
         </dd>
         <dt class = "col-sm-5">
-            @Html.DisplayNameFor(model => model.PaymentFrequencyId)
+            @Html.DisplayNameFor(model => model.PaymentFrequency)
         </dt>
         <dd class = "col-sm-7">
-            @Html.DisplayFor(model => model.PaymentFrequencyId)
+            @Html.DisplayFor(model => model.PaymentFrequency.Frequency)
         </dd>
         <dt class = "col-sm-5">
             @Html.DisplayNameFor(model => model.DateCreated)

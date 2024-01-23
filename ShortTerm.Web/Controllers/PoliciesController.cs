@@ -51,19 +51,25 @@ namespace ShortTerm.Web.Controllers
 
             var model = new PolicyDetailsVM
             {
+                Id = policy.Id,
                 ClientId = policy.ClientId,
-                ProductGroup = policy.ProductGroup,
-                IndividualProduct = policy.IndividualProduct,
-                Client = policy.Client,
+                ProductGroup = mapper.Map<ProductGroupVM>(policy.ProductGroup),
+                IndividualProduct = mapper.Map<IndividualProductVM>(policy.IndividualProduct),
+                Client = mapper.Map<ClientListVM>(policy.Client),
                 PaymentMethod = policy.PaymentMethod,
                 PaymentFrequency = policy.PaymentFrequency,
+                ApplicationDate = policy.ApplicationDate,
+                PremiumTerm = policy.PremiumTerm,
+                SumAssured = policy.SumAssured,
+                Premium = policy.Premium,
+                DateCreated = policy.DateCreated,
             };
             if (policy == null)
             {
                 return NotFound();
             }
 
-            return View(policy);
+            return View(model);
         }
 
         // GET: Policies/Create
