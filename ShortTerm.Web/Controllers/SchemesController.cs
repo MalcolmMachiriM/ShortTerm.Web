@@ -85,7 +85,7 @@ namespace ShortTerm.Web.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
 
-            if (id == null || schemeRepository.GetAllAsync() == null)
+            if (id == null || await schemeRepository.GetAllAsync() == null)
             {
                 return NotFound();
             }

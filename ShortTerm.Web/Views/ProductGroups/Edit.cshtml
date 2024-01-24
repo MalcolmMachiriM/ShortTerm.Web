@@ -1,4 +1,4 @@
-﻿@model ShortTerm.Web.Data.ProductGroup
+﻿@model ProductGroupeditVM
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,7 +6,7 @@
 
 <h1>Edit</h1>
 
-<h4>ProductGroup</h4>
+<h4>Product Group</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,20 +29,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="SchemeId" class="control-label"></label>
-                <select asp-for="SchemeId" class="form-control" asp-items="ViewBag.SchemeId"></select>
+                <select asp-for="SchemeId" class="form-control" asp-items="Model?.Schemes"></select>
+                @* <input asp-for="SchemeId" class="form-control"/> *@
+                @* <select asp-for="SchemeId" class="form-control" asp-items="Model?.Schemes"></select> *@
                 <span asp-validation-for="SchemeId" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateModified" class="control-label"></label>
-                <input asp-for="DateModified" class="form-control" />
-                <span asp-validation-for="DateModified" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="Id" />            
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

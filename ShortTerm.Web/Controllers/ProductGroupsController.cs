@@ -102,28 +102,37 @@ namespace ShortTerm.Web.Controllers
         // GET: ProductGroups/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.ProductGroups == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
             var productGroup = await _context.ProductGroups.FindAsync(id);
+
             if (productGroup == null)
+
             {
                 return NotFound();
             }
-            ViewData["SchemeId"] = new SelectList(_context.Schemes, "Id", "Id", productGroup.SchemeId);
-            return View(productGroup);
+            var model = new ProductGroupeditVM{
+                Id = productGroup.Id,
+                Name = productGroup.Name,
+                Description = productGroup.Description,
+                Code = productGroup.Code,
+                SchemeId = productGroup.SchemeId,
+
+                Schemes = new SelectList(_context.Schemes, "Id", "RegName", productGroup.SchemeId)
+            };
+            
+            return View(model);
         }
 
         // POST: ProductGroups/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Code,Description,SchemeId,Id,DateCreated,DateModified")] ProductGroup productGroup)
+        public async Task<IActionResult> Edit(int id, ProductGroupeditVM model)
         {
-            if (id != productGroup.Id)
+            if (id != model.Id)
             {
                 return NotFound();
             }
@@ -132,12 +141,13 @@ namespace ShortTerm.Web.Controllers
             {
                 try
                 {
-                    _context.Update(productGroup);
-                    await _context.SaveChangesAsync();
+                    var group = mapper.Map<ProductGroup>(model);
+                    await productGroupRepository.UpdateAsync(group);
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductGroupExists(productGroup.Id))
+                    if (!ProductGroupExists(model.Id))
                     {
                         return NotFound();
                     }
@@ -146,10 +156,10 @@ namespace ShortTerm.Web.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["SchemeId"] = new SelectList(_context.Schemes, "Id", "Id", productGroup.SchemeId);
-            return View(productGroup);
+
+            model.Schemes = new SelectList(_context.Schemes, "Id", "Id", model.SchemeId);
+            return View(model);
         }
 
         // GET: ProductGroups/Delete/5

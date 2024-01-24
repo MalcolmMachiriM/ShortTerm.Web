@@ -33,6 +33,7 @@ namespace ShortTerm.Web.Configurations
             CreateMap<Policy, PolicyDetailsVM>().ReverseMap();
             CreateMap<PolicyReassurance, PolicyReassurancesCreateVM>().ReverseMap();
             CreateMap<PolicyReassurance, PolicyReassuranceListVM>().ReverseMap();
+            CreateMap<ProductGroup, ProductGroupeditVM>().ReverseMap();
 
         }
     }
