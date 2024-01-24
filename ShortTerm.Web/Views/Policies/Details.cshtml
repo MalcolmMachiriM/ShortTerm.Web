@@ -111,7 +111,7 @@
     {  
         <a asp-controller="PolicyReassurances" asp-action="Create" class="btn btn-outline-secondary" asp-route-id="@Model?.Id">ReInsure</a>
     }
-    <div class="row">
+    <div class="row mt-1">
         @if (Model.Approved == null && User.IsInRole(Roles.Administrator))
         {
 

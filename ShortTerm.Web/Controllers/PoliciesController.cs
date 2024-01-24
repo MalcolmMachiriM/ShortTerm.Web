@@ -160,25 +160,6 @@ namespace ShortTerm.Web.Controllers
             return View(policy);
         }
 
-        // GET: Policies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.Policies == null)
-            {
-                return NotFound();
-            }
-
-            var policy = await _context.Policies
-                .Include(p => p.ProductGroup)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (policy == null)
-            {
-                return NotFound();
-            }
-
-            return View(policy);
-        }
-
         // POST: Policies/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
