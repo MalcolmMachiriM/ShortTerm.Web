@@ -18,7 +18,9 @@
 	<!-- Style-->
 	<link rel="stylesheet" href="~/css/style.css">
 	<link rel="stylesheet" href="~/css/skin_color.css">
-	<link rel="stylesheet" href="~/css/custom.css">
+    <link rel="stylesheet" href="~/css/custom.css">
+    <link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/fontawesome.css" rel="stylesheet" />
 
 </head>
 
@@ -33,12 +35,12 @@
 				<a href="index.html" class="logo">
 					<!-- logo-->
 					<div class="logo-mini w-40">
-						<span class="light-logo"><img src="../../../images/logo-letter.png" alt="logo"></span>
-						<span class="dark-logo"><img src="../../../images/logo-white-letter.png" alt="logo"></span>
+						<span class="light-logo"><img src="~/images/logo-letter.png" alt="logo"></span>
+						<span class="dark-logo"><img src="~/images/logo-white-letter.png" alt="logo"></span>
 					</div>
 					<div class="logo-lg">
-						<span class="light-logo"><img src="../../../images/logo-light-text.png" alt="logo"></span>
-						<span class="dark-logo"><img src="../../../images/logo-text.png" alt="logo"></span>
+						<span class="light-logo"><img src="~/images/logo-light-text.png" alt="logo"></span>
+						<span class="dark-logo"><img src="~/images/logo-text.png" alt="logo"></span>
 					</div>
 				</a>
 			</div>
@@ -195,7 +197,7 @@
 						<ul class="sidebar-menu" data-widget="tree">
 							<li class="header fs-10 m-0 text-uppercase">Dashboard</li>
 							<li class="treeview">
-								<a href="#">
+								<a asp-controller="Schemes" asp-action="Index">
 									<i data-feather="home"></i>
 									<span>Dashboard</span>
 									<span class="pull-right-container">
@@ -203,66 +205,49 @@
 									</span>
 								</a>
 								<ul class="treeview-menu">
-									<li><a href="index.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Dashboard</a></li>
+									<li><a asp-controller="Home" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Dashboard</a></li>
 								</ul>
 							</li>
 
 							<li class="treeview">
-								<a href="#">
+								<a asp-controller="Schemes" asp-action="Index">
 									<i data-feather="headphones"></i>
-									<span>Support</span>
+									<span>Schemes</span>
 									<span class="pull-right-container">
 										<i class="fa fa-angle-right pull-right"></i>
 									</span>
 								</a>
 								<ul class="treeview-menu">
-									<li><a href="extra_app_ticket.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Support Ticket</a></li>
-									<li><a href="contact_app_chat.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Chat</a></li>
+									<li><a asp-controller="Schemes" asp-action="Create"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Creation</a></li>
+									<li><a asp-controller="Schemes" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Enquiries</a></li>
 								</ul>
 							</li>
 
-							<li class="header fs-10 m-0 text-uppercase">Components</li>
+							<li class="header fs-10 m-0 text-uppercase">Products &amp; Cover Types</li>
 							<li class="treeview">
 								<a href="#">
 									<i data-feather="edit"></i>
-									<span>Features</span>
+									<span>Products</span>
 									<span class="pull-right-container">
 										<i class="fa fa-angle-right pull-right"></i>
 									</span>
 								</a>
 								<ul class="treeview-menu">
 									<li class="treeview">
-										<a href="#">
-											<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card
+										<a asp-controller="ProductGroups" asp-action="Create">
+											<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Creation
 											<span class="pull-right-container">
 												<i class="fa fa-angle-right pull-right"></i>
 											</span>
 										</a>
-										<ul class="treeview-menu">
-											<li><a href="box_cards.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>User Card</a></li>
-											<li><a href="box_advanced.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Advanced Card</a></li>
-											<li><a href="box_basic.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Basic Card</a></li>
-											<li><a href="box_color.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card Color</a></li>
-											<li><a href="box_group.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Card Group</a></li>
-										</ul>
 									</li>
 									<li class="treeview">
-										<a href="#">
-											<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>BS UI
+										<a asp-controller="ProductGroups" asp-action="Create">
+											<i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Enquiries
 											<span class="pull-right-container">
 												<i class="fa fa-angle-right pull-right"></i>
 											</span>
 										</a>
-										<ul class="treeview-menu">
-											<li><a href="ui_grid.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Grid System</a></li>
-											<li><a href="ui_badges.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Badges</a></li>
-											<li><a href="ui_border_utilities.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Border</a></li>
-											<li><a href="ui_buttons.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Buttons</a></li>
-											<li><a href="ui_color_utilities.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Color</a></li>
-											<li><a href="ui_dropdown.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Dropdown</a></li>
-											<li><a href="ui_dropdown_grid.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Dropdown Grid</a></li>
-											<li><a href="ui_progress_bars.html"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Progress Bars</a></li>
-										</ul>
 									</li>
 									<li class="treeview">
 										<a href="#">
@@ -589,14 +574,7 @@
 							</li>
 						</ul>
 
-						<div class="sidebar-widgets">
-							<div class="mx-25 mb-30 pb-20 bg-primary-light rounded-5">
-								<div class="text-center">
-									<img src="../../../images/gadget_people_800x600.gif" class="sideimg p-5 rounded-5" alt="">
-									<!-- <h4 class="title-bx text-primary">CRM Portal</h4> -->
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 			</section>
@@ -1225,7 +1203,9 @@
 	</script>
 
 
-	<!-- Cartiy Admin App -->
+    <!-- Cartiy Admin App -->
+    <script src="~/lib/font-awesome/js/fontawesome.min.js"></script>
+    <script src="~/lib/font-awesome/js/fontawesome.js"></script>
 	<script src="~/js/demo.js"></script>
 	<script src="~/js/template.js"></script>
 	<script src="~/js/pages/dashboard.js"></script>
