@@ -4,110 +4,115 @@
     ViewData["Title"] = "Create Policy";
 }
 
-<h1>Create Policy</h1>
-
-<hr />
-<div class="row">
-    
+<div class="col-lg-6 col-12">
+    <!-- Basic Forms -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Create Policy</h4>
+        </div>
     <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ApplicationDate" class="control-label"></label>
-                    <input asp-for="ApplicationDate" class="form-control" />
-                    <span asp-validation-for="ApplicationDate" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ProductGroupId" class="control-label"></label>
-                    <select asp-for="ProductGroupId" class ="form-select" asp-items="Model.Groups">
-                        <option>Select Group</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="IndividualProductId" class="control-label"></label>
-                    <select asp-for="IndividualProductId" class="form-select" asp-items="Model.Products">
-                        <option>Select Product</option>
-                    </select>
-                    <span asp-validation-for="IndividualProductId" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ClientId" class="control-label"></label>
-                    <select asp-for="ClientId" class="form-select ClientSearch" asp-items="Model.Clients">
-                        <option>Search Client</option>
-                    </select>
-                    <span asp-validation-for="ClientId" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="PremiumTerm" class="control-label"></label>
-                    <input asp-for="PremiumTerm" class="form-control" />
-                    <span asp-validation-for="PremiumTerm" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="SumAssured" class="control-label"></label>
-                    <input asp-for="SumAssured" class="form-control" />
-                    <span asp-validation-for="SumAssured" class="text-danger"></span>
-                </div>
-            </div>
-         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Premium" class="control-label"></label>
-                    <input asp-for="Premium" class="form-control" />
-                    <span asp-validation-for="Premium" class="text-danger"></span>
-                </div>
-             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="PaymentMethodId" class="control-label"></label>
-                    <select asp-for="PaymentMethodId" class="form-select" asp-items="Model.PaymentMethod">
-                        <option>--Select Payment Method--</option>
-                    </select>
-                    <span asp-validation-for="PaymentMethodId" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="PaymentFrequencyId" class="control-label"></label>
-                    <select asp-for="PaymentFrequencyId" class="form-select" asp-items="Model.PaymentFrequency">
-                        <option>--Select Payment Frequency--</option>
-                    </select>
-                    <span asp-validation-for="PaymentFrequencyId" class="text-danger"></span>
-                </div>
-             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="BenefitTerm" class="control-label"></label>
-                    <input asp-for="BenefitTerm" class="form-control" />
-                    <span asp-validation-for="BenefitTerm" class="text-danger"></span>
-                </div>
-             </div>
-         </div>
-                <br />
-                <div class="form-group">
 
-                    <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
-                    <input type="submit" value="Create" class="btn btn-outline-primary" />
+        <div class="box-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ApplicationDate" class="control-label"></label>
+                        <input asp-for="ApplicationDate" class="form-control" />
+                        <span asp-validation-for="ApplicationDate" class="text-danger"></span>
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ProductGroupId" class="control-label"></label>
+                        <select asp-for="ProductGroupId" class ="form-select" asp-items="Model.Groups">
+                            <option>Select Group</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="IndividualProductId" class="control-label"></label>
+                        <select asp-for="IndividualProductId" class="form-select" asp-items="Model.Products">
+                            <option>Select Product</option>
+                        </select>
+                        <span asp-validation-for="IndividualProductId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ClientId" class="control-label"></label>
+                        <select asp-for="ClientId" class="form-select ClientSearch" asp-items="Model.Clients">
+                            <option>Search Client</option>
+                        </select>
+                        <span asp-validation-for="ClientId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PremiumTerm" class="control-label"></label>
+                        <input asp-for="PremiumTerm" class="form-control" />
+                        <span asp-validation-for="PremiumTerm" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="SumAssured" class="control-label"></label>
+                        <input asp-for="SumAssured" class="form-control" />
+                        <span asp-validation-for="SumAssured" class="text-danger"></span>
+                    </div>
+                </div>
+             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Premium" class="control-label"></label>
+                        <input asp-for="Premium" class="form-control" />
+                        <span asp-validation-for="Premium" class="text-danger"></span>
+                    </div>
+                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PaymentMethodId" class="control-label"></label>
+                        <select asp-for="PaymentMethodId" class="form-select" asp-items="Model.PaymentMethod">
+                            <option>--Select Payment Method--</option>
+                        </select>
+                        <span asp-validation-for="PaymentMethodId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PaymentFrequencyId" class="control-label"></label>
+                        <select asp-for="PaymentFrequencyId" class="form-select" asp-items="Model.PaymentFrequency">
+                            <option>--Select Payment Frequency--</option>
+                        </select>
+                        <span asp-validation-for="PaymentFrequencyId" class="text-danger"></span>
+                    </div>
+                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BenefitTerm" class="control-label"></label>
+                        <input asp-for="BenefitTerm" class="form-control" />
+                        <span asp-validation-for="BenefitTerm" class="text-danger"></span>
+                    </div>
+                 </div>
+            </div>
+            <br />
+            <div class="form-group">
+
+                <a asp-action="Index" class="btn btn-danger">Back to List</a>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
     </form>
     
+</div>
 </div>
 @section Scripts{
     

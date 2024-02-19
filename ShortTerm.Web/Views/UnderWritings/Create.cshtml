@@ -4,63 +4,67 @@
     ViewData["Title"] = "Create UnderWriting";
 }
 
-<h1>Create UnderWriting for Policy</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="col-lg-6 col-12">
+    <!-- Basic Forms -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Create Underwriting for Policy</h4>
+        </div>
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
-            <div class="form-group" hidden>
-                <label asp-for="ClientId" class="control-label"></label>
-                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
-            </div>
-            <div class="form-group" hidden>
-                <label asp-for="PolicyId" class="control-label"></label>
-                <select asp-for="PolicyId" class="form-control" value="@ViewContext.RouteData.Values["id"]"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClientProposedValueOfAsset" class="control-label"></label>
-                <input asp-for="ClientProposedValueOfAsset" class="form-control" />
-                <span asp-validation-for="ClientProposedValueOfAsset" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StateOfPropertyId" class="control-label"></label>
-                <select asp-for="StateOfPropertyId" class="form-select" asp-items="Model.StateOfProps">
-                    <option>--Select--</option>
-                </select>
-                <span asp-validation-for="StateOfPropertyId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LocationOfPropertyId" class="control-label"></label>
-                <select asp-for="LocationOfPropertyId" class="form-select" asp-items="Model.LocationOfProps">
-                    <option>--Select--</option>
-                </select>
-                <span asp-validation-for="LocationOfPropertyId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SecurityOfPropertyScoreId" class="control-label"></label>
-                <select asp-for="SecurityOfPropertyScoreId" class="form-select" asp-items="Model.SecurityOfProps">
-                    <option>--Select--</option>
-                </select>
-                <span asp-validation-for="SecurityOfPropertyScoreId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PrimaryUseOfPropertyScoreId" class="control-label"></label>
-                <select asp-for="PrimaryUseOfPropertyScoreId" class="form-select" asp-items="Model.PrimaryUseOfProps">
-                    <option>--Select--</option>
-                </select>
-                <span asp-validation-for="PrimaryUseOfPropertyScoreId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AdditionalNotes" class="control-label"></label>
-                <textarea asp-for="AdditionalNotes" class="form-control"></textarea>
-                <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <div class="form-group" hidden>
+                    <label asp-for="ClientId" class="control-label"></label>
+                    <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                </div>
+                <div class="form-group" hidden>
+                    <label asp-for="PolicyId" class="control-label"></label>
+                    <select asp-for="PolicyId" class="form-control" value="@ViewContext.RouteData.Values["id"]"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientProposedValueOfAsset" class="control-label"></label>
+                    <input asp-for="ClientProposedValueOfAsset" class="form-control" />
+                    <span asp-validation-for="ClientProposedValueOfAsset" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StateOfPropertyId" class="control-label"></label>
+                    <select asp-for="StateOfPropertyId" class="form-select" asp-items="Model.StateOfProps">
+                        <option>--Select--</option>
+                    </select>
+                    <span asp-validation-for="StateOfPropertyId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LocationOfPropertyId" class="control-label"></label>
+                    <select asp-for="LocationOfPropertyId" class="form-select" asp-items="Model.LocationOfProps">
+                        <option>--Select--</option>
+                    </select>
+                    <span asp-validation-for="LocationOfPropertyId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SecurityOfPropertyScoreId" class="control-label"></label>
+                    <select asp-for="SecurityOfPropertyScoreId" class="form-select" asp-items="Model.SecurityOfProps">
+                        <option>--Select--</option>
+                    </select>
+                    <span asp-validation-for="SecurityOfPropertyScoreId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PrimaryUseOfPropertyScoreId" class="control-label"></label>
+                    <select asp-for="PrimaryUseOfPropertyScoreId" class="form-select" asp-items="Model.PrimaryUseOfProps">
+                        <option>--Select--</option>
+                    </select>
+                    <span asp-validation-for="PrimaryUseOfPropertyScoreId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AdditionalNotes" class="control-label"></label>
+                    <textarea asp-for="AdditionalNotes" class="form-control"></textarea>
+                    <span asp-validation-for="AdditionalNotes" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-dark">Back to List</a>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
