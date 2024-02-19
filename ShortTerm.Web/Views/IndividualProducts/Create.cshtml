@@ -4,131 +4,137 @@
     ViewData["Title"] = "Create Product";
 }
 
-<h1>Create Product</h1>
+<div class="col-lg-6 col-12">
+    <!-- Basic Forms -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Create Scheme</h4>
+        </div>
+    
+        <form asp-action="Create">
 
-<hr />
-<div class="row">
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductGroupId" class="control-label"></label>
+                            <select asp-for="ProductGroupId" class="form-select" asp-items="Model.ProductGroup">
+                                <option>Select Product Group</option>
+                            </select>
+                            <span asp-validation-for="ProductGroupId" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProcessTime" class="control-label"></label>
+                            <input asp-for="ProcessTime" class="form-control" />
+                            <span asp-validation-for="ProcessTime" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Retention" class="control-label"></label>
+                            <input asp-for="Retention" class="form-control" />
+                            <span asp-validation-for="Retention" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="SumAssuredBasis" class="control-label"></label>
+                            <select asp-for="SumAssuredBasis" class="form-select" asp-items="Model?.SumAssuredBase">
+                                <option>Select Sum Assured Basis</option>
+                            </select>
+                            <span asp-validation-for="SumAssuredBasis" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <div class="form-group form-check">
+                            <label class="form-check-label mt-4">
+                                <input class="form-check-input" asp-for="CanBeCeded" /> @Html.DisplayNameFor(model => model.CanBeCeded)
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="EffectiveDate" class="control-label"></label>
+                            <input asp-for="EffectiveDate" class="form-control" />
+                            <span asp-validation-for="EffectiveDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Description" class="control-label"></label>
+                            <input asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="MaxPremiumTerm" class="control-label"></label>
+                            <input asp-for="MaxPremiumTerm" class="form-control" />
+                            <span asp-validation-for="MaxPremiumTerm" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="MinPremiumTerm" class="control-label"></label>
+                            <input asp-for="MinPremiumTerm" class="form-control" />
+                            <span asp-validation-for="MinPremiumTerm" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="MinSumAssured" class="control-label"></label>
+                            <input asp-for="MinSumAssured" class="form-control" />
+                            <span asp-validation-for="MinSumAssured" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="MaxSumAssured" class="control-label"></label>
+                            <input asp-for="MaxSumAssured" class="form-control" />
+                            <span asp-validation-for="MaxSumAssured" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-dark">Back to List</a>&nbsp;
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
     
-    <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ProductGroupId" class="control-label"></label>
-                    <select asp-for="ProductGroupId" class="form-select" asp-items="Model.ProductGroup">
-                        <option>Select Product Group</option>
-                    </select>
-                    <span asp-validation-for="ProductGroupId" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ProcessTime" class="control-label"></label>
-                    <input asp-for="ProcessTime" class="form-control" />
-                    <span asp-validation-for="ProcessTime" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Retention" class="control-label"></label>
-                    <input asp-for="Retention" class="form-control" />
-                    <span asp-validation-for="Retention" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="SumAssuredBasis" class="control-label"></label>
-                    <select asp-for="SumAssuredBasis" class="form-select" asp-items="Model?.SumAssuredBase">
-                        <option>Select Sum Assured Basis</option>
-                    </select>
-                    <span asp-validation-for="SumAssuredBasis" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="col-md-6">
-                <div class="form-group form-check">
-                    <label class="form-check-label mt-4">
-                        <input class="form-check-input" asp-for="CanBeCeded" /> @Html.DisplayNameFor(model => model.CanBeCeded)
-                    </label>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="EffectiveDate" class="control-label"></label>
-                    <input asp-for="EffectiveDate" class="form-control" />
-                    <span asp-validation-for="EffectiveDate" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="MaxPremiumTerm" class="control-label"></label>
-                    <input asp-for="MaxPremiumTerm" class="form-control" />
-                    <span asp-validation-for="MaxPremiumTerm" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="MinPremiumTerm" class="control-label"></label>
-                    <input asp-for="MinPremiumTerm" class="form-control" />
-                    <span asp-validation-for="MinPremiumTerm" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="MinSumAssured" class="control-label"></label>
-                    <input asp-for="MinSumAssured" class="form-control" />
-                    <span asp-validation-for="MinSumAssured" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="MaxSumAssured" class="control-label"></label>
-                    <input asp-for="MaxSumAssured" class="form-control" />
-                    <span asp-validation-for="MaxSumAssured" class="text-danger"></span>
-                </div>
-            </div>
-        </div>
-        <br />
-        <div class="form-group">
-            <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>&nbsp;
-            <input type="submit" value="Create" class="btn btn-outline-primary" />
-        </div>
-    </form>
-    
+    </div>
 </div>
 
 
