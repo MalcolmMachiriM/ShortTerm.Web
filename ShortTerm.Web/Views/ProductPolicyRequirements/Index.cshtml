@@ -9,7 +9,16 @@
 <p>
     <a asp-action="Create" asp-route-id="@ViewContext.RouteData.Values["Id"]" class="btn btn-outline-success">Create New</a>
 </p>
-<table class="table">
+<div class="col-12">
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Policy Rules</h4>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="example5" class="text-fade table table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -51,6 +60,10 @@
 }
     </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
 <form id="deleteForm" asp-action="Delete">
     <input type="hidden" id="schemeId" name="Id" />
 </form>
