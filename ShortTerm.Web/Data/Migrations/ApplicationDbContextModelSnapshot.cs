@@ -52,14 +52,18 @@ namespace ShortTerm.Web.Data.Migrations
                         new
                         {
                             Id = "73ad90b0-1728-44eb-1995-283f579e4764",
+
                             ConcurrencyStamp = "ccc7a941-7e7c-4328-ba13-36c176df3858",
+
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "73ad90b0-1234-7896-9587-283f579e4764",
+
                             ConcurrencyStamp = "b1966ab6-5b94-4a43-ad02-4939b05c4cb7",
+
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -936,6 +940,12 @@ namespace ShortTerm.Web.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -1984,14 +1994,18 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "e18dc662-c956-45fc-a834-63128024ce27",
                             AccessFailedCount = 0,
+
                             ConcurrencyStamp = "ea8eedb1-ae94-42d9-ac72-96ad8f797d8e",
+
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
+
                             PasswordHash = "AQAAAAEAACcQAAAAEBqRAsY8/AYMFkeVPGy7zEsVO5bEGvsKJETpFCGd5QAaNgS8AWRzDRrfA7mqxdoUBQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "ae128e4c-0915-43a2-8435-9f5697046ebc",
+
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2002,14 +2016,18 @@ namespace ShortTerm.Web.Data.Migrations
                         {
                             Id = "73ad90b0-4238-44eb-9587-283f579e4764",
                             AccessFailedCount = 0,
+
                             ConcurrencyStamp = "b9db9446-6f8a-4b14-be0c-f1fecc27db70",
+
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "User@LOCALHOST.COM",
                             NormalizedUserName = "User@LOCALHOST.COM",
+
                             PasswordHash = "AQAAAAEAACcQAAAAEJjLnd+o+cuXteKTKnGwyJ/DBDjBh71fwnKx/4sS5IeA+KDo9gDK2VqYdi8d8mFabw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "3e900831-a13b-4fac-a71d-de3e36f1487a",
+
                             TwoFactorEnabled = false,
                             UserName = "user@localhost.com",
                             DateJoined = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),

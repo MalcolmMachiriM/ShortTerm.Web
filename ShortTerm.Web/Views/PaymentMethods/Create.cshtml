@@ -1,4 +1,4 @@
-﻿@model ShortTerm.Web.Data.PaymentMethods
+﻿@model ShortTerm.Web.Models.SystemVariables.PaymentMethodsVM
 
 @{
     ViewData["Title"] = "Create";
@@ -31,17 +31,7 @@
                 <label asp-for="MobileNumRequired" class="control-label"></label>
                 <input asp-for="MobileNumRequired" class="form-control" />
                 <span asp-validation-for="MobileNumRequired" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateModified" class="control-label"></label>
-                <input asp-for="DateModified" class="form-control" />
-                <span asp-validation-for="DateModified" class="text-danger"></span>
-            </div>
+            </div>            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
