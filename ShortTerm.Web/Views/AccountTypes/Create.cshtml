@@ -1,24 +1,26 @@
 ﻿@model ShortTerm.Web.Models.SystemVariables.AccountTypesVM
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Account Types";
 }
 
-<h1>Create</h1>
-
-<h4>AccountTypes</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="col-lg-12 col-12">
+    <!-- Basic Forms -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Create Account Types</h4>
+        </div>
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
-            </div>            
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Type" class="control-label"></label>
+                    <input asp-for="Type" class="form-control" />
+                    <span asp-validation-for="Type" class="text-danger"></span>
+                </div>            
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
