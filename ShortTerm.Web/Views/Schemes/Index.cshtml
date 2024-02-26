@@ -4,14 +4,23 @@
     ViewData["Title"] = "Schemes";
 }
 
-<h1>Schemes</h1>
+
 
 <p>
-    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
-<table class="table">
+<div class="col-12">
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Schemes</h4>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="example5" class="text-fade table table-bordered" style="width:100%">
     <thead>
-        <tr>
+        <tr class="text-dark">
             <th>
                 @Html.DisplayNameFor(model => model.RegNo)
             </th>
@@ -58,7 +67,7 @@
                 @Html.DisplayFor(modelItem => item.RetentionLimit)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Client.Surname)
+                @Html.DisplayFor(modelItem => item.Client.FirstName)
             </td>
             <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning"><i class="fa fa-pencil-alt"></i></a> &nbsp;
@@ -70,7 +79,10 @@
 }
     </tbody>
 </table>
-
+</div>
+</div>
+</div>
+</div>
 <form id="deleteForm" asp-action="Delete">
     <input type="hidden" id="schemeId" name="Id" />
 </form>

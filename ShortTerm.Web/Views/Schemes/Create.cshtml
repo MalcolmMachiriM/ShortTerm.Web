@@ -4,73 +4,76 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create Scheme</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="col-lg-6 col-12">
+    <!-- Basic Forms -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Create Scheme</h4>
+        </div>
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="RegNo" class="control-label"></label>
-                <input asp-for="RegNo" class="form-control" />
-                <span asp-validation-for="RegNo" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="RegName" class="control-label"></label>
-                <input asp-for="RegName" class="form-control" />
-                <span asp-validation-for="RegName" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="Taxno" class="control-label"></label>
-                <input asp-for="Taxno" class="form-control"  />
-                <span asp-validation-for="Taxno" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="ReassuranceNo" class="control-label"></label>
-                <input asp-for="ReassuranceNo" class="form-control" />
-                <span asp-validation-for="ReassuranceNo" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="CommencementDate" class="control-label"></label>
-                <input asp-for="CommencementDate" class="form-control" type="date" />
-                <span asp-validation-for="CommencementDate" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="ConversionDate" class="control-label"></label>
-                <input asp-for="ConversionDate" class="form-control" type="date" />
-                <span asp-validation-for="ConversionDate" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="RulesAmmendment" class="control-label"></label>
-                <input asp-for="RulesAmmendment" class="form-control" type="date" />
-                <span asp-validation-for="RulesAmmendment" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="RetentionLimit" class="control-label"></label>
-                <input asp-for="RetentionLimit" class="form-control" />
-                <span asp-validation-for="RetentionLimit" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="InstitutionalClientsName" class="control-label"></label>
-                <select asp-for="InstitutionalClientsName" class="form-select" asp-items="Model.InstitutionalClients">
-                    <option>Select Institutional Client</option>
-                </select>
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="RegNo" class="form-label"></label>
+                    <input asp-for="RegNo" class="form-control" />
+                    <span asp-validation-for="RegNo" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="RegName" class="form-label"></label>
+                    <input asp-for="RegName" class="form-control" />
+                    <span asp-validation-for="RegName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="Taxno" class="form-label"></label>
+                    <input asp-for="Taxno" class="form-control"  />
+                    <span asp-validation-for="Taxno" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="ReassuranceNo" class="form-label"></label>
+                    <input asp-for="ReassuranceNo" class="form-control" />
+                    <span asp-validation-for="ReassuranceNo" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="CommencementDate" class="form-label"></label>
+                    <input asp-for="CommencementDate" class="form-control" type="date" />
+                    <span asp-validation-for="CommencementDate" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="ConversionDate" class="form-label"></label>
+                    <input asp-for="ConversionDate" class="form-control" type="date" />
+                    <span asp-validation-for="ConversionDate" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="RulesAmmendment" class="form-label"></label>
+                    <input asp-for="RulesAmmendment" class="form-control" type="date" />
+                    <span asp-validation-for="RulesAmmendment" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="RetentionLimit" class="form-label"></label>
+                    <input asp-for="RetentionLimit" class="form-control" />
+                    <span asp-validation-for="RetentionLimit" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="InstitutionalClientsName" class="form-label"></label>
+                    <select asp-for="InstitutionalClientsName" class="form-select" asp-items="Model.InstitutionalClients">
+                        <option>Select Institutional Client</option>
+                    </select>
                 
-                <span asp-validation-for="InstitutionalClientsName" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <a asp-action="Index" class="btn btn-dark">Back to List</a>
-                <input type="submit" value="Create" class="btn btn-primary" />
+                    <span asp-validation-for="InstitutionalClientsName" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-danger">Cancel</a>
+                    <input type="submit" value="Create" class="btn btn-Success" />
+                </div>
             </div>
         </form>
     </div>

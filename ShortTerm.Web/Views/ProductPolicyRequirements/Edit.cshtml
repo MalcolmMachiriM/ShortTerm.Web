@@ -4,63 +4,62 @@
     ViewData["Title"] = "Edit Policy Requirement";
 }
 
-<h1>Edit Policy Requirement</h1>
-
-<h4></h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<<div class="col-lg-6 col-12">
+    <!-- Basic Forms -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Edit Policy Requirement</h4>
+        </div>
         <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IndividualProductID" class="control-label"></label>
-                <select asp-for="IndividualProductID" class="form-control" asp-items="ViewBag.IndividualProductID"></select>
-                <span asp-validation-for="IndividualProductID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="RequirementID" class="control-label"></label>
-                <select asp-for="RequirementID" class="form-control" asp-items="ViewBag.RequirementID"></select>
-                <span asp-validation-for="RequirementID" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsMandatory" /> @Html.DisplayNameFor(model => model.IsMandatory)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddedBy" class="control-label"></label>
-                <input asp-for="AddedBy" class="form-control" />
-                <span asp-validation-for="AddedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModifiedBy" class="control-label"></label>
-                <input asp-for="ModifiedBy" class="form-control" />
-                <span asp-validation-for="ModifiedBy" class="text-danger"></span>
-            </div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateModified" class="control-label"></label>
-                <input asp-for="DateModified" class="form-control" />
-                <span asp-validation-for="DateModified" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="IndividualProductID" class="control-label"></label>
+                    <select asp-for="IndividualProductID" class="form-control" asp-items="ViewBag.IndividualProductID"></select>
+                    <span asp-validation-for="IndividualProductID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RequirementID" class="control-label"></label>
+                    <select asp-for="RequirementID" class="form-control" asp-items="ViewBag.RequirementID"></select>
+                    <span asp-validation-for="RequirementID" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsMandatory" /> @Html.DisplayNameFor(model => model.IsMandatory)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AddedBy" class="control-label"></label>
+                    <input asp-for="AddedBy" class="form-control" />
+                    <span asp-validation-for="AddedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModifiedBy" class="control-label"></label>
+                    <input asp-for="ModifiedBy" class="form-control" />
+                    <span asp-validation-for="ModifiedBy" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="DateCreated" class="control-label"></label>
+                    <input asp-for="DateCreated" class="form-control" />
+                    <span asp-validation-for="DateCreated" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DateModified" class="control-label"></label>
+                    <input asp-for="DateModified" class="form-control" />
+                    <span asp-validation-for="DateModified" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-dark"asp-action="Index">Back to List</a>
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-

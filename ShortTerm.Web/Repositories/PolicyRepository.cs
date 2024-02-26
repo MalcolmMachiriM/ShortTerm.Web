@@ -40,7 +40,7 @@ namespace ShortTerm.Web.Repositories
         public async Task ChangeApprovalStatus(int PolicyId, bool approved)
         {
 
-            var policy = await GetAsync(PolicyId);
+            var policy = await GetPolicies(PolicyId);
             TimeSpan timeDifference = DateTime.Now - policy.DateCreated;
             bool isProcessTimeElapsed = policy.IndividualProduct.ProcessTime <= timeDifference.TotalDays / 30;
             if (approved && isProcessTimeElapsed)
@@ -48,16 +48,24 @@ namespace ShortTerm.Web.Repositories
                 policy.Approved = true;
 
             }
+            else if(!approved && isProcessTimeElapsed)
+            {
+                policy.Approved = false;
+            }
             else
             {
                 return;
             }
-            policy.Approved = approved;
             await UpdateAsync(policy);
 
             
         }
 
-        
+        public async Task<Policy> GetPolicies(int PolicyId)
+        {
+            var policy = await context.Policies.Include(q=>q.IndividualProduct).
+               FirstOrDefaultAsync(q=> q.Id == PolicyId);
+            return policy;
+        }
     }
 }

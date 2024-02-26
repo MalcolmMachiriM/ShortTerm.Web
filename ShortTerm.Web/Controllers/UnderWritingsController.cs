@@ -30,38 +30,70 @@ namespace ShortTerm.Web.Controllers
         }
 
         // GET: UnderWritings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int Id=0)
         {
-            //var applicationDbContext = _context.UnderWritings.Include(u => u.Client).Include(u => u.Policy);
-            //return View(await applicationDbContext.ToListAsync());
-
-            var model = await underwritingRepository.GetAll();
-            return View(model);
+            if (Id == 0)
+            {
+                var model = await underwritingRepository.GetAll();
+                return View(model);
+            }
+            else
+            {
+                var model = await underwritingRepository.GetAll(Id);
+                return View(model);
+            }
         }
 
         // GET: UnderWritings/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int policyId=0)
         {
-            if (id == null || _context.UnderWritings == null)
+            if (policyId == 0)
             {
-                return NotFound();
-            }
+                if (id == null || _context.UnderWritings == null)
+                {
+                    return NotFound();
+                }
 
-            var underWriting = await _context.UnderWritings
-                .Include(u => u.Client)
-                .Include(u => u.Policy)
-                .Include(u => u.StateOfProperty)
-                .Include(u => u.LocationOfProperty)
-                .Include(u => u.SecurityOfPropertyScore)
-                .Include(u => u.PrimaryUseOfPropertyScore)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            var model = mapper.Map<UnderwritingListVM>(underWriting);
-            if (underWriting == null)
+                var underWriting = await _context.UnderWritings
+                    .Include(u => u.Client)
+                    .Include(u => u.Policy)
+                    .Include(u => u.StateOfProperty)
+                    .Include(u => u.LocationOfProperty)
+                    .Include(u => u.SecurityOfPropertyScore)
+                    .Include(u => u.PrimaryUseOfPropertyScore)
+                    .FirstOrDefaultAsync(m => m.Id == id);
+                var model = mapper.Map<UnderwritingListVM>(underWriting);
+                if (underWriting == null)
+                {
+                    return NotFound();
+                }
+
+                return View(model);
+            }
+            else
             {
-                return NotFound();
-            }
+                if (id == null || _context.UnderWritings == null)
+                {
+                    return NotFound();
+                }
 
-            return View(model);
+                var underWriting = await _context.UnderWritings
+                    .Include(u => u.Client)
+                    .Include(u => u.Policy)
+                    .Include(u => u.StateOfProperty)
+                    .Include(u => u.LocationOfProperty)
+                    .Include(u => u.SecurityOfPropertyScore)
+                    .Include(u => u.PrimaryUseOfPropertyScore)
+                    .FirstOrDefaultAsync(m => m.Id == id && m.PolicyId ==policyId);
+                var model = mapper.Map<UnderwritingListVM>(underWriting);
+                if (underWriting == null)
+                {
+                    return NotFound();
+                }
+
+                return View(model);
+            }
+            
         }
 
         // GET: UnderWritings/Create
@@ -88,11 +120,12 @@ namespace ShortTerm.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(UnderWritingVM model)
+        public async Task<IActionResult> Create(UnderWritingVM model, int id=0)
         {
             if (ModelState.IsValid)
             {
                 var underwriting = mapper.Map<UnderWriting>(model);
+                underwriting.PolicyId = id;
                 await underwritingRepository.AddAsync(underwriting);
                 return RedirectToAction(nameof(Index),"Policies");
             }
