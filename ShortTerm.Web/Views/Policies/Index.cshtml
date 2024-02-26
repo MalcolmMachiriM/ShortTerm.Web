@@ -4,12 +4,20 @@
     ViewData["Title"] = "Policies";
 }
 
-<h1>Policies</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
-<table class="table">
+<div class="col-12">
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Policies</h4>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="example5" class="text-fade table table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -74,12 +82,17 @@
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info "><i class="fa fa-info-circle"> </i></a>&nbsp
                     <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn " type="button"><i class="fa fa-trash"></i></button>&nbsp
-                    <a asp-controller="UnderWritings" asp-action="Create" asp-route-id="@item.Id" class="btn btn-outline-warning mt-1">@* <i class="fa fa-check-circle"> </i> *@ Underwriting</a>
+                    <a asp-controller="UnderWritings" asp-action="Create" asp-route-id="@item.Id" class="btn btn-outline-warning mt-1">
+                        @* <i class="fa fa-check-circle"> </i> *@ Underwriting</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
 <form id="deleteForm" asp-action="Delete">
     <input type="hidden" id="schemeId" name="Id" />
 </form>

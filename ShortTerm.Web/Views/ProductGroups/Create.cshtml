@@ -1,45 +1,49 @@
 ﻿@model ProductGroupCreateVM
 
 @{
-    ViewData["Title"] = "Create Product Group";
+    ViewData["Title"] = "Create Product Category";
 }
 
-<h1>Create Product Group</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="col-lg-6 col-12">
+    <!-- Basic Forms -->
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Create Product Category</h4>
+        </div>
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="Code" class="control-label"></label>
-                <input asp-for="Code" class="form-control" />
-                <span asp-validation-for="Code" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <label asp-for="SchemeId" class="control-label"></label>
-                <select asp-for="SchemeId" class="form-select" asp-items="Model?.Schemes" asp-dropdown>
-                    <option>Select Scheme</option>
-                </select>
-                <span asp-validation-for="SchemeId" class="text-danger"></span>
-            </div>
-            <br />
-            <div class="form-group">
-                <a asp-action="Index" class="btn btn-outline-dark">Back to List</a>
-                <input type="submit" value="Create" class="btn btn-outline-primary" />
+
+            <div class="box-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="Code" class="form-label"></label>
+                    <input asp-for="Code" class="form-control" />
+                    <span asp-validation-for="Code" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="SchemeId" class="form-label"></label>
+                    <select asp-for="SchemeId" class="form-select" asp-items="Model?.Schemes" asp-dropdown>
+                        <option>Select Scheme</option>
+                    </select>
+                    <span asp-validation-for="SchemeId" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-dark">Back to List</a>
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
             </div>
         </form>
     </div>

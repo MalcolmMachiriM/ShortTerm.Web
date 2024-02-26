@@ -29,6 +29,7 @@ builder.Services.AddScoped<IProductPolicyRequirementRepository, ProductPolicyReq
 builder.Services.AddScoped<IUnderwritingRepository, UnderwritingRepository>();
 builder.Services.AddScoped<IReasurerRepository, ReasurerRepository>();
 builder.Services.AddScoped<IPolicyReassurancesRepository, PolicyReassurancesRepository>();
+builder.Services.AddScoped<IPremiumPaymentRepository, PremiumPaymentRepository>();
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
 

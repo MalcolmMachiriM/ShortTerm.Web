@@ -29,7 +29,11 @@ namespace ShortTerm.Web.Controllers
         // GET: Schemes
         public async Task<IActionResult> Index()
         {
-            var model = await schemeRepository.GetAllSchemeDetails();
+            //var model = await schemeRepository.GetAllSchemeDetails();
+            var schemes = await _context.Schemes
+                .Include(q => q.Clients)
+                .ToListAsync();
+            var model = mapper.Map<List<SchemeListVM>>(schemes);
             return model != null ? View(model) : Problem("No Schemea Found");
         }
 

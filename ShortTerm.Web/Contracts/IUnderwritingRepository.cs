@@ -7,5 +7,6 @@ namespace ShortTerm.Web.Contracts
     {
         Task <UnderWritingVM> GetDetails(int id);
         Task <List<UnderwritingListVM>> GetAll();
+        Task <List<UnderwritingListVM>> GetAll(int Id);
     }
 }

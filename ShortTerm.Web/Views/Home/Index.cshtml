@@ -2,159 +2,68 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>DashBoard Stats</h1>
 
-<hr />
-<br />
-
-<div class="row ">
-    <div class="col-sm-3 mb-3 mb-sm-0">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1 class="card-title text-primary text-center">1</h1>
-                <p class="card-text">Schemes</p>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3 mb-3 mb-sm-0">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1 class="card-title text-success text-center">2</h1>
-                <p class="card-text">Product Groups</p>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3 mb-3 mb-sm-0">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1 class="card-title text-warning text-center">6</h1>
-                <p class="card-text">Products</p>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3 mb-3 mb-sm-0">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1 class="card-title text-secondary text-center">1</h1>
-                <p class="card-text">Policies</p>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3 mb-3 mb-sm-0 p-t-10">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1 class="card-title text-danger text-center">1</h1>
-                <p class="card-text">Claims</p>
-
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3 mb-3 mb-sm-0 p-t-10">
-        <div class="card">
-            <div class="card-body text-center">
-                <h1 class="card-title text-warning text-center">1</h1>
-                <p class="card-text">Clients</p>
-
-            </div>
-        </div>
-    </div>
+<div class="box box-body">
+	<div class="row">
+		<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+			<div class="box-body rounded-0 p-0 pb-lg-0 pb-sm-15 pb-xs-15 be-1 fill-icon">
+				<div class="d-flex align-items-center">
+					<div class="w-70 h-70 me-15 bg-primary-light rounded-circle text-center p-10">
+						<div class="w-50 h-50 bg-primary rounded-circle">
+							<i class="fa fa-shopping-cart fs-24 l-h-50"></i>
+						</div>
+					</div>
+					<div class="d-flex flex-column">
+						<span class="text-fade fs-12">Schemes</span>
+						<h2 class="text-dark hover-primary m-0 fw-600">2</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+			<div class="box-body rounded-0 p-0 pb-lg-0 pb-sm-15 pb-xs-15 be-1 fill-icon">
+				<div class="d-flex align-items-center">
+					<div class="w-70 h-70 me-15 bg-info-light rounded-circle text-center p-10">
+						<div class="w-50 h-50 bg-info rounded-circle">
+							<i class="fa fa-fw fa-bar-chart fs-20 l-h-50"></i>
+						</div>
+					</div>
+					<div class="d-flex flex-column">
+						<span class="text-fade fs-12">Policies</span>
+						<h2 class="text-dark hover-primary m-0 fw-600">10</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+			<div class="box-body rounded-0 p-0 pb-lg-0 pb-xs-15 be-1 fill-icon">
+				<div class="d-flex align-items-center">
+					<div class="w-70 h-70 me-15 bg-danger-light rounded-circle text-center p-10">
+						<div class="w-50 h-50 bg-danger rounded-circle">
+							<i class="fa fa-user-circle-o fs-20 l-h-50"></i>
+						</div>
+					</div>
+					<div class="d-flex flex-column">
+						<span class="text-fade fs-12">Claims</span>
+						<h2 class="text-dark hover-primary m-0 fw-600">6</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-12">
+			<div class="box-body rounded-0 p-0 fill-icon">
+				<div class="d-flex align-items-center">
+					<div class="w-70 h-70 me-15 bg-warning-light rounded-circle text-center p-10">
+						<div class="w-50 h-50 bg-warning rounded-circle">
+							<i class="fa fa-pie-chart fs-24 l-h-50"></i>
+						</div>
+					</div>
+					<div class="d-flex flex-column">
+						<span class="text-fade fs-12">Clients</span>
+						<h2 class="text-dark hover-primary m-0 fw-600">145</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<br />
-
-
-
-
-@* <div class="row row-sm">
-    <div class="col-sm-6 col-xl-3">
-        <div class="card pd-20 bg-primary">
-            <div class="d-flex justify-content-between align-items-center mg-b-10">
-                <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">Today's Sales</h6>
-                <a href="#" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
-            </div><!-- card-header -->
-            <div class="d-flex align-items-center justify-content-between">
-                <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
-                <h3 class="mg-b-0 tx-white tx-lato tx-bold">$850</h3>
-            </div><!-- card-body -->
-            <div class="d-flex align-items-center justify-content-between mg-t-15 bd-t bd-white-2 pd-t-10">
-                <div>
-                    <span class="tx-11 tx-white-6">Gross Sales</span>
-                    <h6 class="tx-white mg-b-0">$2,210</h6>
-                </div>
-                <div>
-                    <span class="tx-11 tx-white-6">Tax Return</span>
-                    <h6 class="tx-white mg-b-0">$320</h6>
-                </div>
-            </div><!-- -->
-        </div><!-- card -->
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-xl-3 mg-t-20 mg-sm-t-0">
-        <div class="card pd-20 bg-info">
-            <div class="d-flex justify-content-between align-items-center mg-b-10">
-                <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">This Week's Sales</h6>
-                <a href="#" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
-            </div><!-- card-header -->
-            <div class="d-flex align-items-center justify-content-between">
-                <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
-                <h3 class="mg-b-0 tx-white tx-lato tx-bold">$4,625</h3>
-            </div><!-- card-body -->
-            <div class="d-flex align-items-center justify-content-between mg-t-15 bd-t bd-white-2 pd-t-10">
-                <div>
-                    <span class="tx-11 tx-white-6">Gross Sales</span>
-                    <h6 class="tx-white mg-b-0">$2,210</h6>
-                </div>
-                <div>
-                    <span class="tx-11 tx-white-6">Tax Return</span>
-                    <h6 class="tx-white mg-b-0">$320</h6>
-                </div>
-            </div><!-- -->
-        </div><!-- card -->
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-        <div class="card pd-20 bg-purple">
-            <div class="d-flex justify-content-between align-items-center mg-b-10">
-                <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">This Month's Sales</h6>
-                <a href="#" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
-            </div><!-- card-header -->
-            <div class="d-flex align-items-center justify-content-between">
-                <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
-                <h3 class="mg-b-0 tx-white tx-lato tx-bold">$11,908</h3>
-            </div><!-- card-body -->
-            <div class="d-flex align-items-center justify-content-between mg-t-15 bd-t bd-white-2 pd-t-10">
-                <div>
-                    <span class="tx-11 tx-white-6">Gross Sales</span>
-                    <h6 class="tx-white mg-b-0">$2,210</h6>
-                </div>
-                <div>
-                    <span class="tx-11 tx-white-6">Tax Return</span>
-                    <h6 class="tx-white mg-b-0">$320</h6>
-                </div>
-            </div><!-- -->
-        </div><!-- card -->
-    </div><!-- col-3 -->
-    <div class="col-sm-6 col-xl-3 mg-t-20 mg-xl-t-0">
-        <div class="card pd-20 bg-sl-primary">
-            <div class="d-flex justify-content-between align-items-center mg-b-10">
-                <h6 class="tx-11 tx-uppercase mg-b-0 tx-spacing-1 tx-white">This Year's Sales</h6>
-                <a href="#" class="tx-white-8 hover-white"><i class="icon ion-android-more-horizontal"></i></a>
-            </div><!-- card-header -->
-            <div class="d-flex align-items-center justify-content-between">
-                <span class="sparkline2">5,3,9,6,5,9,7,3,5,2</span>
-                <h3 class="mg-b-0 tx-white tx-lato tx-bold">$91,239</h3>
-            </div><!-- card-body -->
-            <div class="d-flex align-items-center justify-content-between mg-t-15 bd-t bd-white-2 pd-t-10">
-                <div>
-                    <span class="tx-11 tx-white-6">Gross Sales</span>
-                    <h6 class="tx-white mg-b-0">$2,210</h6>
-                </div>
-                <div>
-                    <span class="tx-11 tx-white-6">Tax Return</span>
-                    <h6 class="tx-white mg-b-0">$320</h6>
-                </div>
-            </div><!-- -->
-        </div><!-- card -->
-    </div><!-- col-3 -->
-</div><!-- row --> *@

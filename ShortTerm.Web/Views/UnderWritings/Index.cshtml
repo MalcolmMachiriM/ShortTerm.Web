@@ -7,9 +7,18 @@
 <h1>Policy Underwriting Enquiries</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-outline-success">Create New</a>
+    <a asp-action="Create" asp-route-id="@ViewContext.RouteData.Values["id"]" class="btn btn-success">Create New</a>
 </p>
-<table class="table">
+<div class="col-12">
+
+    <div class="box">
+        <div class="box-header with-border">
+            <h4 class="box-title">Underwriting Enquiries </h4>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="example5" class="text-fade table table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -86,12 +95,16 @@
             </td>
             <td>
                 <a asp-action="Details" class="btn btn-outline-info" asp-route-id="@item.Id"><i class="fa fa-info-circle"> </i></a>
-                <button class="btn btn-outline-danger mt-1 btnDelete" data-id="@item.Id" type="button"><i class="fa fa-trash"> </i></button>
+                <button data-id="@item.Id" class="btn btn-outline-danger deleteBtn mt-1 " type="button"><i class="fa fa-trash"></i></button>&nbsp
             </td>
         </tr>
 }
     </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>
 
 <form id="deleteForm" asp-action="Delete">
     <input type="hidden" id="schemeId" name="Id" />

@@ -180,8 +180,6 @@
     <!-- ########## START: LEFT PANEL ########## -->
     <div class="sl-logo"><a asp-area ="" asp-controller="Home" asp-action="Index"><i class="icon ion-android-star-outline"></i> Short Term Insurance</a></div>
     <div class="sl-sideleft">
-        
-
         <label class="sidebar-label">Navigation</label>
         <div class="sl-sideleft-menu">
             <a class="sl-menu-link active" asp-area="" asp-controller="Home" asp-action="Index">
@@ -262,6 +260,21 @@
                     <li class="nav-item"><a asp-controller="PolicyReassurances" asp-action="Index" class="nav-link">Reassurance Enquirires</a></li>
                 </ul>
 
+                <!-- sl-menu-link -->
+                <a href="#" class="sl-menu-link">
+                    <div class="sl-menu-item">
+                        <i class="menu-item-icon icon ion-ios-paper-outline tx-22"></i>
+                        <span class="menu-item-label">Payments</span>
+                        <i class="menu-item-arrow fa fa-angle-down"></i>
+                    </div><!-- menu-item -->
+                </a>
+
+                <!-- sl-menu-link -->
+                <ul class="sl-menu-sub nav flex-column">
+                    <li class="nav-item"><a asp-controller="Payments" asp-action="Index" class="nav-link">Premium Payments Equiries</a></li>
+                    <li class="nav-item"><a asp-controller="Payments" asp-action="IndividualPayments" class="nav-link">Individual Payments</a></li>
+                    <li class="nav-item"><a asp-controller="Payments" asp-action="BulkPayments" class="nav-link">Bulk Payments</a></li>
+                </ul>
                 <!-- sl-menu-link -->
                 <a href="#" class="sl-menu-link">
                     <div class="sl-menu-item">
