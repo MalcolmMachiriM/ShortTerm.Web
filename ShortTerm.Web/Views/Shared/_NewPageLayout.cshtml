@@ -34,7 +34,7 @@
 		<header class="main-header">
 			<div class="d-flex align-items-center logo-box justify-content-start">
 				<!-- Logo -->
-				<a href="index.html" class="logo">
+				<a asp-controller="Home" asp-action="Index" class="logo">
 					<!-- logo-->
 					<div class="logo-mini w-40">
 						<span class="light-logo"> <img src="~/images/logo-letter.png" alt="logo"> </span>
@@ -147,24 +147,12 @@
 								</li>
 							</ul>
 						</li>
-						<li class="btn-group nav-item d-xl-inline-flex d-none">
+						@* <li class="btn-group nav-item d-xl-inline-flex d-none">
 							<a href="#" class="waves-effect waves-light nav-link btn-primary-light svg-bt-icon" title="" id="live-chat">
 								<i data-feather="message-circle"></i>
 							</a>
-						</li>
+						</li> *@
 
-						<li class="btn-group d-xl-inline-flex d-none">
-							<a href="#" class="waves-effect waves-light nav-link btn-primary-light svg-bt-icon dropdown-toggle" data-bs-toggle="dropdown">
-								<img class="rounded" src="https://cartiy-dashboard-template.multipurposethemes.com/html/images/svg-icon/usa.svg" alt="">
-							</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="https://cartiy-dashboard-template.multipurposethemes.com/html/images/svg-icon/usa.svg" alt=""> English</a>
-								<a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="https://cartiy-dashboard-template.multipurposethemes.com/html/images/svg-icon/spain.svg" alt=""> Spanish</a>
-								<a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="https://cartiy-dashboard-template.multipurposethemes.com/html/images/svg-icon/ger.svg" alt=""> German</a>
-								<a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="https://cartiy-dashboard-template.multipurposethemes.com/html/images/svg-icon/jap.svg" alt=""> Japanese</a>
-								<a class="dropdown-item my-5" href="#"><img class="w-20 rounded me-10" src="https://cartiy-dashboard-template.multipurposethemes.com/html/images/svg-icon/fra.svg" alt=""> French</a>
-							</div>
-						</li>
 
 						<li class="btn-group nav-item d-xl-inline-flex d-none">
 							<a href="#" data-provide="fullscreen" class="waves-effect waves-light nav-link btn-primary-light svg-bt-icon" title="Full Screen">
@@ -181,7 +169,7 @@
 						<!-- User Account-->
 						<li class="dropdown user user-menu">
 							<a href="#" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow" title="User" data-bs-toggle="modal" data-bs-target="#quick_user_toggle">
-								<img src="../../../images/avatar/avatar-13.png" class="avatar rounded-circle bg-primary-light h-40 w-40" alt="" />
+								<img src="~/images/avatar-12.png" class="avatar rounded-circle bg-primary-light h-40 w-40" alt="" />
 							</a>
 						</li>
 
@@ -199,7 +187,7 @@
 						<ul class="sidebar-menu" data-widget="tree">
 							<li class="header fs-10 m-0 text-uppercase">Dashboard</li>
 							<li class="treeview">
-								<a asp-controller="Schemes" asp-action="Index">
+								<a >
 									<i data-feather="home"></i>
 									<span>Dashboard</span>
 									<span class="pull-right-container">
@@ -222,6 +210,49 @@
 								<ul class="treeview-menu">
 									<li><a asp-controller="Schemes" asp-action="Create"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Creation</a></li>
 									<li><a asp-controller="Schemes" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Enquiries</a></li>
+								</ul>
+							</li>
+
+							<li class="treeview">
+								<a href="#">
+									<i data-feather="alert-triangle"></i>
+									<span>System Variables</span>
+									<span class="pull-right-container">
+										<i class="fa fa-angle-right pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu ml-0">
+									<li><a asp-controller="AccountTypes" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Account Types </a></li>
+									<li><a asp-controller="AddressTypes" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Address Types </a></li>
+									<li><a asp-controller="Banks" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Banks </a></li>
+									<li><a asp-controller="BusinessDecisions" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Business Decisions </a></li>
+									<li><a asp-controller="Cities" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Cities </a></li>
+									<li><a asp-controller="Countries" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Countries</a></li>
+									<li><a asp-controller="Currencies" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Currencies</a></li>
+									<li><a asp-controller="HabitsAndInterests" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Habits & Interests</a></li>
+									<li><a asp-controller="IdentificationTypes" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Identification Types</a></li>
+									<li><a asp-controller="IncomeTypes" asp-action="Index" ><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Income Types</a></li>
+									<li><a asp-controller="InstitutionTypes" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Institution Types</a></li>
+									<li><a asp-controller="InterestRateFrequencies" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Interest Rate Frequencies</a></li>
+									<li><a asp-controller="InterestRateTypes" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Interest Rate Types</a></li>
+									<li><a asp-controller="Languages" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Languages</a></li>
+									<li><a asp-controller="LocationOfProperties" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Location Of Properties</a></li>
+									<li><a asp-controller="MaritalStatus" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>MaritalStatus</a></li>
+									<li><a asp-controller="MedicalRequirements" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Medical Requirements</a></li>
+									<li><a asp-controller="Occupations" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Occupations</a></li>
+									<li><a asp-controller="PaymentMethods" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Payment Methods</a></li>
+									<li><a asp-controller="PremiumPaymentFrequencies" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Payment Frequencies</a></li>
+									<li><a asp-controller="PrimaryUseOfPropertyScores" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Use Of Property Scores</a></li>
+									<li><a asp-controller="Qualifications" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Qualifications</a></li>
+									<li><a asp-controller="RelationshipTypes" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Relationship Types</a></li>
+									<li><a asp-controller="Religions" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Religions</a></li>
+									<li><a asp-controller="Requirements" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Requirements</a></li>
+									<li><a asp-controller="SecurityOfPropertyScores" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Security Of Property</a></li>
+									<li><a asp-controller="StateOfProperties" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>State Of Properties</a></li>
+									<li><a asp-controller="StopOrderNames" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Stop Order Names</a></li>
+									<li><a asp-controller="TimeGroups" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Time Groups</a></li>
+									<li><a asp-controller="Titles" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Titles</a></li>
+									<li><a asp-controller="UnderwritingQuestions" asp-action="Index"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Underwriting Questions</a></li>
 								</ul>
 							</li>
 
@@ -390,29 +421,6 @@
 									</li>
 								</ul>
 							</li>
-							<li class="treeview">
-								<a href="#">
-									<i data-feather="alert-triangle"></i>
-									<span>Miscellaneous</span>
-									<span class="pull-right-container">
-										<i class="fa fa-angle-right pull-right"></i>
-									</span>
-								</a>
-								<ul class="treeview-menu">
-									<li>
-										<a href="error_404.html" target="_blank" class="d-light"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Error 404</a>
-										<a href="error_404_dark.html" target="_blank" class="d-dark"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Error 404</a>
-									</li>
-									<li>
-										<a href="error_500.html" target="_blank" class="d-light"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Error 500</a>
-										<a href="error_500_dark.html" target="_blank" class="d-dark"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Error 500</a>
-									</li>
-									<li>
-										<a href="error_maintenance.html" target="_blank" class="d-light"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Maintenance</a>
-										<a href="error_maintenance_dark.html" target="_blank" class="d-dark"><i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Maintenance</a>
-									</li>
-								</ul>
-							</li>
 						</ul>
 
 						
@@ -459,7 +467,7 @@
 					<div class="d-flex align-items-center mb-15 justify-content-between pb-30">
 						<h4 class="m-0">
 							User Profile
-							<small class="text-fade fs-12 ms-5">12 messages</small>
+							@* <small class="text-fade fs-12 ms-5">12 messages</small> *@
 						</h4>
 						<a href="#" class="btn btn-icon btn-danger-light btn-sm no-shadow" data-bs-dismiss="modal">
 							<span class="fa fa-close"></span>
@@ -467,7 +475,7 @@
 					</div>
 					<div>
 						<div class="d-flex flex-row">
-							<div class=""><img src="../../../images/avatar/avatar-13.png" alt="user" class="rounded bg-danger-light w-150" width="100"></div>
+							<div class=""><img src="~/images/avatar-12.png" alt="user" class="rounded bg-danger-light w-150" width="100"></div>
 							<div class="ps-20">
 								<h5 class="mb-0">Nil Yeager</h5>
 								<p class="my-5 text-fade">Manager</p>
@@ -874,10 +882,6 @@
 
 
 	<div id="chat-box-body">
-		<div id="chat-circle" class="waves-effect waves-circle btn btn-circle btn-sm btn-warning l-h-50">
-			<div id="chat-overlay"></div>
-			<span class="icon-Group-chat fs-18"><span class="path1"></span><span class="path2"></span></span>
-		</div>
 
 		<div class="chat-box">
 			<div class="chat-box-header p-15 d-flex justify-content-between align-items-center">
@@ -917,66 +921,6 @@
 						</a>
 					</div>
 				</div>
-				<div class="text-center flex-grow-1">
-					<div class="text-dark fs-18">Mayra Sibley</div>
-					<div>
-						<span class="badge badge-sm badge-dot badge-primary"></span>
-						<span class="text-muted fs-12">Active</span>
-					</div>
-				</div>
-				<div class="chat-box-toggle">
-					<button id="chat-box-toggle" class="waves-effect waves-circle btn btn-circle btn-danger-light h-40 w-40 rounded-circle l-h-50" type="button">
-						<span class="icon-Close fs-22"><span class="path1"></span><span class="path2"></span></span>
-					</button>
-				</div>
-			</div>
-			<div class="chat-box-body">
-				<div class="chat-box-overlay">
-				</div>
-				<div class="chat-logs">
-					<div class="chat-msg user">
-						<div class="d-flex align-items-center">
-							<span class="msg-avatar">
-								<img src="../../../images/avatar/2.jpg" class="avatar avatar-lg" alt="">
-							</span>
-							<div class="mx-10">
-								<a href="#" class="text-dark hover-primary fw-bold">Mayra Sibley</a>
-								<p class="text-muted fs-12 mb-0">2 Hours</p>
-							</div>
-						</div>
-						<div class="cm-msg-text">
-							Hi there, I'm Jesse and you?
-						</div>
-					</div>
-					<div class="chat-msg self">
-						<div class="d-flex align-items-center justify-content-end">
-							<div class="mx-10">
-								<a href="#" class="text-dark hover-primary fw-bold">You</a>
-								<p class="text-muted fs-12 mb-0">3 minutes</p>
-							</div>
-							<span class="msg-avatar">
-								<img src="../../../images/avatar/3.jpg" class="avatar avatar-lg" alt="">
-							</span>
-						</div>
-						<div class="cm-msg-text">
-							My name is Anne Clarc.
-						</div>
-					</div>
-					<div class="chat-msg user">
-						<div class="d-flex align-items-center">
-							<span class="msg-avatar">
-								<img src="../../../images/avatar/2.jpg" class="avatar avatar-lg" alt="">
-							</span>
-							<div class="mx-10">
-								<a href="#" class="text-dark hover-primary fw-bold">Mayra Sibley</a>
-								<p class="text-muted fs-12 mb-0">40 seconds</p>
-							</div>
-						</div>
-						<div class="cm-msg-text">
-							Nice to meet you Anne.<br>How can i help you?
-						</div>
-					</div>
-				</div><!--chat-log -->
 			</div>
 			<div class="chat-input">
 				<form>
