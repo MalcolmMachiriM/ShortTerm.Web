@@ -1,21 +1,21 @@
 ﻿@model ProductGroupCreateVM
 
 @{
-    ViewData["Title"] = "Create Product Category";
+    ViewData["Title"] = "Create Product";
 }
 
-<div class="col-lg-6 col-12">
+<div class="col-lg-6 col-12" style="margin: 0 auto; text-align: center;">
     <!-- Basic Forms -->
     <div class="box">
         <div class="box-header with-border">
-            <h4 class="box-title">Create Product Category</h4>
+            <h4 class="box-title">Create Product</h4>
         </div>
         <form asp-action="Create">
 
-            <div class="box-body">
+            <div class="box-body" style="margin: 0 auto; text-align: left;">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Name" class="form-label"></label>
+                    <label asp-for="Name" class="form-label" ></label>
                     <input asp-for="Name" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
@@ -28,21 +28,21 @@
                 <br />
                 <div class="form-group">
                     <label asp-for="Description" class="form-label"></label>
-                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <input asp-for="Description" class="form-control"/>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <br />
                 <div class="form-group">
                     <label asp-for="SchemeId" class="form-label"></label>
                     <select asp-for="SchemeId" class="form-select" asp-items="Model?.Schemes" asp-dropdown>
-                        <option>Select Scheme</option>
+                        <option>--Select Scheme--</option>
                     </select>
                     <span asp-validation-for="SchemeId" class="text-danger"></span>
                 </div>
                 <br />
                 <div class="form-group">
-                    <a asp-action="Index" class="btn btn-dark">Back to List</a>
-                    <input type="submit" value="Create" class="btn btn-success" />
+                    <a asp-action="Index" class="btn btn-dark">Back to List</a>&nbsp;
+                    <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </div>
         </form>
